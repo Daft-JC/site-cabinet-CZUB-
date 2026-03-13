@@ -52,6 +52,16 @@ export const ARTICLES_PRESSE: {
     url: "https://www.midilibre.fr/2014/06/24/avignon-trois-ans-de-prison-requis-contre-l-escroc-aux-panneaux-solaires,1013993.php",
   },
   {
+    id: "article-3",
+    date: "2014-07-15",
+    source: "Le Monde",
+    category: "Arnaques photovoltaïque",
+    title: "Photovoltaïque : un an de prison pour le gérant de Cesp",
+    excerpt:
+      "Le tribunal correctionnel d'Avignon condamne le dirigeant de la société Cesp pour pratiques commerciales trompeuses envers 156 victimes. Maître Joseph Czub, avocat de parties civiles, souligne que ce jugement pénal permettra aux victimes de se défendre au civil contre l'organisme de crédit Sofemo, qui aurait débloqué les fonds sans contrôle.",
+    url: "https://www.lemonde.fr/vie-quotidienne/article/2014/07/15/photovoltaique-un-an-de-prison-pour-le-gerant-de-cesp_6003842_5057666.html",
+  },
+  {
     id: "article-2",
     date: "2019-05-26",
     source: "La Provence",
