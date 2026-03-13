@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:\\\\Users\\\\PC julien\\\\cabinet-czub\\\\cabinet-czub\" && npm run dev 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\PC julien\\\\cabinet-czub\\\\cabinet-czub\" && npm install leaflet react-leaflet @types/leaflet 2>&1 | tail -5)",
+      "Bash(cd \"C:\\\\Users\\\\PC julien\\\\cabinet-czub\\\\cabinet-czub\" && npm install leaflet react-leaflet @types/leaflet --legacy-peer-deps 2>&1 | tail -5)",
+      "Bash(cd \"C:\\\\Users\\\\PC julien\\\\cabinet-czub\\\\cabinet-czub\" && npm list leaflet 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\PC julien\\\\cabinet-czub\\\\cabinet-czub\" && npm install react-leaflet@4 --legacy-peer-deps 2>&1 | tail -5)",
+      "Bash(cd \"C:\\\\Users\\\\PC julien\\\\cabinet-czub\\\\cabinet-czub\" && npm list react-leaflet 2>&1)",
+      "Bash(curl -s \"https://nominatim.openstreetmap.org/search?q=1+Boulevard+du+President+Allende+Martigues&format=json&limit=1\" -H \"User-Agent: CabinetCzub/1.0\")",
+      "Bash(curl -s \"https://nominatim.openstreetmap.org/search?q=Boulevard+du+President+Allende+13500+Martigues+France&format=json&limit=3\" -H \"User-Agent: CabinetCzub/1.0\")",
+      "Bash(curl -s \"https://nominatim.openstreetmap.org/search?street=Boulevard+du+President+Allende&city=Martigues&country=France&format=json&limit=3\" -H \"User-Agent: CabinetCzub/1.0\")",
+      "Bash(curl -s \"https://nominatim.openstreetmap.org/search?q=Espace+Venitien+Martigues&format=json&limit=3\" -H \"User-Agent: CabinetCzub/1.0\")",
+      "Bash(curl -s \"https://nominatim.openstreetmap.org/search?q=Martigues+13500&format=json&limit=1\" -H \"User-Agent: CabinetCzub/1.0\")",
+      "Bash(curl -s \"https://api-adresse.data.gouv.fr/search/?q=1+Boulevard+du+President+Allende+Martigues&limit=3\" -H \"User-Agent: CabinetCzub/1.0\")",
+      "Bash(cd \"C:\\\\Users\\\\PC julien\\\\cabinet-czub\\\\cabinet-czub\" && npm install nodemailer @types/nodemailer --legacy-peer-deps 2>&1 | tail -4)",
+      "Bash(cd \"C:/Users/PC julien/cabinet-czub/cabinet-czub\" && npx tsc --noEmit 2>&1 | head -50)",
+      "Bash(cd \"C:/Users/PC julien/cabinet-czub/cabinet-czub\" && npx tsc --noEmit 2>&1)"
+    ]
+  }
+}

@@ -1,0 +1,224 @@
+export const SITE_CONFIG = {
+  name: "Cabinet Czub",
+  fullName: "Cabinet Maître Joseph Czub",
+  lawyer: "Maître Joseph Czub",
+  barreau: "Barreau d'Aix-en-Provence",
+  tagline: "Avocat au Barreau d'Aix-en-Provence",
+  description:
+    "Cabinet d'avocat à Martigues spécialisé dans la défense des consommateurs depuis 1994. Photovoltaïque, fraudes bancaires, assurances, construction, automobile — interventions sur toute la France.",
+  founded: 1994,
+  yearsExperience: "30+",
+  location: {
+    city: "Martigues",
+    region: "Bouches-du-Rhône",
+    area: "Provence-Alpes-Côte d'Azur",
+    full: "Martigues, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur",
+  },
+  contact: {
+    phone: "04 42 40 36 65",
+    phoneHref: "tel:+33442403665",
+    email: "czubjoseph@hotmail.com",
+    emailHref: "mailto:czubjoseph@hotmail.com",
+    address: "1 Boulevard du Président Allende, L'Espace Vénitien",
+    addressFull: "1 Boulevard du Président Allende, L'Espace Vénitien, 13500 Martigues",
+  },
+} as const;
+
+export const NAV_LINKS = [
+  { label: "Accueil", href: "/" },
+  { label: "Le Cabinet", href: "/cabinet" },
+  { label: "Domaines d'intervention", href: "/expertises" },
+  { label: "Revue & Presse", href: "/presse" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+export const ARTICLES_PRESSE: {
+  id: string;
+  date: string;
+  source: string;
+  category: string;
+  title: string;
+  excerpt: string;
+  url?: string;
+}[] = [
+  {
+    id: "article-1",
+    date: "2014-06-24",
+    source: "Midi Libre",
+    category: "Arnaques photovoltaïque",
+    title: "Avignon : trois ans de prison requis contre l'escroc aux panneaux solaires",
+    excerpt:
+      "Retour sur une affaire emblématique d'arnaque aux panneaux solaires, illustrant les pratiques frauduleuses dénoncées depuis des années par le cabinet Czub : démarchage abusif, fausses promesses de rentabilité et victimes engagées dans des crédits prohibitifs.",
+    url: "https://www.midilibre.fr/2014/06/24/avignon-trois-ans-de-prison-requis-contre-l-escroc-aux-panneaux-solaires,1013993.php",
+  },
+  {
+    id: "article-2",
+    date: "2019-05-26",
+    source: "La Provence",
+    category: "Droit de la consommation",
+    title: "L'UFC Que Choisir de Martigues fait front au côté des victimes d'arnaque, souvent lassées face aux longs combats",
+    excerpt:
+      "L'UFC Que Choisir de Martigues, partenaire du cabinet Czub, se mobilise aux côtés des victimes d'arnaques en tous genres. Malgré la longueur des procédures, les résultats obtenus témoignent de l'efficacité de cette collaboration au service des consommateurs.",
+    url: "https://www.laprovence.com/article/region/1558833153019115/lufc-que-choisir-de-martigues-fait-front-au-cote-des-victimes-darnaque-souvent-lasses-face-aux-longs-combats",
+  },
+];
+
+export const EXPERTISES = [
+  {
+    id: "energies-renouvelables",
+    title: "Photovoltaïque & Énergies Renouvelables",
+    shortDesc: "Défense des victimes d'arnaques EnR",
+    description:
+      "Victime d'une arnaque au photovoltaïque, à une pompe à chaleur, un ballon thermodynamique ou tout autre système d'énergie renouvelable ? Le cabinet intervient sur toute la France pour obtenir l'annulation ou la résolution du contrat principal et du crédit affecté, notamment après démarchage à domicile.",
+    details: [
+      "Annulation ou résolution du contrat d'installation",
+      "Résiliation du crédit affecté (organismes de financement)",
+      "Démarchage à domicile — absence d'étude technique ou de devis préalable",
+      "Non-respect des règles de l'art, des normes et des règles d'urbanisme",
+      "Manquement au devoir de conseil sur le rendement et le retour sur investissement",
+      "Infiltrations en toiture et dysfonctionnements techniques",
+      "Collaboration avec un réseau d'experts techniques spécialisés",
+      "Jurisprudences favorables devant TJ, Cours d'appel et Cour de cassation",
+    ],
+    icon: "sun",
+  },
+  {
+    id: "code-consommation",
+    title: "Code de la Consommation",
+    shortDesc: "Protection des droits des consommateurs",
+    description:
+      "Le Code de la consommation impose de nombreuses mentions obligatoires aux professionnels, très souvent à peine de nullité du contrat. Depuis plus de 30 ans, le cabinet engage si nécessaire une procédure judiciaire après tentative de solution amiable, et collabore avec l'UFC Que Choisir dans la gestion des litiges.",
+    details: [
+      "Démarchage à domicile et contrats à distance",
+      "Droit de rétractation",
+      "Contrats conclus dans les foires et salons",
+      "Non-respect de l'obligation générale d'information précontractuelle",
+      "Pratiques commerciales trompeuses — abus de faiblesse",
+      "Clauses abusives",
+      "Garantie légale de conformité",
+      "Crédit à la consommation et crédits affectés",
+      "Actions en annulation, résolution et dommages-intérêts",
+    ],
+    icon: "shield",
+  },
+  {
+    id: "fraudes-bancaires",
+    title: "Arnaques & Fraudes Bancaires",
+    shortDesc: "Remboursement & responsabilité des banques",
+    description:
+      "Les techniques de fraude sont de plus en plus élaborées. Le Code monétaire et financier prévoit dans certaines hypothèses une obligation de remboursement de la banque, notamment lorsqu'elle ne démontre pas la négligence grave de l'utilisateur. La jurisprudence sanctionne les banques défaillantes.",
+    details: [
+      "Spoofing — fraude au faux conseiller bancaire",
+      "Phishing (hameçonnage par mail ou SMS)",
+      "Quishing — arnaque aux QR codes",
+      "Faux RIB",
+      "SIM Swapping — usurpation de carte SIM",
+      "Logiciels malveillants",
+      "Mise en responsabilité de la banque",
+      "Obtention du remboursement des sommes détournées",
+    ],
+    icon: "creditcard",
+  },
+  {
+    id: "assurances",
+    title: "Assurances",
+    shortDesc: "Refus de garantie & sinistres",
+    description:
+      "À la suite d'une déclaration de sinistre, votre assureur refuse d'appliquer la garantie régulièrement souscrite ? Le cabinet vous assiste pour faire valoir vos droits et obtenir l'indemnisation qui vous est due.",
+    details: [
+      "Garantie vol",
+      "Garantie catastrophes naturelles (CAT NAT sécheresse, inondation, boue)",
+      "Garantie vandalisme",
+      "Garantie événements climatiques",
+      "Garantie incapacité, invalidité, décès",
+      "Garantie décennale",
+      "Assurance dommage ouvrage",
+    ],
+    icon: "umbrella",
+  },
+  {
+    id: "construction-immobilier",
+    title: "Construction & Immobilier",
+    shortDesc: "Vices, malfaçons et litiges immobiliers",
+    description:
+      "De la vente en l'état futur d'achèvement aux litiges post-livraison, le cabinet intervient pour défendre vos droits face aux constructeurs, promoteurs, artisans et piscinistes.",
+    details: [
+      "Vices cachés et non-conformités",
+      "Retard de livraison et abandon de chantier",
+      "Vente en l'état futur d'achèvement (VEFA)",
+      "Contrat de construction de maison individuelle (CCMI)",
+      "Garantie décennale et assurance dommage ouvrage",
+      "Litiges piscinistes, façades, infiltrations toiture",
+      "Litiges menuiseries et urbanisme",
+    ],
+    icon: "building",
+  },
+  {
+    id: "litiges-automobile",
+    title: "Litiges Automobile",
+    shortDesc: "Vices cachés & responsabilité du garagiste",
+    description:
+      "Victime d'un vice caché sur un véhicule ou d'une faute de votre garagiste ? Le cabinet défend vos droits face aux vendeurs et professionnels de l'automobile.",
+    details: [
+      "Vices cachés sur véhicule",
+      "Garantie légale de conformité",
+      "Responsabilité du garagiste et obligation de résultat",
+    ],
+    icon: "car",
+  },
+  {
+    id: "responsabilite-contrats",
+    title: "Responsabilité & Contrats",
+    shortDesc: "Droit commun et litiges contractuels",
+    description:
+      "Le cabinet intervient dans l'ensemble des litiges contractuels de droit commun, du tourisme aux agents immobiliers, en passant par les compagnies aériennes et les diagnostiqueurs.",
+    details: [
+      "Droit commun des contrats",
+      "Tourisme et agences de voyages",
+      "Compagnies aériennes",
+      "Agents immobiliers",
+      "Diagnostiqueurs",
+    ],
+    icon: "scale",
+  },
+  {
+    id: "prejudice-corporel",
+    title: "Réparation du Préjudice Corporel",
+    shortDesc: "Accidents & responsabilité médicale",
+    description:
+      "Victime d'un accident de la circulation ou d'une faute médicale ? Le cabinet vous accompagne pour obtenir la juste réparation de votre préjudice corporel.",
+    details: [
+      "Accidents de la circulation",
+      "Responsabilité médicale",
+    ],
+    icon: "heart",
+  },
+  {
+    id: "litiges-bailleurs",
+    title: "Litiges Bailleurs & Locataires",
+    shortDesc: "Droit locatif et contentieux",
+    description:
+      "Le cabinet intervient dans les litiges opposant bailleurs et locataires, qu'il s'agisse de recouvrement de loyers, de procédures d'expulsion, de dépôt de garantie ou de réparations locatives.",
+    details: [
+      "Recouvrement de loyers impayés",
+      "Procédures d'expulsion",
+      "Dépôt de garantie et état des lieux",
+      "Contentieux relatifs aux réparations locatives",
+    ],
+    icon: "key",
+  },
+  {
+    id: "divorces-amiables",
+    title: "Divorces Amiables",
+    shortDesc: "Divorce par consentement mutuel",
+    description:
+      "Maître Czub accompagne les couples souhaitant divorcer à l'amiable dans le cadre de la procédure de divorce par consentement mutuel, avec toute la discrétion et l'efficacité que la situation requiert.",
+    details: [
+      "Divorce par consentement mutuel",
+      "Convention de divorce rédigée par l'avocat",
+      "Partage des biens et règlement des questions patrimoniales",
+      "Garde des enfants et pension alimentaire",
+    ],
+    icon: "users",
+  },
+] as const;
