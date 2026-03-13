@@ -72,9 +72,11 @@ export default function ExpertisesPage() {
                   </RevealOnScroll>
 
                   <RevealOnScroll delay={200}>
-                    <p className="text-[0.9rem] font-light text-gris-clair leading-[1.9] mb-8">
-                      {exp.description}
-                    </p>
+                    <div className="text-[0.9rem] font-light text-gris-clair leading-[1.9] mb-8 space-y-4">
+                      {exp.description.split("\n").map((para, i) => (
+                        <p key={i}>{para}</p>
+                      ))}
+                    </div>
                   </RevealOnScroll>
                 </div>
 
