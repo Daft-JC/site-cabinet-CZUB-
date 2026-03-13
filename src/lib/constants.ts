@@ -28,7 +28,7 @@ export const NAV_LINKS = [
   { label: "Accueil", href: "/" },
   { label: "Le Cabinet", href: "/cabinet" },
   { label: "Domaines d'intervention", href: "/expertises" },
-  { label: "Revue & Presse", href: "/presse" },
+  { label: "Presse & Médias", href: "/presse" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

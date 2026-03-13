@@ -148,7 +148,7 @@ export default function HomePage() {
                 professionnels.
               </p>
               <p>
-                En collaboration avec l&apos;UFC Que Choisir et un réseau
+                En collaboration avec l&apos;UFC Que Choisir et si besoin avec un réseau
                 d&apos;experts techniques, le cabinet obtient depuis près de
                 30 ans des jurisprudences très favorables aux consommateurs
                 victimes d&apos;arnaques aux énergies renouvelables, fraudes

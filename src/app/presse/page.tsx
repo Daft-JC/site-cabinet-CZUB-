@@ -6,7 +6,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { ExternalLink, CalendarDays, Newspaper } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Revue & Presse",
+  title: "Presse & Médias",
   description:
     "Articles de presse, publications et interventions médiatiques du Cabinet Maître Joseph Czub.",
 };
@@ -23,7 +23,7 @@ export default function PressePage() {
   return (
     <>
       <PageHero
-        tag="Revue & Presse"
+        tag="Presse & Médias"
         title="Le cabinet dans"
         highlight="les médias"
         subtitle="Retrouvez ici les articles, publications et interventions médiatiques de Maître Joseph Czub dans la presse spécialisée et généraliste."

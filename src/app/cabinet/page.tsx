@@ -25,7 +25,7 @@ const VALUES = [
   {
     icon: Handshake,
     title: "Partenariats",
-    desc: "En collaboration avec l'UFC Que Choisir et un réseau d'experts techniques pour une défense complète et documentée.",
+    desc: "En collaboration avec l'UFC Que Choisir et si besoin avec un réseau d'experts techniques pour une défense complète et documentée.",
   },
   {
     icon: Award,
@@ -80,7 +80,7 @@ export default function CabinetPage() {
                   sinistres d'assurance refusés et de bien d'autres abus.
                 </p>
                 <p>
-                  En collaboration avec l'UFC Que Choisir et un réseau d'experts
+                  En collaboration avec l'UFC Que Choisir et si besoin avec un réseau d'experts
                   techniques spécialisés, Maître Czub offre à chaque client une
                   défense sur mesure, rigoureuse et sans compromis, pour faire
                   appliquer les garanties légales élémentaires auxquelles tout
