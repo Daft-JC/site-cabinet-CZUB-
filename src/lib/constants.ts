@@ -63,7 +63,7 @@ export const ARTICLES_PRESSE: {
   },
   {
     id: "article-2",
-    date: "2019-05-26",
+    date: "2025-03-30",
     source: "La Provence",
     category: "Droit de la consommation",
     title: "L'UFC Que Choisir de Martigues fait front au côté des victimes d'arnaque, souvent lassées face aux longs combats",
@@ -79,15 +79,17 @@ export const EXPERTISES = [
     title: "Photovoltaïque & Énergies Renouvelables",
     shortDesc: "Défense des victimes d'arnaques EnR",
     description:
-      "Victime d'une arnaque au photovoltaïque, à une pompe à chaleur, un ballon thermodynamique ou tout autre système d'énergie renouvelable ? Le cabinet intervient sur toute la France pour obtenir l'annulation ou la résolution du contrat principal et du crédit affecté, notamment après démarchage à domicile.",
+      "Victime d'une arnaque au photovoltaïque ou aux énergies renouvelables (pompes à chaleur, ballons thermodynamiques, chauffage, isolation…) ? Ces litiges naissent généralement d'un démarchage à domicile promettant, sans étude ni devis préalable, un rendement important et un retour sur investissement rapide. En réalité, le retour sur investissement s'avère souvent désastreux, le SAV inexistant et les victimes engagées sur des crédits allant jusqu'à 15 ans — avec, parfois, des dysfonctionnements et des infiltrations en toiture. Le cabinet CZUB dispose d'une expertise approfondie en la matière et intervient sur toute la France depuis près de 20 ans, aux fins notamment d'annulation ou résolution du contrat principal et du crédit affecté. Les experts spécialisés mandatés démontrent très souvent les multiples manquements de ces prétendus professionnels, pouvant parfois entraîner un danger pour la sécurité des personnes. Des jurisprudences très favorables ont été obtenues devant les juridictions de première instance, les Cours d'appel et la Cour de cassation.",
     details: [
       "Annulation ou résolution du contrat d'installation",
       "Résiliation du crédit affecté (organismes de financement)",
-      "Démarchage à domicile — absence d'étude technique ou de devis préalable",
+      "Démarchage à domicile",
+      "Absence d'étude technique ou de devis préalable",
       "Non-respect des règles de l'art, des normes et des règles d'urbanisme",
       "Manquement au devoir de conseil sur le rendement et le retour sur investissement",
       "Infiltrations en toiture et dysfonctionnements techniques",
       "Collaboration avec un réseau d'experts techniques spécialisés",
+      "Actions UFC Que Choisir dans l'intérêt collectif des consommateurs",
       "Jurisprudences favorables devant TJ, Cours d'appel et Cour de cassation",
     ],
     icon: "sun",
@@ -116,7 +118,7 @@ export const EXPERTISES = [
     title: "Arnaques & Fraudes Bancaires",
     shortDesc: "Remboursement & responsabilité des banques",
     description:
-      "Les techniques de fraude sont de plus en plus élaborées. Le Code monétaire et financier prévoit dans certaines hypothèses une obligation de remboursement de la banque, notamment lorsqu'elle ne démontre pas la négligence grave de l'utilisateur. La jurisprudence sanctionne les banques défaillantes.",
+      "Les fraudeurs ont toujours un coup d'avance sur les dispositifs de sécurité mis en place par les banques, qui ne sont pas infaillibles. Ils contournent l'authentification forte et cela peut arriver à tout le monde, y compris des personnes averties. Les techniques de fraude sont de plus en plus élaborées. Le Code monétaire et financier prévoit dans certaines hypothèses une obligation de remboursement de la banque, notamment lorsqu'elle ne démontre pas la négligence grave de l'utilisateur. La jurisprudence, désormais bien établie, n'hésite pas à sanctionner les banques défaillantes. Le cabinet CZUB a obtenu de très nombreuses jurisprudences favorables aux victimes.",
     details: [
       "Spoofing — fraude au faux conseiller bancaire",
       "Phishing (hameçonnage par mail ou SMS)",
@@ -124,7 +126,7 @@ export const EXPERTISES = [
       "Faux RIB",
       "SIM Swapping — usurpation de carte SIM",
       "Logiciels malveillants",
-      "Mise en responsabilité de la banque",
+      "Responsabilité de la banque",
       "Obtention du remboursement des sommes détournées",
     ],
     icon: "creditcard",
@@ -132,7 +134,7 @@ export const EXPERTISES = [
   {
     id: "assurances",
     title: "Assurances",
-    shortDesc: "Refus de garantie & sinistres",
+    shortDesc: "Garanties d'assurances refusées",
     description:
       "À la suite d'une déclaration de sinistre, votre assureur refuse d'appliquer la garantie régulièrement souscrite ? Le cabinet vous assiste pour faire valoir vos droits et obtenir l'indemnisation qui vous est due.",
     details: [
@@ -227,7 +229,6 @@ export const EXPERTISES = [
       "Divorce par consentement mutuel",
       "Convention de divorce rédigée par l'avocat",
       "Partage des biens et règlement des questions patrimoniales",
-      "Garde des enfants et pension alimentaire",
     ],
     icon: "users",
   },
