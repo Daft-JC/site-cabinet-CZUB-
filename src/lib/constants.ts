@@ -54,6 +54,39 @@ export const ARTICLES_PRESSE: {
     url: "/presse/comedie",
   },
   {
+    id: "article-sos-conso",
+    date: "2013-10-11",
+    source: "Le Monde — SOS Conso",
+    category: "Arnaques photovoltaïque",
+    title: "Comme une éolienne sans ailes !",
+    excerpt:
+      "Chronique SOS Conso de Raphaële Rivais : panneaux photovoltaïques et éoliennes de pignon aux rendements surévalués. L'affaire Lemichel illustre les risques du démarchage abusif et la responsabilité des organismes de crédit (Solfermo, Franfinance) qui débloquent les fonds sans contrôle.",
+    image: "/panneau-solaire.jpg",
+    url: "/presse/sos-conso-eolienne",
+  },
+  {
+    id: "article-geant-casino",
+    date: "2008-01-01",
+    source: "La Provence — Istres",
+    category: "Droit de la consommation",
+    title: "Les services vétérinaires et l'UFC font condamner Géant",
+    excerpt:
+      "L'hypermarché Géant Casino d'Istres condamné à 81 contraventions pour des denrées conservées jusqu'à 12,4°C au lieu de 0 à 3°C. Maître Czub, avocat de l'UFC, souligne la gravité d'une récidive dans une grande surface.",
+    image: "/geant-casino.jpg",
+    url: "/presse/geant-casino-istres",
+  },
+  {
+    id: "article-viande-avariee",
+    date: "2011-06-01",
+    source: "La Provence — Martigues",
+    category: "Droit de la consommation",
+    title: "L'UFC Martigues-étang de Berre sur tous les fronts",
+    excerpt:
+      "Partie civile dans le procès de la viande avariée maquillée au bisulfite de soude, l'UFC Martigues-étang de Berre obtient 6 000 € de dommages et intérêts — un montant record. Maître Joseph Czub rappelle que l'association défendait l'intérêt collectif des consommateurs dès le stade de l'instruction.",
+    image: "/boucherie.jpg",
+    url: "/presse/viande-avariee-martigues",
+  },
+  {
     id: "article-1",
     date: "2014-06-24",
     source: "Midi Libre",
