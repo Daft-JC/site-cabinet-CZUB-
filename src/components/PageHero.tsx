@@ -52,7 +52,7 @@ export default function PageHero({ tag, title, highlight, subtitle, image, image
                   src={image}
                   alt={imageAlt ?? ""}
                   fill
-                  className="object-cover object-top grayscale"
+                  className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                   sizes="(max-width: 1024px) 260px, 320px"
                 />
               </div>
