@@ -54,6 +54,28 @@ export const ARTICLES_PRESSE: {
     url: "/presse/comedie",
   },
   {
+    id: "article-grossiste-viande",
+    date: "2008-03-01",
+    source: "La Provence",
+    category: "Droit de la consommation",
+    title: "Lourde peine pour un grossiste en viande",
+    excerpt:
+      "CBS Viandes, grossiste de Vitrolles, condamné à 23 000 € d'amendes (681 infractions) après la découverte de 4 tonnes de viandes périmées mêlées à des denrées saines. L'UFC, représentée par Maître Joseph Czub, s'est constituée partie civile pour défendre l'intérêt collectif des consommateurs.",
+    image: "/grossiste.png",
+    url: "/presse/grossiste-viande-vitrolles",
+  },
+  {
+    id: "article-ufc-ag-2008",
+    date: "2008-04-21",
+    source: "La Provence — Martigues",
+    category: "Vie associative",
+    title: "L'UFC–Que Choisir, entre satisfactions et inquiétudes",
+    excerpt:
+      "Assemblée générale 2008 de l'UFC-Que Choisir de Martigues. Maître Czub rappelle les victoires obtenues contre les banques, Free et Total — dont une première requête gagnée en droit de l'environnement. L'association fait face à de nouveaux défis liés aux nouvelles technologies et à son financement.",
+    image: "/ufc-logo.png",
+    url: "/presse/ufc-assemblee-generale-2008",
+  },
+  {
     id: "article-sos-conso",
     date: "2013-10-11",
     source: "Le Monde — SOS Conso",
