@@ -45,13 +45,13 @@ export default function PageHero({ tag, title, highlight, subtitle, image, image
         {/* Photo optionnelle à droite */}
         {image && (
           <div className="flex-shrink-0 opacity-0 animate-fade-up [animation-delay:0.8s] [animation-fill-mode:forwards]">
-            <div className="relative w-[220px] sm:w-[260px] lg:w-[320px]">
+            <div className="relative w-[280px] sm:w-[340px] lg:w-[420px]">
               <div className="relative z-10 overflow-hidden" style={{ aspectRatio: "3/4" }}>
                 <Image
                   src={image}
                   alt={imageAlt ?? ""}
                   fill
-                  className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
+                  className="object-cover object-top"
                   sizes="(max-width: 1024px) 260px, 320px"
                 />
               </div>
