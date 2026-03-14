@@ -88,7 +88,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-noir-profond/98 z-[999] flex flex-col justify-center items-center gap-9 transition-all duration-400 lg:hidden ${
+        className={`fixed inset-0 bg-noir-profond z-[999] flex flex-col justify-center items-center gap-9 transition-all duration-400 lg:hidden ${
           mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >

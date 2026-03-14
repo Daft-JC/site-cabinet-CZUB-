@@ -79,8 +79,8 @@ export default function HomePage() {
           </div>
 
           {/* ── Colonne photo ── */}
-          <div className="hidden lg:flex justify-center items-center opacity-0 animate-fade-up [animation-delay:1s] [animation-fill-mode:forwards]">
-            <div className="relative w-[380px] xl:w-[440px]">
+          <div className="flex justify-center items-center opacity-0 animate-fade-up [animation-delay:1s] [animation-fill-mode:forwards]">
+            <div className="relative w-[300px] sm:w-[360px] lg:w-[420px] xl:w-[480px]">
               {/* Cadre décoratif or */}
               <div className="absolute -top-4 -right-4 w-full h-full border border-or/20 pointer-events-none z-0" />
               <div className="relative z-10 overflow-hidden" style={{ aspectRatio: "3/4" }}>
@@ -89,7 +89,7 @@ export default function HomePage() {
                   alt="Maître Joseph Czub, avocat à Martigues"
                   fill
                   className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-                  sizes="(max-width: 1280px) 380px, 440px"
+                  sizes="(max-width: 640px) 300px, (max-width: 1024px) 360px, (max-width: 1280px) 420px, 480px"
                   priority
                 />
               </div>
