@@ -51,6 +51,7 @@ export const ARTICLES_PRESSE: {
     excerpt:
       "Après trois ans de procédure, une nouvelle réunion a donné de l'espoir aux acquéreurs des 19 logements du Comédia à Jonquières, livrables en mars 2008 mais toujours inachevés. Maître Joseph Czub, qui défend trois propriétaires, rapporte que le Groupement français de caution s'est engagé verbalement à reprendre les travaux et à délivrer une garantie de paiement pour les différents corps de métier.",
     image: "/presse-comedie.png",
+    url: "/presse/comedie",
   },
   {
     id: "article-1",

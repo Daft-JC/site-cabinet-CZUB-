@@ -4,7 +4,8 @@ import PageHero from "@/components/PageHero";
 import SectionDivider from "@/components/SectionDivider";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import Image from "next/image";
-import { ExternalLink, CalendarDays, Newspaper } from "lucide-react";
+import Link from "next/link";
+import { ExternalLink, ArrowRight, CalendarDays, Newspaper } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Presse & Médias",
@@ -104,15 +105,25 @@ export default function PressePage() {
                       </p>
 
                       {article.url && (
-                        <a
-                          href={article.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 mt-5 text-[0.65rem] tracking-[0.2em] uppercase text-or no-underline hover:text-or-clair transition-colors duration-300"
-                        >
-                          Lire l&apos;article
-                          <ExternalLink className="w-3 h-3" strokeWidth={1.5} />
-                        </a>
+                        article.url.startsWith("/") ? (
+                          <Link
+                            href={article.url}
+                            className="inline-flex items-center gap-2 mt-5 text-[0.65rem] tracking-[0.2em] uppercase text-or no-underline hover:text-or-clair transition-colors duration-300"
+                          >
+                            Lire l&apos;article
+                            <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
+                          </Link>
+                        ) : (
+                          <a
+                            href={article.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 mt-5 text-[0.65rem] tracking-[0.2em] uppercase text-or no-underline hover:text-or-clair transition-colors duration-300"
+                          >
+                            Lire l&apos;article
+                            <ExternalLink className="w-3 h-3" strokeWidth={1.5} />
+                          </a>
+                        )
                       )}
                     </div>
 
