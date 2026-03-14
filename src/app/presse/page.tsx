@@ -3,6 +3,7 @@ import { ARTICLES_PRESSE } from "@/lib/constants";
 import PageHero from "@/components/PageHero";
 import SectionDivider from "@/components/SectionDivider";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import Image from "next/image";
 import { ExternalLink, CalendarDays, Newspaper } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -114,6 +115,21 @@ export default function PressePage() {
                         </a>
                       )}
                     </div>
+
+                    {/* Photo optionnelle */}
+                    {article.image && (
+                      <div className="flex-shrink-0 w-full md:w-[200px] lg:w-[260px]">
+                        <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                          <Image
+                            src={article.image}
+                            alt={article.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 260px"
+                          />
+                        </div>
+                      </div>
+                    )}
 
                   </div>
                 </article>
