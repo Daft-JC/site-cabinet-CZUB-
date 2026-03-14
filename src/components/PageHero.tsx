@@ -1,13 +1,17 @@
 "use client";
 
+import Image from "next/image";
+
 interface Props {
   tag: string;
   title: string;
   highlight?: string;
   subtitle?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
-export default function PageHero({ tag, title, highlight, subtitle }: Props) {
+export default function PageHero({ tag, title, highlight, subtitle, image, imageAlt }: Props) {
   return (
     <section className="pt-40 pb-24 md:pb-32 px-6 md:px-[60px] relative">
       {/* Background accent */}
@@ -21,18 +25,39 @@ export default function PageHero({ tag, title, highlight, subtitle }: Props) {
         />
       </div>
 
-      <div className="relative max-w-3xl">
-        <div className="section-label mb-8 opacity-0 animate-fade-up [animation-delay:0.2s] [animation-fill-mode:forwards]">
-          {tag}
+      <div className={`relative flex flex-col md:flex-row items-start md:items-center gap-10 lg:gap-20 ${image ? "" : "max-w-3xl"}`}>
+        {/* Texte */}
+        <div className="flex-1">
+          <div className="section-label mb-8 opacity-0 animate-fade-up [animation-delay:0.2s] [animation-fill-mode:forwards]">
+            {tag}
+          </div>
+          <h1 className="section-heading !text-[clamp(2.5rem,5vw,4rem)] mb-6 opacity-0 animate-fade-up [animation-delay:0.4s] [animation-fill-mode:forwards]">
+            {title}{" "}
+            {highlight && <em className="italic text-or font-normal">{highlight}</em>}
+          </h1>
+          {subtitle && (
+            <p className="font-sans text-base font-light text-gris-clair leading-[1.8] max-w-xl opacity-0 animate-fade-up [animation-delay:0.6s] [animation-fill-mode:forwards]">
+              {subtitle}
+            </p>
+          )}
         </div>
-        <h1 className="section-heading !text-[clamp(2.5rem,5vw,4rem)] mb-6 opacity-0 animate-fade-up [animation-delay:0.4s] [animation-fill-mode:forwards]">
-          {title}{" "}
-          {highlight && <em className="italic text-or font-normal">{highlight}</em>}
-        </h1>
-        {subtitle && (
-          <p className="font-sans text-base font-light text-gris-clair leading-[1.8] max-w-xl opacity-0 animate-fade-up [animation-delay:0.6s] [animation-fill-mode:forwards]">
-            {subtitle}
-          </p>
+
+        {/* Photo optionnelle à droite */}
+        {image && (
+          <div className="flex-shrink-0 opacity-0 animate-fade-up [animation-delay:0.8s] [animation-fill-mode:forwards]">
+            <div className="relative w-[220px] sm:w-[260px] lg:w-[320px]">
+              <div className="absolute -top-3 -right-3 w-full h-full border border-or/20 pointer-events-none z-0" />
+              <div className="relative z-10 overflow-hidden" style={{ aspectRatio: "3/4" }}>
+                <Image
+                  src={image}
+                  alt={imageAlt ?? ""}
+                  fill
+                  className="object-cover object-top grayscale"
+                  sizes="(max-width: 1024px) 260px, 320px"
+                />
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </section>

@@ -42,6 +42,8 @@ export default function CabinetPage() {
         title="Faire respecter"
         highlight="vos droits"
         subtitle="Depuis 1994, le cabinet Czub défend les consommateurs victimes d'abus, d'arnaques et de manquements professionnels, sur toute la France."
+        image="/cabinet-photo.jpg"
+        imageAlt="Maître Joseph Czub, avocat à Martigues"
       />
 
       <SectionDivider />
