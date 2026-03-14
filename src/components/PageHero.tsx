@@ -46,7 +46,6 @@ export default function PageHero({ tag, title, highlight, subtitle, image, image
         {image && (
           <div className="flex-shrink-0 opacity-0 animate-fade-up [animation-delay:0.8s] [animation-fill-mode:forwards]">
             <div className="relative w-[220px] sm:w-[260px] lg:w-[320px]">
-              <div className="absolute -top-3 -right-3 w-full h-full border border-or/20 pointer-events-none z-0" />
               <div className="relative z-10 overflow-hidden" style={{ aspectRatio: "3/4" }}>
                 <Image
                   src={image}

@@ -81,8 +81,6 @@ export default function HomePage() {
           {/* ── Colonne photo ── */}
           <div className="flex justify-center items-center opacity-0 animate-fade-up [animation-delay:1s] [animation-fill-mode:forwards]">
             <div className="relative w-[300px] sm:w-[360px] lg:w-[420px] xl:w-[480px]">
-              {/* Cadre décoratif or */}
-              <div className="absolute -top-4 -right-4 w-full h-full border border-or/20 pointer-events-none z-0" />
               <div className="relative z-10 overflow-hidden" style={{ aspectRatio: "3/4" }}>
                 <Image
                   src="/joseph-czub.jpg"
