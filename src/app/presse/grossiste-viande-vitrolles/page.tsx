@@ -44,7 +44,7 @@ export default function ArticleGrossisteViandePage() {
         <div className="mb-12">
           <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
             <Image
-              src="/grossite.webp"
+              src="/grossiste.jpg"
               alt="Grossiste en viande CBS Viandes à Vitrolles"
               fill
               className="object-cover"

@@ -50,7 +50,7 @@ export default function ArticleUfcAssembleeGeneralePage() {
         <div className="mb-12">
           <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
             <Image
-              src="/logo-ufc.webp"
+              src="/logo-ufc.jpg"
               alt="Muguette Turbil et Josette Abril, UFC-Que Choisir Martigues"
               fill
               className="object-cover"
