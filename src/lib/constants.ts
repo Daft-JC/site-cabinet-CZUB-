@@ -43,6 +43,16 @@ export const ARTICLES_PRESSE: {
   image?: string;
 }[] = [
   {
+    id: "article-fraudes-bancaires-salon",
+    date: "2025-07-07",
+    source: "mesinfos.fr — Le Régional",
+    category: "Fraudes bancaires",
+    title: "Fraudes bancaires : un fléau qui n'épargne pas Salon-de-Provence",
+    excerpt:
+      "Lors des entretiens Nostra Juris 2025 à Salon-de-Provence, Maître Joseph Czub a présenté devant une centaine d'avocats les techniques de fraude bancaire les plus redoutables — spoofing, SIM hijacking, phishing — et rappelé la sévérité croissante de la jurisprudence envers les banques.",
+    url: "/presse/fraudes-bancaires-salon-2025",
+  },
+  {
     id: "article-2",
     date: "2025-03-30",
     source: "La Provence",
