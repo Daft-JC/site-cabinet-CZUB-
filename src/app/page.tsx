@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
@@ -9,9 +8,82 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import SectionDivider from "@/components/SectionDivider";
 import ExpertiseCard from "@/components/ExpertiseCard";
 
+const SITE_URL = "https://www.cabinet-czub.fr";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Accueil",
+      item: SITE_URL,
+    },
+  ],
+};
+
+export const metadata: Metadata = {
+  title:
+    "Avocat Martigues | Cabinet Maître Joseph Czub — Énergies renouvelables, Fraudes bancaires, Droit de la consommation",
+  description:
+    "Cabinet d'avocat à Martigues depuis plus de 30 ans. Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence, vous accompagne en droit des énergies renouvelables, fraudes bancaires, assurances, construction et droit de la consommation. Interventions à Martigues, Aix-en-Provence, Marseille et dans tout le département des Bouches-du-Rhône.",
+  keywords: [
+    "avocat martigues",
+    "avocat aix-en-provence",
+    "cabinet avocat martigues",
+    "avocat bouches-du-rhône",
+    "avocat énergies renouvelables",
+    "avocat fraudes bancaires",
+    "avocat droit consommation",
+    "maître joseph czub",
+    "avocat PACA",
+    "avocat marseille",
+    "avocat photovoltaïque",
+    "avocat éolien",
+    "avocat transition énergétique",
+    "avocat recouvrement créances",
+    "cabinet avocat bouches-du-rhône",
+  ],
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    title:
+      "Avocat Martigues | Cabinet Maître Joseph Czub — Énergies renouvelables, Fraudes bancaires, Droit de la consommation",
+    description:
+      "Cabinet d'avocat à Martigues depuis plus de 30 ans. Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence, vous accompagne en droit des énergies renouvelables, fraudes bancaires, assurances, construction et droit de la consommation.",
+    type: "website",
+    locale: "fr_FR",
+    siteName: "Cabinet Maître Joseph Czub",
+    url: SITE_URL,
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Cabinet Maître Joseph Czub — Avocat à Martigues",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Avocat Martigues | Cabinet Maître Joseph Czub — Énergies renouvelables, Fraudes bancaires, Droit de la consommation",
+    description:
+      "Cabinet d'avocat à Martigues depuis plus de 30 ans. Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence, vous accompagne en droit des énergies renouvelables, fraudes bancaires et droit de la consommation.",
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
+};
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       {/* ══════════ HERO ══════════ */}
       <section className="min-h-screen flex flex-col justify-center relative px-6 md:px-[60px] overflow-hidden">
         {/* Subtle radial glow */}
@@ -48,7 +120,7 @@ export default function HomePage() {
               </span>
               <span className="block overflow-hidden">
                 <span className="inline-block opacity-0 animate-slide-up [animation-delay:0.9s] [animation-fill-mode:forwards] text-[clamp(2.8rem,5vw,5.5rem)] text-or italic font-normal">
-                  Depuis 1994
+                  Avocat à Martigues
                 </span>
               </span>
             </h1>
@@ -84,7 +156,7 @@ export default function HomePage() {
               <div className="relative z-10 overflow-hidden" style={{ aspectRatio: "3/4" }}>
                 <Image
                   src="/joseph-czub.jpg"
-                  alt="Maître Joseph Czub, avocat à Martigues"
+                  alt="Maître Joseph Czub, avocat à Martigues — Barreau d'Aix-en-Provence"
                   fill
                   className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                   sizes="(max-width: 640px) 300px, (max-width: 1024px) 360px, (max-width: 1280px) 420px, 480px"

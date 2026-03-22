@@ -1,12 +1,11 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { SITE_CONFIG } from "@/lib/constants";
 import PageHero from "@/components/PageHero";
 import SectionDivider from "@/components/SectionDivider";
 import RevealOnScroll from "@/components/RevealOnScroll";
-import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import ContactForm from "./ContactForm";
 
 const MapCabinet = dynamic(() => import("@/components/MapCabinet"), {
   ssr: false,
@@ -17,48 +16,82 @@ const MapCabinet = dynamic(() => import("@/components/MapCabinet"), {
   ),
 });
 
+const SITE_URL = "https://www.cabinet-czub.fr";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Accueil",
+      item: SITE_URL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Contact",
+      item: `${SITE_URL}/contact`,
+    },
+  ],
+};
+
+export const metadata: Metadata = {
+  title:
+    "Contact — Cabinet Maître Joseph Czub | Avocat Martigues | Prendre rendez-vous",
+  description:
+    "Contactez le Cabinet Maître Joseph Czub, avocat à Martigues. Prenez rendez-vous pour une consultation en droit des énergies renouvelables, fraudes bancaires, assurances ou droit de la consommation. Cabinet accessible à Martigues, proche Aix-en-Provence et Marseille.",
+  keywords: [
+    "contact avocat martigues",
+    "rendez-vous avocat martigues",
+    "consultation avocat martigues",
+    "avocat martigues téléphone",
+    "cabinet czub contact",
+    "avocat près de marseille",
+    "avocat près aix-en-provence",
+    "consultation juridique martigues",
+    "cabinet avocat bouches-du-rhône contact",
+    "avocat PACA rendez-vous",
+  ],
+  alternates: {
+    canonical: `${SITE_URL}/contact`,
+  },
+  openGraph: {
+    title:
+      "Contact — Cabinet Maître Joseph Czub | Avocat Martigues | Prendre rendez-vous",
+    description:
+      "Contactez le Cabinet Maître Joseph Czub, avocat à Martigues. Prenez rendez-vous pour une consultation en droit des énergies renouvelables, fraudes bancaires ou droit de la consommation.",
+    type: "website",
+    locale: "fr_FR",
+    siteName: "Cabinet Maître Joseph Czub",
+    url: `${SITE_URL}/contact`,
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Contacter le Cabinet Maître Joseph Czub — Avocat à Martigues",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact — Cabinet Maître Joseph Czub | Avocat Martigues",
+    description:
+      "Contactez le Cabinet Maître Joseph Czub, avocat à Martigues. Prenez rendez-vous pour une consultation juridique.",
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
+};
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    nom: "",
-    prenom: "",
-    email: "",
-    telephone: "",
-    domaine: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (!res.ok) throw new Error();
-      setSubmitted(true);
-    } catch {
-      setError("Une erreur est survenue. Veuillez réessayer ou nous appeler directement.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       <PageHero
         tag="Contact"
         title="Prenons"
@@ -160,155 +193,7 @@ export default function ContactPage() {
             <RevealOnScroll>
               <div className="section-label mb-8">Formulaire de contact</div>
             </RevealOnScroll>
-
-            {submitted ? (
-              <RevealOnScroll>
-                <div className="bg-anthracite border border-or/20 p-12 text-center">
-                  <div className="w-16 h-16 border border-or rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg
-                      className="w-6 h-6 text-or"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={1.5}
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="font-serif text-2xl text-ivoire mb-3">
-                    Message envoyé
-                  </h3>
-                  <p className="text-[0.85rem] font-light text-gris-clair leading-relaxed">
-                    Nous avons bien reçu votre demande. Le cabinet vous
-                    recontactera dans les meilleurs délais.
-                  </p>
-                </div>
-              </RevealOnScroll>
-            ) : (
-              <RevealOnScroll delay={150}>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="flex flex-col gap-2">
-                      <label className="text-[0.6rem] tracking-[0.2em] uppercase text-gris">
-                        Nom
-                      </label>
-                      <input
-                        type="text"
-                        name="nom"
-                        required
-                        placeholder="Votre nom"
-                        value={formData.nom}
-                        onChange={handleChange}
-                        className="bg-anthracite border border-gris-sombre text-ivoire font-sans text-[0.85rem] font-light px-5 py-3.5 outline-none transition-colors duration-300 focus:border-or placeholder:text-gris-sombre"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label className="text-[0.6rem] tracking-[0.2em] uppercase text-gris">
-                        Prénom
-                      </label>
-                      <input
-                        type="text"
-                        name="prenom"
-                        required
-                        placeholder="Votre prénom"
-                        value={formData.prenom}
-                        onChange={handleChange}
-                        className="bg-anthracite border border-gris-sombre text-ivoire font-sans text-[0.85rem] font-light px-5 py-3.5 outline-none transition-colors duration-300 focus:border-or placeholder:text-gris-sombre"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="flex flex-col gap-2">
-                      <label className="text-[0.6rem] tracking-[0.2em] uppercase text-gris">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        placeholder="votre@email.fr"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="bg-anthracite border border-gris-sombre text-ivoire font-sans text-[0.85rem] font-light px-5 py-3.5 outline-none transition-colors duration-300 focus:border-or placeholder:text-gris-sombre"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label className="text-[0.6rem] tracking-[0.2em] uppercase text-gris">
-                        Téléphone
-                      </label>
-                      <input
-                        type="tel"
-                        name="telephone"
-                        placeholder="06 00 00 00 00"
-                        value={formData.telephone}
-                        onChange={handleChange}
-                        className="bg-anthracite border border-gris-sombre text-ivoire font-sans text-[0.85rem] font-light px-5 py-3.5 outline-none transition-colors duration-300 focus:border-or placeholder:text-gris-sombre"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label className="text-[0.6rem] tracking-[0.2em] uppercase text-gris">
-                      Domaine concerné
-                    </label>
-                    <select
-                      name="domaine"
-                      required
-                      value={formData.domaine}
-                      onChange={handleChange}
-                      className="bg-anthracite border border-gris-sombre text-ivoire font-sans text-[0.85rem] font-light px-5 py-3.5 outline-none transition-colors duration-300 focus:border-or cursor-pointer appearance-none"
-                    >
-                      <option value="" disabled>
-                        Sélectionnez un domaine
-                      </option>
-                      <option>Photovoltaïque & Énergies Renouvelables</option>
-                      <option>Code de la Consommation</option>
-                      <option>Arnaques & Fraudes Bancaires</option>
-                      <option>Assurances</option>
-                      <option>Construction & Immobilier</option>
-                      <option>Litiges Automobile</option>
-                      <option>Responsabilité & Contrats</option>
-                      <option>Réparation du Préjudice Corporel</option>
-                      <option>Litiges Bailleurs & Locataires</option>
-                      <option>Divorces Amiables</option>
-                      <option>Autre</option>
-                    </select>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label className="text-[0.6rem] tracking-[0.2em] uppercase text-gris">
-                      Votre message
-                    </label>
-                    <textarea
-                      name="message"
-                      required
-                      rows={5}
-                      placeholder="Décrivez brièvement votre situation…"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="bg-anthracite border border-gris-sombre text-ivoire font-sans text-[0.85rem] font-light px-5 py-3.5 outline-none transition-colors duration-300 focus:border-or resize-y min-h-[120px] placeholder:text-gris-sombre"
-                    />
-                  </div>
-
-                  {error && (
-                    <p className="text-[0.8rem] text-red-400 font-light">{error}</p>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="group inline-flex items-center gap-3 text-[0.7rem] font-medium tracking-[0.2em] uppercase text-noir bg-or border-none px-9 py-4 cursor-pointer transition-all duration-400 hover:bg-or-clair disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    <span>{loading ? "Envoi en cours…" : "Envoyer"}</span>
-                    {!loading && <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />}
-                  </button>
-                </form>
-              </RevealOnScroll>
-            )}
+            <ContactForm />
           </div>
         </div>
       </section>

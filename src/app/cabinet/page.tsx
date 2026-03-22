@@ -6,9 +6,71 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { Scale, BookOpen, Handshake, Award } from "lucide-react";
 
+const SITE_URL = "https://www.cabinet-czub.fr";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Accueil",
+      item: SITE_URL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Le Cabinet",
+      item: `${SITE_URL}/cabinet`,
+    },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: "Le Cabinet",
-  description: `Découvrez le cabinet de ${SITE_CONFIG.lawyer}, avocat à ${SITE_CONFIG.location.city} depuis plus de 30 ans.`,
+  title:
+    "Le Cabinet — Maître Joseph Czub | Avocat à Martigues depuis plus de 30 ans | Barreau d'Aix-en-Provence",
+  description: `Découvrez le Cabinet Maître Joseph Czub, avocat inscrit au Barreau d'Aix-en-Provence depuis plus de 30 ans. Basé à Martigues, le cabinet accompagne particuliers et entreprises dans toute la région PACA avec rigueur, expérience et proximité.`,
+  keywords: [
+    "cabinet avocat martigues",
+    "maître joseph czub",
+    "avocat barreau aix-en-provence",
+    "avocat expérimenté martigues",
+    "avocat 30 ans expérience",
+    "avocat de confiance martigues",
+    "cabinet juridique martigues",
+    "avocat conseil entreprise martigues",
+    "avocat proximité martigues",
+    "avocat bouches-du-rhône",
+    "avocat PACA",
+  ],
+  alternates: {
+    canonical: `${SITE_URL}/cabinet`,
+  },
+  openGraph: {
+    title:
+      "Le Cabinet — Maître Joseph Czub | Avocat à Martigues depuis plus de 30 ans | Barreau d'Aix-en-Provence",
+    description: `Découvrez le Cabinet Maître Joseph Czub, avocat inscrit au Barreau d'Aix-en-Provence depuis plus de 30 ans. Basé à Martigues, le cabinet accompagne particuliers et entreprises dans toute la région PACA.`,
+    type: "website",
+    locale: "fr_FR",
+    siteName: "Cabinet Maître Joseph Czub",
+    url: `${SITE_URL}/cabinet`,
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Cabinet Maître Joseph Czub — Avocat à Martigues depuis 1994",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Le Cabinet — Maître Joseph Czub | Avocat à Martigues depuis plus de 30 ans",
+    description: `Cabinet Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence depuis plus de 30 ans. Basé à Martigues, interventions sur toute la région PACA.`,
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
 };
 
 const VALUES = [
@@ -37,13 +99,18 @@ const VALUES = [
 export default function CabinetPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       <PageHero
         tag="Le Cabinet"
         title="Faire respecter"
         highlight="vos droits"
         subtitle="Depuis 1994, le cabinet Czub défend les consommateurs victimes d'abus, d'arnaques et de manquements professionnels, sur toute la France."
         image="/cabinet-photo.jpg"
-        imageAlt="Maître Joseph Czub, avocat à Martigues"
+        imageAlt="Cabinet Maître Joseph Czub — Avocat à Martigues, Barreau d'Aix-en-Provence"
       />
 
       <SectionDivider />
@@ -57,7 +124,7 @@ export default function CabinetPage() {
             </RevealOnScroll>
             <RevealOnScroll delay={150}>
               <h2 className="section-heading mb-4">
-                Plus de trente ans <em>d'engagement</em>
+                Plus de trente ans <em>d&apos;engagement</em>
               </h2>
             </RevealOnScroll>
           </div>
@@ -65,24 +132,24 @@ export default function CabinetPage() {
             <RevealOnScroll delay={200}>
               <div className="font-sans text-[0.9rem] font-light text-gris-clair leading-[1.9] space-y-5">
                 <p>
-                  Installé à Martigues depuis 1994 à l'Espace Vénitien, Maître
-                  Joseph Czub, avocat à la Cour d'Appel d'Aix-en-Provence, s'est
+                  Installé à Martigues depuis 1994 à l&apos;Espace Vénitien, Maître
+                  Joseph Czub, avocat à la Cour d&apos;Appel d&apos;Aix-en-Provence, s&apos;est
                   imposé comme un acteur incontournable de la défense des
-                  consommateurs. En plus de 30 ans d'exercice, il a obtenu
-                  d'innombrables jurisprudences favorables devant les tribunaux
-                  judiciaires, les Cours d'appel et la Cour de cassation.
+                  consommateurs. En plus de 30 ans d&apos;exercice, il a obtenu
+                  d&apos;innombrables jurisprudences favorables devant les tribunaux
+                  judiciaires, les Cours d&apos;appel et la Cour de cassation.
                 </p>
                 <p>
                   Le cabinet est notamment reconnu pour son expertise approfondie
                   dans la lutte contre les arnaques aux énergies renouvelables
                   (photovoltaïque, pompes à chaleur, ballons thermodynamiques),
-                  intervenant sur toute la France pour obtenir l'annulation des
+                  intervenant sur toute la France pour obtenir l&apos;annulation des
                   contrats et des crédits affectés. Il défend également les
                   victimes de fraudes bancaires, de litiges immobiliers, de
-                  sinistres d'assurance refusés et de bien d'autres abus.
+                  sinistres d&apos;assurance refusés et de bien d&apos;autres abus.
                 </p>
                 <p>
-                  En collaboration avec l'UFC Que Choisir et si besoin avec un réseau d'experts
+                  En collaboration avec l&apos;UFC Que Choisir et si besoin avec un réseau d&apos;experts
                   techniques spécialisés, Maître Czub offre à chaque client une
                   défense sur mesure, rigoureuse et sans compromis, pour faire
                   appliquer les garanties légales élémentaires auxquelles tout
@@ -146,7 +213,7 @@ export default function CabinetPage() {
               <div>
                 <AnimatedCounter target={30} suffix="+" />
                 <div className="text-[0.65rem] tracking-[0.15em] uppercase text-gris mt-3">
-                  Années d'exercice
+                  Années d&apos;exercice
                 </div>
               </div>
               <div>
@@ -156,7 +223,7 @@ export default function CabinetPage() {
                 <div className="text-[0.65rem] tracking-[0.15em] uppercase text-gris mt-3">
                   Domaines
                   <br />
-                  d'intervention
+                  d&apos;intervention
                 </div>
               </div>
               <div>
