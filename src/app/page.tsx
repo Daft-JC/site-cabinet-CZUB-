@@ -127,7 +127,7 @@ export default function HomePage() {
 
             {/* Subtitle */}
             <p className="font-sans text-[0.95rem] font-light text-gris-clair leading-[1.8] max-w-[500px] mb-12 opacity-0 animate-fade-up [animation-delay:1.2s] [animation-fill-mode:forwards]">
-              Spécialisé dans la défense des consommateurs depuis plus de 30 ans,
+              Intervenant dans la défense des consommateurs depuis plus de 30 ans,
               le cabinet intervient sur toute la France — photovoltaïque, fraudes
               bancaires, assurances, construction, automobile et bien davantage.
             </p>
