@@ -212,7 +212,7 @@ export default function HomePage() {
             <div className="font-sans text-[0.9rem] font-light text-gris-clair leading-[1.9] space-y-5">
               <p>
                 Fondé en 1994 à Martigues, le cabinet de Maître Joseph Czub est
-                spécialisé dans la défense des consommateurs. Avocat au barreau
+                intervenant dans la défense des consommateurs. Avocat au barreau
                 d&apos;Aix-en-Provence, Maître Czub intervient sur toute la
                 France pour faire respecter vos droits face aux abus de certains
                 professionnels.

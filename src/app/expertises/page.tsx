@@ -111,7 +111,7 @@ export default function ExpertisesPage() {
         tag="Cabinet Czub — Depuis 1994"
         title="Domaines"
         highlight="d'intervention"
-        subtitle="Spécialisé dans la défense des consommateurs depuis plus de 30 ans, le cabinet intervient sur toute la France dans de nombreux domaines du droit."
+        subtitle="Intervenant dans la défense des consommateurs depuis plus de 30 ans, le cabinet intervient sur toute la France dans de nombreux domaines du droit."
       />
 
       <SectionDivider />
