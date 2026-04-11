@@ -7,6 +7,98 @@ import { Sun, Building2, Shield, CreditCard, Umbrella, Car, Scale, Heart, Key, U
 
 const SITE_URL = "https://www.cabinet-czub.fr";
 
+const serviceCatalogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Domaines d'intervention — Avocat Maître Czub Martigues",
+  description:
+    "Services juridiques proposés par le Cabinet Maître Joseph Czub, avocat à Martigues (Bouches-du-Rhône)",
+  url: `${SITE_URL}/expertises`,
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@type": "LegalService",
+        name: "Avocat photovoltaïque et énergies renouvelables",
+        description:
+          "Défense des victimes d'arnaques aux installations photovoltaïques, pompes à chaleur, éoliennes de jardin, ballons thermodynamiques. Annulation des contrats et crédits affectés. 20 ans de jurisprudences favorables.",
+        url: `${SITE_URL}/expertises#energies-renouvelables`,
+        provider: { "@id": `${SITE_URL}/#legalservice` },
+        areaServed: "France",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      item: {
+        "@type": "LegalService",
+        name: "Avocat droit de la consommation Martigues",
+        description:
+          "Protection des consommateurs : démarchage abusif, clauses abusives, garanties légales, pratiques commerciales trompeuses, crédit à la consommation.",
+        url: `${SITE_URL}/expertises#code-consommation`,
+        provider: { "@id": `${SITE_URL}/#legalservice` },
+        areaServed: { "@type": "City", name: "Martigues" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@type": "LegalService",
+        name: "Avocat fraudes bancaires Martigues",
+        description:
+          "Remboursement des victimes de spoofing, phishing, SIM swapping, faux RIB, quishing, logiciels malveillants. Mise en jeu de la responsabilité de la banque.",
+        url: `${SITE_URL}/expertises#fraudes-bancaires`,
+        provider: { "@id": `${SITE_URL}/#legalservice` },
+        areaServed: [
+          { "@type": "City", name: "Martigues" },
+          { "@type": "Country", name: "France" },
+        ],
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      item: {
+        "@type": "LegalService",
+        name: "Avocat assurances Martigues",
+        description:
+          "Refus de garantie d'assurance après sinistre : vol, CAT NAT, vandalisme, décennale, incapacité, invalidité, dommage ouvrage.",
+        url: `${SITE_URL}/expertises#assurances`,
+        provider: { "@id": `${SITE_URL}/#legalservice` },
+        areaServed: { "@type": "City", name: "Martigues" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      item: {
+        "@type": "LegalService",
+        name: "Avocat construction et immobilier Martigues",
+        description:
+          "Vices cachés, malfaçons, retards de livraison, VEFA, CCMI, garantie décennale, litiges piscinistes, infiltrations toiture.",
+        url: `${SITE_URL}/expertises#construction-immobilier`,
+        provider: { "@id": `${SITE_URL}/#legalservice` },
+        areaServed: { "@type": "City", name: "Martigues" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 6,
+      item: {
+        "@type": "LegalService",
+        name: "Avocat litiges automobile Martigues",
+        description:
+          "Vices cachés sur véhicule, garantie légale de conformité, responsabilité du garagiste.",
+        url: `${SITE_URL}/expertises#litiges-automobile`,
+        provider: { "@id": `${SITE_URL}/#legalservice` },
+        areaServed: { "@type": "City", name: "Martigues" },
+      },
+    },
+  ],
+};
+
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -28,9 +120,9 @@ const breadcrumbJsonLd = {
 
 export const metadata: Metadata = {
   title:
-    "Domaines d'intervention — Avocat Énergies Renouvelables, Fraudes Bancaires, Droit Consommation | Cabinet Czub Martigues",
+    "Avocat Photovoltaïque & Fraudes Bancaires Martigues — Domaines d'intervention | Cabinet Czub",
   description:
-    "Le Cabinet Maître Joseph Czub intervient en droit des énergies renouvelables (photovoltaïque, éolien, solaire, pompes à chaleur), fraudes bancaires (spoofing, phishing, SIM swapping), assurances, construction immobilier, litiges automobile et droit de la consommation (clauses abusives, vices cachés, garanties). Avocat à Martigues, Bouches-du-Rhône.",
+    "Avocat à Martigues spécialisé en arnaques photovoltaïques, pompes à chaleur, fraudes bancaires (spoofing, phishing, SIM swapping), droit de la consommation, assurances, construction et litiges automobile. Maître Joseph Czub, Barreau d'Aix-en-Provence, intervient sur toute la France.",
   keywords: [
     "avocat énergie renouvelable",
     "avocat photovoltaïque",
@@ -105,6 +197,10 @@ export default function ExpertisesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceCatalogJsonLd) }}
       />
 
       <PageHero

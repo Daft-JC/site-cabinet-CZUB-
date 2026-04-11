@@ -7,10 +7,36 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, ArrowRight, CalendarDays, Newspaper } from "lucide-react";
 
+const SITE_URL = "https://www.cabinet-czub.fr";
+
 export const metadata: Metadata = {
-  title: "Presse & Médias",
+  title:
+    "Presse & Médias — Cabinet Maître Joseph Czub | Avocat Martigues dans les médias",
   description:
-    "Articles de presse, publications et interventions médiatiques du Cabinet Maître Joseph Czub.",
+    "Retrouvez les articles de presse, publications et interventions médiatiques de Maître Joseph Czub, avocat à Martigues. Le Monde, La Provence, Midi Libre — arnaques photovoltaïques, fraudes bancaires, droit de la consommation.",
+  keywords: [
+    "avocat martigues presse",
+    "maître czub médias",
+    "avocat photovoltaïque presse",
+    "arnaque panneaux solaires presse",
+    "fraudes bancaires avocat martigues",
+    "UFC Que Choisir martigues",
+    "avocat consommateur martigues médias",
+    "cabinet czub publications",
+  ],
+  alternates: {
+    canonical: `${SITE_URL}/presse`,
+  },
+  openGraph: {
+    title:
+      "Presse & Médias — Cabinet Maître Joseph Czub | Avocat Martigues",
+    description:
+      "Articles de presse et interventions médiatiques de Maître Joseph Czub, avocat à Martigues spécialisé en arnaques photovoltaïques, fraudes bancaires et droit de la consommation.",
+    type: "website",
+    locale: "fr_FR",
+    siteName: "Cabinet Maître Joseph Czub",
+    url: `${SITE_URL}/presse`,
+  },
 };
 
 function formatDate(dateStr: string) {
