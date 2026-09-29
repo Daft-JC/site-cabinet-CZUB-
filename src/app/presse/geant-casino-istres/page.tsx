@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.cabinet-czub.fr/presse/geant-casino-istres" },
   title: "Les services vétérinaires et l'UFC font condamner Géant — La Provence",
   description:
     "Géant Casino d'Istres condamné à 81 contraventions pour des denrées alimentaires conservées hors des températures réglementaires. Maître Czub, avocat de l'UFC.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ArticleGeantCasinoPage() {
   return (
-    <main className="pt-36 pb-24 px-6 md:px-[60px]">
+    <article className="pt-36 pb-24 px-6 md:px-[60px]">
       {/* Retour */}
       <Link
         href="/presse"
@@ -131,6 +132,6 @@ export default function ArticleGeantCasinoPage() {
           </span>
         </div>
       </div>
-    </main>
+    </article>
   );
 }

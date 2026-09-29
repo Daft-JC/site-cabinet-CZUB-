@@ -10,79 +10,49 @@ import ExpertiseCard from "@/components/ExpertiseCard";
 
 const SITE_URL = "https://www.cabinet-czub.fr";
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Accueil",
-      item: SITE_URL,
-    },
-  ],
-};
+// Source unique : affichée dans la page ET déclarée en données structurées
+const FAQ = [
+  {
+    q: "Maître Czub intervient-il pour les arnaques au photovoltaïque ?",
+    a: "Oui. Depuis près de 20 ans, Maître Joseph Czub, avocat à Martigues inscrit au Barreau d'Aix-en-Provence, intervient sur toute la France pour défendre les victimes d'arnaques aux panneaux photovoltaïques, pompes à chaleur et énergies renouvelables. Le cabinet obtient l'annulation des contrats et des crédits affectés.",
+    href: "/expertises/photovoltaique-energies-renouvelables",
+  },
+  {
+    q: "Ma banque doit-elle me rembourser après une fraude (spoofing, phishing) ?",
+    a: "Dans de nombreux cas, oui. Le code monétaire et financier oblige votre banque à rembourser les sommes frauduleusement débitées, sauf si elle démontre votre négligence grave. Maître Czub a obtenu de très nombreuses décisions favorables aux victimes de spoofing, phishing, SIM swapping, quishing et faux RIB.",
+    href: "/expertises/fraudes-bancaires",
+  },
+  {
+    q: "Le cabinet intervient-il uniquement à Martigues ?",
+    a: "Non. Bien que basé à Martigues, le Cabinet Maître Joseph Czub intervient sur toute la France pour les dossiers de droit des consommateurs, arnaques aux énergies renouvelables et fraudes bancaires — devant les tribunaux judiciaires, les Cours d'appel et la Cour de cassation.",
+  },
+  {
+    q: "Qu'est-ce qu'un crédit affecté dans le cadre d'une arnaque photovoltaïque ?",
+    a: "Le crédit affecté est un prêt directement lié à l'achat d'une installation (photovoltaïque, pompe à chaleur…). Si le contrat principal est annulé, le crédit affecté est annulé de plein droit ; et lorsque la banque a commis une faute en débloquant les fonds, elle peut être privée de son droit au remboursement du capital. C'est un levier juridique essentiel que le cabinet exploite systématiquement.",
+  },
+  {
+    q: "Comment prendre rendez-vous avec Maître Czub ?",
+    a: "Par téléphone au 04 42 40 36 65, par e-mail à czubjoseph@hotmail.com ou via le formulaire de contact du site. Le cabinet est situé au 1 Boulevard du Président Allende, L'Espace Vénitien, 13500 Martigues. Consultations sur rendez-vous.",
+    href: "/contact",
+  },
+];
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Maître Czub est-il avocat spécialisé en photovoltaïque à Martigues ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Oui. Depuis près de 20 ans, Maître Joseph Czub, avocat à Martigues au Barreau d'Aix-en-Provence, intervient sur toute la France pour défendre les victimes d'arnaques aux panneaux photovoltaïques, pompes à chaleur, éoliennes de jardin et autres énergies renouvelables. Le cabinet obtient l'annulation des contrats et des crédits affectés. Contactez-nous au 04 42 40 36 65.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment trouver un avocat pour une arnaque aux panneaux solaires ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Le Cabinet Maître Joseph Czub, situé 1 Boulevard du Président Allende à Martigues (13500), est reconnu pour son expertise dans les litiges liés aux installations photovoltaïques frauduleuses : démarchage abusif, rendements surévalués, malfaçons, crédits prohibitifs. Nous intervenons devant toutes les juridictions françaises. Prenez rendez-vous au 04 42 40 36 65 ou via notre formulaire de contact.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Ma banque doit-elle me rembourser après une fraude (spoofing, phishing) ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Oui, dans de nombreux cas. Le code monétaire et financier oblige votre banque à vous rembourser des sommes frauduleusement débitées, sauf si elle démontre votre négligence grave. Maître Czub, avocat à Martigues spécialisé dans les fraudes bancaires, a obtenu de très nombreuses décisions favorables aux victimes de spoofing, phishing, SIM swapping, quishing et faux RIB. Contactez le cabinet pour évaluer votre dossier.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Le cabinet Czub intervient-il uniquement à Martigues ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Non. Bien que basé à Martigues (Bouches-du-Rhône), le Cabinet Maître Joseph Czub intervient sur toute la France pour les dossiers de droit des consommateurs, d'arnaques aux énergies renouvelables et de fraudes bancaires. Il traite des affaires devant les tribunaux judiciaires, les Cours d'appel et la Cour de cassation partout en France.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Qu'est-ce qu'un crédit affecté et pourquoi est-il important dans une arnaque photovoltaïque ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Le crédit affecté est un prêt directement lié à l'achat d'un bien ou service (par exemple, une installation photovoltaïque). Si le contrat principal est annulé — ce que le cabinet Czub obtient régulièrement — le crédit affecté est automatiquement résolu et l'organisme de crédit ne peut plus exiger de remboursement. C'est un levier juridique essentiel que Maître Czub exploite systématiquement dans les dossiers d'arnaques aux énergies renouvelables.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment prendre rendez-vous avec Maître Czub à Martigues ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Vous pouvez contacter le Cabinet Maître Joseph Czub par téléphone au 04 42 40 36 65, par e-mail à czubjoseph@hotmail.com, ou via le formulaire de contact sur notre site. Le cabinet est situé 1 Boulevard du Président Allende, L'Espace Vénitien, 13500 Martigues. Les consultations sont sur rendez-vous.",
-      },
-    },
-  ],
+  mainEntity: FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export const metadata: Metadata = {
-  title:
-    "Avocat Martigues | Maître Joseph Czub — Photovoltaïque, Fraudes Bancaires, Consommation",
+  title: {
+    absolute: "Avocat Martigues : photovoltaïque, fraude bancaire | Maître Czub",
+  },
   description:
-    "Avocat à Martigues depuis 1994 — Maître Joseph Czub, Barreau d'Aix-en-Provence. Expert en arnaques photovoltaïques, fraudes bancaires (spoofing, phishing), droit de la consommation, assurances et construction. Interventions sur toute la France. Tél : 04 42 40 36 65.",
+    "Avocat à Martigues depuis 1994 — Maître Joseph Czub, Barreau d'Aix-en-Provence. Arnaques photovoltaïques, fraudes bancaires (spoofing, phishing), droit de la consommation, assurances et construction. Interventions sur toute la France. Tél : 04 42 40 36 65.",
   keywords: [
     "avocat martigues",
     "avocat photovoltaïque martigues",
@@ -112,14 +82,6 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     siteName: "Cabinet Maître Joseph Czub",
     url: SITE_URL,
-    images: [
-      {
-        url: `${SITE_URL}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Cabinet Maître Joseph Czub — Avocat à Martigues",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -127,17 +89,12 @@ export const metadata: Metadata = {
       "Avocat Martigues | Cabinet Maître Joseph Czub — Énergies renouvelables, Fraudes bancaires, Droit de la consommation",
     description:
       "Cabinet d'avocat à Martigues depuis plus de 30 ans. Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence, vous accompagne en droit des énergies renouvelables, fraudes bancaires et droit de la consommation.",
-    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -344,7 +301,7 @@ export default function HomePage() {
           {EXPERTISES.map((exp, i) => (
             <ExpertiseCard
               key={exp.id}
-              id={exp.id}
+              id={exp.slug}
               title={exp.title}
               description={exp.shortDesc}
               icon={exp.icon}
@@ -429,28 +386,7 @@ export default function HomePage() {
           </RevealOnScroll>
 
           <div className="space-y-0">
-            {[
-              {
-                q: "Maître Czub est-il avocat spécialisé en photovoltaïque à Martigues ?",
-                a: "Oui. Depuis près de 20 ans, Maître Joseph Czub, avocat à Martigues inscrit au Barreau d'Aix-en-Provence, intervient sur toute la France pour défendre les victimes d'arnaques aux panneaux photovoltaïques, pompes à chaleur et énergies renouvelables. Le cabinet obtient l'annulation des contrats et des crédits affectés."
-              },
-              {
-                q: "Ma banque doit-elle me rembourser après une fraude (spoofing, phishing) ?",
-                a: "Dans de nombreux cas, oui. Le code monétaire et financier oblige votre banque à rembourser les sommes frauduleusement débitées, sauf si elle démontre votre négligence grave. Maître Czub a obtenu de très nombreuses décisions favorables aux victimes de spoofing, phishing, SIM swapping, quishing et faux RIB."
-              },
-              {
-                q: "Le cabinet intervient-il uniquement à Martigues ?",
-                a: "Non. Bien que basé à Martigues, le Cabinet Maître Joseph Czub intervient sur toute la France pour les dossiers de droit des consommateurs, arnaques aux énergies renouvelables et fraudes bancaires — devant les tribunaux judiciaires, les Cours d'appel et la Cour de cassation."
-              },
-              {
-                q: "Qu'est-ce qu'un crédit affecté dans le cadre d'une arnaque photovoltaïque ?",
-                a: "Le crédit affecté est un prêt directement lié à l'achat d'une installation (photovoltaïque, pompe à chaleur…). Si le contrat principal est annulé, le crédit affecté est automatiquement résolu : l'organisme de crédit ne peut plus exiger de remboursement. C'est un levier juridique essentiel que le cabinet exploite systématiquement."
-              },
-              {
-                q: "Comment prendre rendez-vous avec Maître Czub ?",
-                a: "Par téléphone au 04 42 40 36 65, par e-mail à czubjoseph@hotmail.com ou via le formulaire de contact du site. Le cabinet est situé au 1 Boulevard du Président Allende, L'Espace Vénitien, 13500 Martigues. Consultations sur rendez-vous."
-              },
-            ].map((item, i) => (
+            {FAQ.map((item, i) => (
               <RevealOnScroll key={i} delay={i * 80}>
                 <details className="group border-t border-gris-sombre/40 py-6 cursor-pointer">
                   <summary className="flex items-start justify-between gap-4 list-none">
@@ -464,6 +400,11 @@ export default function HomePage() {
                   <p className="mt-4 font-sans text-[0.85rem] font-light text-gris-clair leading-[1.9]">
                     {item.a}
                   </p>
+                  {item.href && (
+                    <Link href={item.href} className="inline-block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-or no-underline hover:text-or-clair">
+                      En savoir plus →
+                    </Link>
+                  )}
                 </details>
               </RevealOnScroll>
             ))}

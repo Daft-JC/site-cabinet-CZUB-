@@ -56,7 +56,7 @@ export default function ExpertiseCard({
   return (
     <RevealOnScroll delay={delay}>
       {linkTo ? (
-        <Link href={`/expertises#${id}`} className="no-underline block">
+        <Link href={`/expertises/${id}`} className="no-underline block">
           {content}
         </Link>
       ) : (

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG, OG_IMAGE } from "@/lib/constants";
 import PageHero from "@/components/PageHero";
 import SectionDivider from "@/components/SectionDivider";
 import RevealOnScroll from "@/components/RevealOnScroll";
@@ -28,8 +28,7 @@ const breadcrumbJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title:
-    "Le Cabinet — Maître Joseph Czub | Avocat à Martigues depuis plus de 30 ans | Barreau d'Aix-en-Provence",
+  title: "Le cabinet — Maître Joseph Czub, avocat depuis 1994",
   description: `Découvrez le Cabinet Maître Joseph Czub, avocat inscrit au Barreau d'Aix-en-Provence depuis plus de 30 ans. Basé à Martigues, le cabinet accompagne particuliers et entreprises dans toute la région PACA avec rigueur, expérience et proximité.`,
   keywords: [
     "cabinet avocat martigues",
@@ -54,22 +53,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "Cabinet Maître Joseph Czub",
+    images: [OG_IMAGE],
     url: `${SITE_URL}/cabinet`,
-    images: [
-      {
-        url: `${SITE_URL}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Cabinet Maître Joseph Czub — Avocat à Martigues depuis 1994",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title:
       "Le Cabinet — Maître Joseph Czub | Avocat à Martigues depuis plus de 30 ans",
     description: `Cabinet Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence depuis plus de 30 ans. Basé à Martigues, interventions sur toute la région PACA.`,
-    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 
@@ -106,8 +97,8 @@ export default function CabinetPage() {
 
       <PageHero
         tag="Le Cabinet"
-        title="Faire respecter"
-        highlight="vos droits"
+        title="Maître Joseph Czub,"
+        highlight="avocat à Martigues depuis 1994"
         subtitle="Depuis 1994, le cabinet Czub défend les consommateurs victimes d'abus, d'arnaques et de manquements professionnels, sur toute la France."
         image="/cabinet-photo.jpg"
         imageAlt="Cabinet Maître Joseph Czub — Avocat à Martigues, Barreau d'Aix-en-Provence"

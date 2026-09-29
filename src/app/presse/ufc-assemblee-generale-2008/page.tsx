@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.cabinet-czub.fr/presse/ufc-assemblee-generale-2008" },
   title: "L'UFC–Que Choisir, entre satisfactions et inquiétudes — La Provence",
   description:
     "L'UFC-Que Choisir de Martigues tient son assemblée générale 2008. Maître Czub rappelle les victoires obtenues contre les banques, Free et Total.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ArticleUfcAssembleeGeneralePage() {
   return (
-    <main className="pt-36 pb-24 px-6 md:px-[60px]">
+    <article className="pt-36 pb-24 px-6 md:px-[60px]">
       {/* Retour */}
       <Link
         href="/presse"
@@ -161,6 +162,6 @@ export default function ArticleUfcAssembleeGeneralePage() {
           </span>
         </div>
       </div>
-    </main>
+    </article>
   );
 }

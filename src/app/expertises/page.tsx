@@ -1,180 +1,57 @@
 import type { Metadata } from "next";
-import { EXPERTISES } from "@/lib/constants";
+import Link from "next/link";
+import { SITE_URL, EXPERTISES, OG_IMAGE } from "@/lib/constants";
+import { EXPERTISES_SEO } from "@/lib/expertises-seo";
 import PageHero from "@/components/PageHero";
 import SectionDivider from "@/components/SectionDivider";
 import RevealOnScroll from "@/components/RevealOnScroll";
-import { Sun, Building2, Shield, CreditCard, Umbrella, Car, Scale, Heart, Key, Users, Check } from "lucide-react";
+import { Sun, Building2, Shield, CreditCard, Umbrella, Car, Scale, Heart, Key, Users, Check, ArrowRight } from "lucide-react";
 
-const SITE_URL = "https://www.cabinet-czub.fr";
-
-const serviceCatalogJsonLd = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Domaines d'intervention — Avocat Maître Czub Martigues",
-  description:
-    "Services juridiques proposés par le Cabinet Maître Joseph Czub, avocat à Martigues (Bouches-du-Rhône)",
-  url: `${SITE_URL}/expertises`,
-  itemListElement: [
+  "@graph": [
     {
-      "@type": "ListItem",
-      position: 1,
-      item: {
-        "@type": "LegalService",
-        name: "Avocat photovoltaïque et énergies renouvelables",
-        description:
-          "Défense des victimes d'arnaques aux installations photovoltaïques, pompes à chaleur, éoliennes de jardin, ballons thermodynamiques. Annulation des contrats et crédits affectés. 20 ans de jurisprudences favorables.",
-        url: `${SITE_URL}/expertises#energies-renouvelables`,
-        provider: { "@id": `${SITE_URL}/#legalservice` },
-        areaServed: "France",
-      },
+      "@type": "ItemList",
+      name: "Domaines d'intervention — Cabinet Maître Joseph Czub, avocat à Martigues",
+      url: `${SITE_URL}/expertises`,
+      itemListElement: EXPERTISES.map((exp, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: exp.title,
+        url: `${SITE_URL}/expertises/${exp.slug}`,
+      })),
     },
     {
-      "@type": "ListItem",
-      position: 2,
-      item: {
-        "@type": "LegalService",
-        name: "Avocat droit de la consommation Martigues",
-        description:
-          "Protection des consommateurs : démarchage abusif, clauses abusives, garanties légales, pratiques commerciales trompeuses, crédit à la consommation.",
-        url: `${SITE_URL}/expertises#code-consommation`,
-        provider: { "@id": `${SITE_URL}/#legalservice` },
-        areaServed: { "@type": "City", name: "Martigues" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      item: {
-        "@type": "LegalService",
-        name: "Avocat fraudes bancaires Martigues",
-        description:
-          "Remboursement des victimes de spoofing, phishing, SIM swapping, faux RIB, quishing, logiciels malveillants. Mise en jeu de la responsabilité de la banque.",
-        url: `${SITE_URL}/expertises#fraudes-bancaires`,
-        provider: { "@id": `${SITE_URL}/#legalservice` },
-        areaServed: [
-          { "@type": "City", name: "Martigues" },
-          { "@type": "Country", name: "France" },
-        ],
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      item: {
-        "@type": "LegalService",
-        name: "Avocat assurances Martigues",
-        description:
-          "Refus de garantie d'assurance après sinistre : vol, CAT NAT, vandalisme, décennale, incapacité, invalidité, dommage ouvrage.",
-        url: `${SITE_URL}/expertises#assurances`,
-        provider: { "@id": `${SITE_URL}/#legalservice` },
-        areaServed: { "@type": "City", name: "Martigues" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 5,
-      item: {
-        "@type": "LegalService",
-        name: "Avocat construction et immobilier Martigues",
-        description:
-          "Vices cachés, malfaçons, retards de livraison, VEFA, CCMI, garantie décennale, litiges piscinistes, infiltrations toiture.",
-        url: `${SITE_URL}/expertises#construction-immobilier`,
-        provider: { "@id": `${SITE_URL}/#legalservice` },
-        areaServed: { "@type": "City", name: "Martigues" },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 6,
-      item: {
-        "@type": "LegalService",
-        name: "Avocat litiges automobile Martigues",
-        description:
-          "Vices cachés sur véhicule, garantie légale de conformité, responsabilité du garagiste.",
-        url: `${SITE_URL}/expertises#litiges-automobile`,
-        provider: { "@id": `${SITE_URL}/#legalservice` },
-        areaServed: { "@type": "City", name: "Martigues" },
-      },
-    },
-  ],
-};
-
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Accueil",
-      item: SITE_URL,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Domaines d'intervention",
-      item: `${SITE_URL}/expertises`,
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Domaines d'intervention",
+          item: `${SITE_URL}/expertises`,
+        },
+      ],
     },
   ],
 };
 
 export const metadata: Metadata = {
-  title:
-    "Avocat Photovoltaïque & Fraudes Bancaires Martigues — Domaines d'intervention | Cabinet Czub",
+  title: "Domaines d'intervention : photovoltaïque, fraudes bancaires…",
   description:
-    "Avocat à Martigues spécialisé en arnaques photovoltaïques, pompes à chaleur, fraudes bancaires (spoofing, phishing, SIM swapping), droit de la consommation, assurances, construction et litiges automobile. Maître Joseph Czub, Barreau d'Aix-en-Provence, intervient sur toute la France.",
-  keywords: [
-    "avocat énergie renouvelable",
-    "avocat photovoltaïque",
-    "avocat éolien",
-    "avocat solaire",
-    "avocat pompe à chaleur",
-    "avocat transition énergétique",
-    "avocat fraudes bancaires",
-    "avocat spoofing",
-    "avocat phishing",
-    "avocat SIM swapping",
-    "avocat droit consommation",
-    "avocat clauses abusives",
-    "avocat vices cachés",
-    "avocat garantie légale",
-    "avocat pratiques commerciales trompeuses",
-    "avocat assurances martigues",
-    "avocat construction immobilier martigues",
-    "avocat litiges automobile",
-    "avocat divorce amiable martigues",
-    "avocat préjudice corporel martigues",
-    "droit énergie renouvelable PACA",
-    "avocat consommateur martigues",
-  ],
+    "Maître Joseph Czub, avocat à Martigues : arnaques photovoltaïques, fraudes bancaires, droit de la consommation, assurances, construction, automobile, préjudice corporel, bail, divorce amiable.",
   alternates: {
     canonical: `${SITE_URL}/expertises`,
   },
   openGraph: {
-    title:
-      "Domaines d'intervention — Avocat Énergies Renouvelables, Fraudes Bancaires, Droit Consommation | Cabinet Czub Martigues",
+    title: "Domaines d'intervention — Cabinet Czub, avocat à Martigues",
     description:
-      "Le Cabinet Maître Joseph Czub intervient en droit des énergies renouvelables (photovoltaïque, éolien, solaire), fraudes bancaires, assurances, construction immobilier, litiges automobile et droit de la consommation. Avocat à Martigues, Bouches-du-Rhône.",
+      "Arnaques photovoltaïques, fraudes bancaires, droit de la consommation, assurances, construction immobilier, litiges automobile. Avocat à Martigues, interventions sur toute la France.",
     type: "website",
     locale: "fr_FR",
     siteName: "Cabinet Maître Joseph Czub",
+    images: [OG_IMAGE],
     url: `${SITE_URL}/expertises`,
-    images: [
-      {
-        url: `${SITE_URL}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Domaines d'intervention — Cabinet Maître Joseph Czub, Avocat à Martigues",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Domaines d'intervention — Avocat Énergies Renouvelables, Fraudes Bancaires, Droit Consommation | Cabinet Czub",
-    description:
-      "Le Cabinet Maître Joseph Czub intervient en droit des énergies renouvelables, fraudes bancaires, assurances, construction et droit de la consommation. Avocat à Martigues, Bouches-du-Rhône.",
-    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 
@@ -196,17 +73,13 @@ export default function ExpertisesPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceCatalogJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       <PageHero
         tag="Cabinet Czub — Depuis 1994"
-        title="Domaines"
-        highlight="d'intervention"
+        title="Avocat à Martigues :"
+        highlight="domaines d'intervention"
         subtitle="Intervenant dans la défense des consommateurs depuis plus de 30 ans, le cabinet intervient sur toute la France dans de nombreux domaines du droit."
       />
 
@@ -216,6 +89,7 @@ export default function ExpertisesPage() {
       {EXPERTISES.map((exp, index) => {
         const Icon = ICONS[exp.icon];
         const isEven = index % 2 === 0;
+        const seo = EXPERTISES_SEO[exp.slug];
 
         return (
           <div key={exp.id}>
@@ -243,16 +117,23 @@ export default function ExpertisesPage() {
 
                   <RevealOnScroll delay={100}>
                     <h2 className="font-serif text-[clamp(2rem,3vw,2.8rem)] font-light text-ivoire leading-tight mb-6">
-                      {exp.title}
+                      <Link href={`/expertises/${exp.slug}`} className="no-underline text-ivoire hover:text-or transition-colors duration-300">
+                        {exp.title}
+                      </Link>
                     </h2>
                   </RevealOnScroll>
 
                   <RevealOnScroll delay={200}>
-                    <div className="text-[0.9rem] font-light text-gris-clair leading-[1.9] mb-8 space-y-4">
-                      {exp.description.split("\n").map((para, i) => (
-                        <p key={i}>{para}</p>
-                      ))}
-                    </div>
+                    <p className="text-[0.9rem] font-light text-gris-clair leading-[1.9] mb-8">
+                      {seo?.intro ?? exp.description.split("\n")[0]}
+                    </p>
+                    <Link
+                      href={`/expertises/${exp.slug}`}
+                      className="group inline-flex items-center gap-3 text-[0.7rem] font-medium tracking-[0.2em] uppercase text-or no-underline hover:text-or-clair transition-colors duration-300"
+                    >
+                      En savoir plus : {exp.title}
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Link>
                   </RevealOnScroll>
                 </div>
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.cabinet-czub.fr/presse/sos-conso-eolienne" },
   title: "Comme une éolienne sans ailes ! — SOS Conso / Le Monde",
   description:
     "Panneaux photovoltaïques, éoliennes de pignon : les rendements peuvent être surévalués. Chronique SOS Conso parue dans Le Monde, 11 octobre 2013.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ArticleSosConsoPage() {
   return (
-    <main className="pt-36 pb-24 px-6 md:px-[60px]">
+    <article className="pt-36 pb-24 px-6 md:px-[60px]">
       {/* Retour */}
       <Link
         href="/presse"
@@ -218,6 +219,6 @@ export default function ArticleSosConsoPage() {
           </div>
         </div>
       </div>
-    </main>
+    </article>
   );
 }

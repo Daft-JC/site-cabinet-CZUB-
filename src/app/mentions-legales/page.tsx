@@ -6,6 +6,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 export const metadata: Metadata = {
   title: "Mentions légales",
   description: "Mentions légales du site du Cabinet Maître Joseph Czub, avocat à Martigues.",
+  alternates: { canonical: "https://www.cabinet-czub.fr/mentions-legales" },
 };
 
 function Article({ numero, titre, children }: { numero: string; titre: string; children: React.ReactNode }) {
@@ -52,7 +53,6 @@ export default function MentionsLegalesPage() {
               <li><span className="text-ivoire/70">Email :</span> czubjoseph@hotmail.com</li>
               <li><span className="text-ivoire/70">SIRET :</span> 395 006 984 00045</li>
               <li><span className="text-ivoire/70">Barreau d&apos;inscription :</span> Barreau d&apos;Aix-en-Provence</li>
-              <li><span className="text-ivoire/70">N° RPVA :</span> [à compléter]</li>
             </ul>
           </Article>
 
@@ -61,9 +61,9 @@ export default function MentionsLegalesPage() {
               Le site est hébergé par :
             </p>
             <ul className="space-y-1.5 mt-2">
-              <li><span className="text-ivoire/70">Société :</span> [à compléter — ex : Vercel Inc.]</li>
-              <li><span className="text-ivoire/70">Adresse :</span> [à compléter]</li>
-              <li><span className="text-ivoire/70">Site web :</span> [à compléter]</li>
+              <li><span className="text-ivoire/70">Société :</span> Vercel Inc.</li>
+              <li><span className="text-ivoire/70">Adresse :</span> 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis</li>
+              <li><span className="text-ivoire/70">Site web :</span> vercel.com</li>
             </ul>
           </Article>
 
@@ -76,8 +76,8 @@ export default function MentionsLegalesPage() {
             </p>
             <p>
               En sa qualité d&apos;avocat, Maître Joseph Czub est soumis aux règles professionnelles
-              françaises et est couvert par une assurance responsabilité civile professionnelle
-              souscrite auprès de la Caisse de garantie et d&apos;assurance de la profession d&apos;avocat (CNBF).
+              françaises et est couvert par une assurance responsabilité civile professionnelle,
+              conformément aux obligations de la profession d&apos;avocat.
             </p>
             <p>
               Ordre professionnel de rattachement : Ordre des avocats du Barreau d&apos;Aix-en-Provence —
@@ -171,7 +171,7 @@ export default function MentionsLegalesPage() {
               seuls compétents.
             </p>
             <p>
-              Dernière mise à jour : mars 2026.
+              Dernière mise à jour : septembre 2026.
             </p>
           </Article>
 

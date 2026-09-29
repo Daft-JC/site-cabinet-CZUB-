@@ -1,3 +1,5 @@
+export const SITE_URL = "https://www.cabinet-czub.fr";
+
 export const SITE_CONFIG = {
   name: "Cabinet Czub",
   fullName: "Cabinet Maître Joseph Czub",
@@ -5,7 +7,7 @@ export const SITE_CONFIG = {
   barreau: "Barreau d'Aix-en-Provence",
   tagline: "Avocat au Barreau d'Aix-en-Provence",
   description:
-    "Cabinet d'avocat à Martigues spécialisé dans la défense des consommateurs depuis 1994. Photovoltaïque, fraudes bancaires, assurances, construction, automobile — interventions sur toute la France.",
+    "Cabinet d'avocat à Martigues dédié à la défense des consommateurs depuis 1994. Photovoltaïque, fraudes bancaires, assurances, construction, automobile — interventions sur toute la France.",
   founded: 1994,
   yearsExperience: "30+",
   location: {
@@ -153,6 +155,7 @@ export const ARTICLES_PRESSE: {
 export const EXPERTISES = [
   {
     id: "energies-renouvelables",
+    slug: "photovoltaique-energies-renouvelables",
     title: "Photovoltaïque & Énergies Renouvelables",
     shortDesc: "Défense des victimes d'arnaques EnR",
     description:
@@ -173,6 +176,7 @@ export const EXPERTISES = [
   },
   {
     id: "code-consommation",
+    slug: "droit-de-la-consommation",
     title: "Code de la Consommation",
     shortDesc: "Protection des droits des consommateurs",
     description:
@@ -192,6 +196,7 @@ export const EXPERTISES = [
   },
   {
     id: "fraudes-bancaires",
+    slug: "fraudes-bancaires",
     title: "Arnaques & Fraudes Bancaires",
     shortDesc: "Remboursement & responsabilité des banques",
     description:
@@ -210,6 +215,7 @@ export const EXPERTISES = [
   },
   {
     id: "assurances",
+    slug: "assurances",
     title: "Assurances",
     shortDesc: "Garanties d'assurances refusées",
     description:
@@ -227,6 +233,7 @@ export const EXPERTISES = [
   },
   {
     id: "construction-immobilier",
+    slug: "construction-immobilier",
     title: "Construction & Immobilier",
     shortDesc: "Vices, malfaçons et litiges immobiliers",
     description:
@@ -244,6 +251,7 @@ export const EXPERTISES = [
   },
   {
     id: "litiges-automobile",
+    slug: "litiges-automobile",
     title: "Litiges Automobile",
     shortDesc: "Vices cachés & responsabilité du garagiste",
     description:
@@ -257,6 +265,7 @@ export const EXPERTISES = [
   },
   {
     id: "responsabilite-contrats",
+    slug: "responsabilite-contrats",
     title: "Responsabilité & Contrats",
     shortDesc: "Droit commun et litiges contractuels",
     description:
@@ -272,6 +281,7 @@ export const EXPERTISES = [
   },
   {
     id: "prejudice-corporel",
+    slug: "prejudice-corporel",
     title: "Réparation du Préjudice Corporel",
     shortDesc: "Accidents & responsabilité médicale",
     description:
@@ -284,6 +294,7 @@ export const EXPERTISES = [
   },
   {
     id: "litiges-bailleurs",
+    slug: "litiges-bailleurs-locataires",
     title: "Litiges Bailleurs & Locataires",
     shortDesc: "Droit locatif et contentieux",
     description:
@@ -298,6 +309,7 @@ export const EXPERTISES = [
   },
   {
     id: "divorces-amiables",
+    slug: "divorce-amiable",
     title: "Divorces Amiables",
     shortDesc: "Divorce par consentement mutuel",
     description:
@@ -310,3 +322,11 @@ export const EXPERTISES = [
     icon: "users",
   },
 ] as const;
+
+// Image de partage générée par src/app/opengraph-image.tsx
+export const OG_IMAGE = {
+  url: `${SITE_URL}/opengraph-image`,
+  width: 1200,
+  height: 630,
+  alt: "Cabinet Maître Joseph Czub — Avocat à Martigues",
+};

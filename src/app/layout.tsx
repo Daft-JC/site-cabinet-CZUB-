@@ -119,7 +119,7 @@ const jsonLd = {
               name: "Avocat photovoltaïque et énergies renouvelables",
               description:
                 "Défense des victimes d'arnaques aux installations photovoltaïques, pompes à chaleur, éoliennes de jardin. Annulation des contrats et crédits affectés. Interventions sur toute la France.",
-              url: `${SITE_URL}/expertises#energies-renouvelables`,
+              url: `${SITE_URL}/expertises/photovoltaique-energies-renouvelables`,
               areaServed: "France",
             },
           },
@@ -130,7 +130,7 @@ const jsonLd = {
               name: "Avocat fraudes bancaires Martigues",
               description:
                 "Remboursement des victimes de spoofing, phishing, SIM swapping, faux RIB, quishing. Mise en jeu de la responsabilité de la banque.",
-              url: `${SITE_URL}/expertises#fraudes-bancaires`,
+              url: `${SITE_URL}/expertises/fraudes-bancaires`,
               areaServed: [
                 { "@type": "City", name: "Martigues" },
                 { "@type": "Country", name: "France" },
@@ -144,7 +144,7 @@ const jsonLd = {
               name: "Avocat droit de la consommation Martigues",
               description:
                 "Protection des consommateurs : démarchage abusif, clauses abusives, garanties légales, pratiques commerciales trompeuses.",
-              url: `${SITE_URL}/expertises#code-consommation`,
+              url: `${SITE_URL}/expertises/droit-de-la-consommation`,
               areaServed: { "@type": "City", name: "Martigues" },
             },
           },
@@ -155,7 +155,7 @@ const jsonLd = {
               name: "Avocat construction et immobilier Martigues",
               description:
                 "Vices cachés, malfaçons, retards de livraison, VEFA, garantie décennale, litiges piscinistes.",
-              url: `${SITE_URL}/expertises#construction-immobilier`,
+              url: `${SITE_URL}/expertises/construction-immobilier`,
               areaServed: { "@type": "City", name: "Martigues" },
             },
           },
@@ -166,15 +166,23 @@ const jsonLd = {
               name: "Avocat assurances Martigues",
               description:
                 "Refus de garantie d'assurance après sinistre. Garantie vol, CAT NAT, décennale, incapacité, invalidité.",
-              url: `${SITE_URL}/expertises#assurances`,
+              url: `${SITE_URL}/expertises/assurances`,
               areaServed: { "@type": "City", name: "Martigues" },
             },
           },
         ],
       },
       priceRange: "€€",
-      image: `${SITE_URL}/og-image.jpg`,
-      sameAs: [],
+      image: `${SITE_URL}/joseph-czub.jpg`,
+      logo: `${SITE_URL}/apple-icon`,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Cabinet Maître Joseph Czub",
+      inLanguage: "fr-FR",
+      publisher: { "@id": `${SITE_URL}/#legalservice` },
     },
   ],
 };
@@ -183,11 +191,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Avocat Martigues | Cabinet Maître Joseph Czub — Photovoltaïque, Fraudes Bancaires, Consommation",
-    template: `%s | Cabinet Czub — Avocat Martigues`,
+      "Avocat à Martigues | Cabinet Maître Joseph Czub",
+    template: `%s | Cabinet Czub Martigues`,
   },
   description:
-    "Avocat à Martigues depuis 1994 — Cabinet Maître Joseph Czub. Spécialiste des arnaques photovoltaïques, fraudes bancaires (spoofing, phishing), droit de la consommation, assurances et construction. Barreau d'Aix-en-Provence. Interventions sur toute la France.",
+    "Avocat à Martigues depuis 1994 — Cabinet Maître Joseph Czub. Défense des victimes d'arnaques photovoltaïques, fraudes bancaires (spoofing, phishing), droit de la consommation, assurances et construction. Barreau d'Aix-en-Provence. Interventions sur toute la France.",
   keywords: [
     "avocat martigues",
     "avocat photovoltaïque martigues",
@@ -236,21 +244,12 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Cabinet Maître Joseph Czub",
     url: SITE_URL,
-    images: [
-      {
-        url: `${SITE_URL}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Cabinet Maître Joseph Czub — Avocat à Martigues",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Avocat Martigues | Cabinet Maître Joseph Czub",
     description:
       "Cabinet d'avocat à Martigues depuis plus de 30 ans. Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence, défend consommateurs et entreprises.",
-    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 

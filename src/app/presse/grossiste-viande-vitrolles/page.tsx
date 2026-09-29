@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.cabinet-czub.fr/presse/grossiste-viande-vitrolles" },
   title: "Lourde peine pour un grossiste en viande — La Provence",
   description:
     "Une société de vente en gros de viande basée à Vitrolles condamnée à 23 000 € d'amendes après contrôle vétérinaire. L'UFC, représentée par Maître Joseph Czub, s'est constituée partie civile.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ArticleGrossisteViandePage() {
   return (
-    <main className="pt-36 pb-24 px-6 md:px-[60px]">
+    <article className="pt-36 pb-24 px-6 md:px-[60px]">
       {/* Retour */}
       <Link
         href="/presse"
@@ -126,6 +127,6 @@ export default function ArticleGrossisteViandePage() {
           </span>
         </div>
       </div>
-    </main>
+    </article>
   );
 }

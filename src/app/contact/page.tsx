@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG, OG_IMAGE } from "@/lib/constants";
 import PageHero from "@/components/PageHero";
 import SectionDivider from "@/components/SectionDivider";
 import RevealOnScroll from "@/components/RevealOnScroll";
@@ -38,8 +38,7 @@ const breadcrumbJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title:
-    "Contact — Cabinet Maître Joseph Czub | Avocat Martigues | Prendre rendez-vous",
+  title: "Contact et rendez-vous — Maître Joseph Czub",
   description:
     "Contactez le Cabinet Maître Joseph Czub, avocat à Martigues. Prenez rendez-vous pour une consultation en droit des énergies renouvelables, fraudes bancaires, assurances ou droit de la consommation. Cabinet accessible à Martigues, proche Aix-en-Provence et Marseille.",
   keywords: [
@@ -65,22 +64,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "Cabinet Maître Joseph Czub",
+    images: [OG_IMAGE],
     url: `${SITE_URL}/contact`,
-    images: [
-      {
-        url: `${SITE_URL}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Contacter le Cabinet Maître Joseph Czub — Avocat à Martigues",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact — Cabinet Maître Joseph Czub | Avocat Martigues",
     description:
       "Contactez le Cabinet Maître Joseph Czub, avocat à Martigues. Prenez rendez-vous pour une consultation juridique.",
-    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 
@@ -94,8 +85,8 @@ export default function ContactPage() {
 
       <PageHero
         tag="Contact"
-        title="Prenons"
-        highlight="rendez-vous"
+        title="Contacter votre avocat"
+        highlight="à Martigues"
         subtitle="Le cabinet est implanté à Martigues et intervient sur toute la France. Contactez-nous pour toute demande de consultation ou d'information."
       />
 

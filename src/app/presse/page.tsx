@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ARTICLES_PRESSE } from "@/lib/constants";
+import { ARTICLES_PRESSE, OG_IMAGE } from "@/lib/constants";
 import PageHero from "@/components/PageHero";
 import SectionDivider from "@/components/SectionDivider";
 import RevealOnScroll from "@/components/RevealOnScroll";
@@ -10,8 +10,7 @@ import { ExternalLink, ArrowRight, CalendarDays, Newspaper } from "lucide-react"
 const SITE_URL = "https://www.cabinet-czub.fr";
 
 export const metadata: Metadata = {
-  title:
-    "Presse & Médias — Cabinet Maître Joseph Czub | Avocat Martigues dans les médias",
+  title: "Presse & médias — Maître Joseph Czub dans les médias",
   description:
     "Retrouvez les articles de presse, publications et interventions médiatiques de Maître Joseph Czub, avocat à Martigues. Le Monde, La Provence, Midi Libre — arnaques photovoltaïques, fraudes bancaires, droit de la consommation.",
   keywords: [
@@ -31,10 +30,11 @@ export const metadata: Metadata = {
     title:
       "Presse & Médias — Cabinet Maître Joseph Czub | Avocat Martigues",
     description:
-      "Articles de presse et interventions médiatiques de Maître Joseph Czub, avocat à Martigues spécialisé en arnaques photovoltaïques, fraudes bancaires et droit de la consommation.",
+      "Articles de presse et interventions médiatiques de Maître Joseph Czub, avocat à Martigues intervenant en arnaques photovoltaïques, fraudes bancaires et droit de la consommation.",
     type: "website",
     locale: "fr_FR",
     siteName: "Cabinet Maître Joseph Czub",
+    images: [OG_IMAGE],
     url: `${SITE_URL}/presse`,
   },
 };
@@ -52,7 +52,7 @@ export default function PressePage() {
     <>
       <PageHero
         tag="Presse & Médias"
-        title="Le cabinet dans"
+        title="Maître Czub dans"
         highlight="les médias"
         subtitle="Retrouvez ici les articles, publications et interventions médiatiques de Maître Joseph Czub dans la presse spécialisée et généraliste."
       />

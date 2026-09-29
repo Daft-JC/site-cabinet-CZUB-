@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.cabinet-czub.fr/presse/comedie" },
   title: "La fin du cauchemar pour les propriétaires du Comédia ? — La Provence",
   description:
     "Après trois ans de procédure, une nouvelle réunion a donné de l'espoir aux acquéreurs des 19 logements du Comédia à Jonquières.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ArticleComediePage() {
   return (
-    <main className="pt-36 pb-24 px-6 md:px-[60px]">
+    <article className="pt-36 pb-24 px-6 md:px-[60px]">
       {/* Retour */}
       <Link
         href="/presse"
@@ -159,6 +160,6 @@ export default function ArticleComediePage() {
           </span>
         </div>
       </div>
-    </main>
+    </article>
   );
 }
