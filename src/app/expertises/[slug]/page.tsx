@@ -7,7 +7,7 @@ import JsonLd from "@/components/JsonLd";
 import EnTete from "@/components/EnTete";
 import Faq from "@/components/Faq";
 import BandeauContact from "@/components/BandeauContact";
-import { IconExternal } from "@/components/Icons";
+import { Fleche, IconExternal } from "@/components/Icons";
 
 type Props = { params: { slug: string } };
 
@@ -75,17 +75,22 @@ export default function ExpertisePage({ params }: Props) {
         titre={`${seo.h1} ${seo.h1Highlight}`}
         chapeau={seo.intro}
         aside={
-          <div className="rounded-[3px] border border-trait bg-white p-6">
+          <div className="rounded-2xl bg-papier p-7 shadow-haute">
             <p className="font-medium">
               {seo.national ? "Le cabinet intervient partout en France." : "À Martigues et dans les Bouches-du-Rhône."}
             </p>
-            <a href={c.phoneHref} className="mt-3 block font-serif text-[1.9rem] leading-tight no-underline hover:underline">
+            <a href={c.phoneHref} className="mt-3 block font-serif text-[2rem] leading-tight text-etang no-underline hover:underline">
               {c.phone}
             </a>
             <p className="text-[0.95rem] text-sourdine">{OPTIONS.horairesTexte}</p>
             <Link href="/contact#rendez-vous" className="btn-plein mt-5 w-full">
-              Prendre rendez-vous
+              Prendre rendez-vous <Fleche />
             </Link>
+            {OPTIONS.consultationADistance && (
+              <Link href="/consultation-visio" className="lien-fleche mt-4 text-etang">
+                Ou consulter en visio <Fleche />
+              </Link>
+            )}
           </div>
         }
       />
@@ -93,8 +98,9 @@ export default function ExpertisePage({ params }: Props) {
       {/* ── Intervention du cabinet ── */}
       <section aria-labelledby="intervention" className="py-16 md:py-24">
         <div className="wrap grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <h2 id="intervention" className="t-h2">
+          <div className="lg:col-span-7" data-reveal>
+            <p className="surtitre">Le cabinet</p>
+            <h2 id="intervention" className="t-h2 mt-5">
               Ce que fait le cabinet
             </h2>
             <div className="prose-cabinet mt-6 max-w-texte">
@@ -103,7 +109,11 @@ export default function ExpertisePage({ params }: Props) {
               ))}
             </div>
           </div>
-          <aside aria-labelledby="situations" className="lg:col-span-4 lg:col-start-9">
+          <aside
+            aria-labelledby="situations"
+            className="h-fit rounded-2xl bg-white p-7 shadow-carte lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 xl:col-span-4 xl:col-start-9"
+            data-reveal="droite"
+          >
             <h3 id="situations" className="t-h3">
               Situations traitées
             </h3>
@@ -119,20 +129,28 @@ export default function ExpertisePage({ params }: Props) {
       </section>
 
       {/* ── Repères juridiques ── */}
-      <section aria-labelledby="reperes" className="bg-enduit py-16 md:py-24">
+      <section aria-labelledby="reperes" className="halo grain sur-nuit relative overflow-hidden py-16 text-white md:py-24">
         <div className="wrap">
-          <h2 id="reperes" className="t-h2 max-w-[24ch]">
-            {seo.guideTitle}
-          </h2>
-          <dl className="mt-10 grid gap-x-12 gap-y-10 md:grid-cols-2">
-            {seo.guide.map((g) => (
-              <div key={g.title} className="border-t border-encre/20 pt-5">
-                <dt className="t-h3">{g.title}</dt>
-                <dd className="mt-3 max-w-texte text-[#3E4954]">{g.text}</dd>
+          <div data-reveal>
+            <p className="surtitre">Repères juridiques</p>
+            <h2 id="reperes" className="t-h2 mt-5 max-w-[24ch] text-white">
+              {seo.guideTitle}
+            </h2>
+          </div>
+          <dl className="mt-12 grid gap-6 md:grid-cols-2">
+            {seo.guide.map((g, n) => (
+              <div
+                key={g.title}
+                className="rounded-2xl border border-white/10 bg-white/[0.05] p-7 backdrop-blur-sm transition-colors duration-500 hover:border-ocre-clair/40 hover:bg-white/[0.08]"
+                data-reveal
+                style={{ ["--i" as string]: n % 2 }}
+              >
+                <dt className="t-h3 text-white">{g.title}</dt>
+                <dd className="mt-3 max-w-texte text-brume">{g.text}</dd>
               </div>
             ))}
           </dl>
-          <p className="mt-10 max-w-texte text-[0.92rem] text-sourdine">
+          <p className="mt-10 max-w-texte text-[0.92rem] text-brume">
             Informations générales données à titre indicatif : elles ne remplacent pas l&apos;analyse de votre
             situation par un avocat.
           </p>
@@ -142,10 +160,13 @@ export default function ExpertisePage({ params }: Props) {
       {/* ── FAQ ── */}
       <section aria-labelledby="faq" className="py-16 md:py-24">
         <div className="wrap grid gap-10 lg:grid-cols-12">
-          <h2 id="faq" className="t-h2 lg:col-span-4">
-            Questions fréquentes
-          </h2>
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-4" data-reveal>
+            <p className="surtitre">FAQ</p>
+            <h2 id="faq" className="t-h2 mt-5">
+              Questions fréquentes
+            </h2>
+          </div>
+          <div className="lg:col-span-8" data-reveal>
             <Faq items={seo.faq} />
           </div>
         </div>
@@ -199,7 +220,7 @@ export default function ExpertisePage({ params }: Props) {
               <li key={o.slug}>
                 <Link
                   href={`/expertises/${o.slug}`}
-                  className="block rounded-full border border-trait bg-white px-4 py-2 text-[0.95rem] text-encre no-underline hover:border-etang hover:text-etang"
+                  className="block rounded-full border border-trait bg-white px-4 py-2 text-[0.95rem] text-encre no-underline transition-colors duration-300 hover:border-nuit hover:bg-nuit hover:text-white"
                 >
                   {o.title}
                 </Link>

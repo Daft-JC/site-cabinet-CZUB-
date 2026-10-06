@@ -4,7 +4,7 @@ import { SITE_CONFIG, EXPERTISES, OPTIONS } from "@/lib/constants";
 export default function Footer() {
   const c = SITE_CONFIG.contact;
   return (
-    <footer className="bg-encre pb-24 text-[#D9DEE3] md:pb-0 [&_a]:text-[#D9DEE3] [&_a:hover]:text-white">
+    <footer className="bg-[#0A1826] pb-24 text-[#D9DEE3] md:pb-0 [&_a]:text-[#D9DEE3] [&_a:hover]:text-white">
       <div className="wrap grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
           <p className="font-serif text-2xl text-white">{SITE_CONFIG.fullName}</p>
@@ -27,7 +27,7 @@ export default function Footer() {
         </div>
 
         <nav aria-label="Domaines d'intervention" className="md:col-span-5">
-          <p className="font-serif text-lg text-white">Domaines d&apos;intervention</p>
+          <p className="font-serif text-lg text-ocre-clair">Domaines d&apos;intervention</p>
           <ul className="mt-4 grid gap-x-6 gap-y-2 text-[0.95rem] sm:grid-cols-2">
             {EXPERTISES.map((e) => (
               <li key={e.slug}>
@@ -38,7 +38,7 @@ export default function Footer() {
         </nav>
 
         <nav aria-label="Le site" className="md:col-span-3">
-          <p className="font-serif text-lg text-white">Le site</p>
+          <p className="font-serif text-lg text-ocre-clair">Le site</p>
           <ul className="mt-4 space-y-2 text-[0.95rem]">
             <li><Link href="/cabinet">Maître Joseph Czub</Link></li>
             <li><Link href="/presse">Presse</Link></li>

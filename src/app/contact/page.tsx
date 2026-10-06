@@ -43,18 +43,18 @@ export default function ContactPage() {
 
       <div className="wrap grid gap-14 py-14 md:py-20 lg:grid-cols-12">
         {/* ── Coordonnées et accès ── */}
-        <div className="lg:col-span-5">
-          <section aria-labelledby="appeler">
-            <h2 id="appeler" className="t-h3">
+        <div className="space-y-6 lg:col-span-5" data-reveal="gauche">
+          <section aria-labelledby="appeler" className="halo grain sur-nuit relative overflow-hidden rounded-2xl p-7 text-white shadow-haute">
+            <h2 id="appeler" className="t-h3 text-white">
               Par téléphone
             </h2>
-            <a href={c.phoneHref} className="mt-2 block font-serif text-[2.4rem] leading-tight no-underline hover:underline">
+            <a href={c.phoneHref} className="mt-2 block font-serif text-[2.4rem] leading-tight text-ocre-clair no-underline hover:text-white">
               {c.phone}
             </a>
-            <p className="text-sourdine">{OPTIONS.horairesTexte}</p>
+            <p className="text-brume">{OPTIONS.horairesTexte}</p>
           </section>
 
-          <section aria-labelledby="ecrire" className="mt-10">
+          <section aria-labelledby="ecrire" className="rounded-2xl bg-white p-7 shadow-carte">
             <h2 id="ecrire" className="t-h3">
               Par e-mail
             </h2>
@@ -63,7 +63,7 @@ export default function ContactPage() {
             </a>
           </section>
 
-          <section aria-labelledby="acces" className="mt-10">
+          <section aria-labelledby="acces" className="rounded-2xl bg-white p-7 shadow-carte">
             <h2 id="acces" className="t-h3">
               Accès au cabinet
             </h2>
@@ -103,7 +103,8 @@ export default function ContactPage() {
         <section
           id="rendez-vous"
           aria-labelledby="formulaire"
-          className="scroll-mt-24 rounded-[3px] border border-trait bg-white p-6 sm:p-10 lg:col-span-7"
+          className="scroll-mt-28 h-fit rounded-2xl bg-white p-6 shadow-haute sm:p-10 lg:col-span-7"
+          data-reveal="droite"
         >
           <h2 id="formulaire" className="t-h2">
             Demander un rendez-vous

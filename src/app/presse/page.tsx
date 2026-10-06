@@ -29,8 +29,8 @@ export default function PressePage() {
       />
 
       <div className="wrap py-12 md:py-16">
-        <ol className="divide-y divide-trait border-y border-trait">
-          {ARTICLES_PRESSE.map((a) => {
+        <ol className="space-y-6">
+          {ARTICLES_PRESSE.map((a, n) => {
             const interne = a.url?.startsWith("/");
             const lien = interne ? (
               <Link href={a.url!} className="text-encre">
@@ -44,10 +44,10 @@ export default function PressePage() {
               </a>
             );
             return (
-              <li key={a.id}>
-                <article className="grid gap-4 py-8 md:grid-cols-12 md:gap-10">
+              <li key={a.id} data-reveal style={{ ["--i" as string]: n % 2 }}>
+                <article className="carte group grid gap-4 md:grid-cols-12 md:gap-10 sm:!p-9">
                   <div className="md:col-span-3">
-                    <p className="font-medium">{a.source}</p>
+                    <p className="font-serif text-[1.2rem] text-etang">{a.source}</p>
                     <p className="text-[0.95rem] text-sourdine">
                       <time dateTime={a.date}>{date(a.date)}</time>
                     </p>
@@ -58,13 +58,13 @@ export default function PressePage() {
                     <p className="mt-3 max-w-texte text-sourdine">{a.excerpt}</p>
                   </div>
                   {a.image && (
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-[3px] md:col-span-3">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl md:col-span-3">
                       <Image
                         src={a.image}
                         alt=""
                         fill
                         sizes="(min-width: 768px) 22vw, 100vw"
-                        className="object-cover"
+                        className="object-cover transition-transform duration-[1.2s] group-hover:scale-105"
                       />
                     </div>
                   )}

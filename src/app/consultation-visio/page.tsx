@@ -85,12 +85,13 @@ export default function ConsultationVisioPage() {
 
       <section aria-labelledby="pour-qui" className="py-16 md:py-24">
         <div className="wrap grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <h2 id="pour-qui" className="t-h2">
+          <div className="lg:col-span-5" data-reveal>
+            <p className="surtitre">À distance</p>
+            <h2 id="pour-qui" className="t-h2 mt-5">
               Pour quels dossiers
             </h2>
           </div>
-          <div className="prose-cabinet max-w-texte lg:col-span-6 lg:col-start-7">
+          <div className="prose-cabinet max-w-texte lg:col-span-6 lg:col-start-7" data-reveal="droite">
             <p>
               La consultation à distance convient particulièrement aux litiges qui se traitent sur pièces, quelle que
               soit votre région : contrats d&apos;installation{" "}
@@ -112,12 +113,14 @@ export default function ConsultationVisioPage() {
           <h2 id="deroule" className="t-h2">
             Comment ça se passe
           </h2>
-          <ol className="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {ETAPES.map((e, i) => (
-              <li key={e.titre}>
-                <p className="font-serif text-3xl text-ocre">{i + 1}</p>
-                <h3 className="t-h3 mt-2">{e.titre}</h3>
-                <p className="mt-3 text-[#3E4954]">{e.texte}</p>
+              <li key={e.titre} className="carte" data-reveal style={{ ["--i" as string]: i }}>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-ocre font-serif text-2xl text-ocre-texte">
+                  {i + 1}
+                </span>
+                <h3 className="t-h3 mt-5">{e.titre}</h3>
+                <p className="mt-3 text-sourdine">{e.texte}</p>
               </li>
             ))}
           </ol>

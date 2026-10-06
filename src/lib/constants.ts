@@ -56,8 +56,9 @@ export const OPTIONS = {
 export const NAV_LINKS = [
   { label: "Domaines d'intervention", href: "/expertises" },
   { label: "Maître Czub", href: "/cabinet" },
+  { label: "Consultation visio", href: "/consultation-visio" },
   { label: "Presse", href: "/presse" },
-  { label: "Contact et accès", href: "/contact" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const ARTICLES_PRESSE: {

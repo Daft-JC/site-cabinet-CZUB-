@@ -19,7 +19,7 @@
   h1,
   h2,
   h3 {
-    @apply font-serif text-encre;
+    @apply font-serif;
     font-optical-sizing: auto;
     text-wrap: balance;
   }
@@ -35,36 +35,47 @@
     text-decoration-thickness: 2px;
   }
   ::selection {
-    background: #dce6ee;
-    color: #1c2530;
+    background: #d9b26f;
+    color: #0e2033;
   }
   :focus-visible {
-    outline: 3px solid #c08a3e;
+    outline: 3px solid #d9b26f;
     outline-offset: 3px;
     border-radius: 2px;
   }
 }
 
 @layer components {
-  /* Titres : échelle typographique (ratio ≈ 1.25) */
+  /* ── Échelle typographique (ratio ≈ 1.25) ── */
   .t-display {
-    @apply font-serif font-normal tracking-[-0.015em];
-    font-size: clamp(2.3rem, 1.7rem + 2.6vw, 4.1rem);
-    line-height: 1.04;
+    @apply font-serif font-normal tracking-[-0.02em];
+    font-size: clamp(2.5rem, 1.6rem + 3.8vw, 5rem);
+    line-height: 1.02;
   }
   .t-h2 {
-    @apply font-serif font-normal tracking-[-0.01em];
-    font-size: clamp(1.85rem, 1.4rem + 1.8vw, 2.75rem);
-    line-height: 1.12;
+    @apply font-serif font-normal tracking-[-0.015em];
+    font-size: clamp(2rem, 1.45rem + 2.2vw, 3.25rem);
+    line-height: 1.08;
   }
   .t-h3 {
     @apply font-serif font-medium;
-    font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.55rem);
-    line-height: 1.25;
+    font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.6rem);
+    line-height: 1.22;
   }
   .t-lead {
-    font-size: clamp(1.1rem, 1.02rem + 0.35vw, 1.25rem);
+    font-size: clamp(1.1rem, 1.02rem + 0.35vw, 1.28rem);
     line-height: 1.6;
+  }
+  /* Surtitre : petit texte laiton précédé d'un filet, en casse normale */
+  .surtitre {
+    @apply inline-flex items-center gap-3 text-[0.98rem] font-medium text-ocre-texte;
+  }
+  .surtitre::before {
+    content: "";
+    @apply block h-px w-10 bg-ocre;
+  }
+  .sur-nuit .surtitre {
+    @apply text-ocre-clair;
   }
 
   .wrap {
@@ -82,71 +93,231 @@
     @apply list-disc pl-5 space-y-1.5;
   }
 
-  /* Boutons */
+  /* ── Boutons ── */
   .btn {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-[3px] px-6 py-3.5 font-medium no-underline transition-colors duration-200;
+    @apply relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full px-7 py-3.5 font-medium no-underline transition-[background-color,color,box-shadow,transform,border-color] duration-300;
     line-height: 1.2;
   }
+  .btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .btn .fleche {
+    @apply transition-transform duration-300;
+  }
+  .btn:hover .fleche {
+    transform: translateX(4px);
+  }
   .btn-plein {
-    @apply btn bg-etang text-white hover:bg-etang-profond hover:no-underline;
+    @apply btn bg-etang text-white shadow-carte hover:bg-etang-profond;
+  }
+  .btn-laiton {
+    @apply btn bg-ocre-clair text-nuit shadow-carte hover:bg-[#E6C485];
   }
   .btn-trait {
-    @apply btn border border-etang/40 text-etang hover:border-etang hover:bg-etang-clair/50 hover:no-underline;
+    @apply btn border border-etang/40 text-etang hover:border-etang hover:bg-white;
+  }
+  .btn-trait-clair {
+    @apply btn border border-white/40 text-white hover:border-white hover:bg-white/10;
   }
   .btn-clair {
-    @apply btn bg-papier text-etang-profond hover:bg-white hover:no-underline;
+    @apply btn bg-papier text-nuit hover:bg-white;
   }
 
-  /* Petite marque ocre devant certains intertitres : rappel des onglets de
-     classeurs du cabinet */
+  /* Lien souligné animé */
+  .lien-fleche {
+    @apply inline-flex items-center gap-2 font-medium no-underline;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 0.35s ease;
+  }
+  .lien-fleche:hover {
+    background-size: 100% 1px;
+    text-decoration: none;
+  }
+  .lien-fleche .fleche {
+    @apply transition-transform duration-300;
+  }
+  .lien-fleche:hover .fleche {
+    transform: translateX(4px);
+  }
+
+  /* Marque laiton (rappel des onglets de classeurs du cabinet) */
   .onglet {
     @apply relative pl-4;
   }
   .onglet::before {
     content: "";
-    @apply absolute left-0 top-[0.2em] bottom-[0.2em] w-[3px] bg-ocre;
+    @apply absolute left-0 top-[0.25em] bottom-[0.25em] w-[3px] rounded-full bg-ocre;
+  }
+
+  /* Texture de grain discrète */
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Fond nuit avec reflets de lumière (l'eau du canal le soir) */
+  .halo {
+    background:
+      radial-gradient(60rem 30rem at 85% -10%, rgba(217, 178, 111, 0.16), transparent 60%),
+      radial-gradient(50rem 30rem at -10% 110%, rgba(30, 74, 110, 0.6), transparent 60%),
+      #0e2033;
+  }
+
+  /* Carte de domaine */
+  .carte {
+    @apply relative flex flex-col overflow-hidden rounded-2xl bg-white p-7 shadow-carte transition-[transform,box-shadow] duration-500;
+  }
+  .carte::before {
+    content: "";
+    @apply absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-ocre transition-transform duration-500;
+  }
+  .carte:hover,
+  .carte:focus-within {
+    @apply -translate-y-1 shadow-haute;
+  }
+  .carte:hover::before,
+  .carte:focus-within::before {
+    @apply scale-x-100;
   }
 
   /* FAQ (details/summary natifs, accessibles au clavier) */
   .faq summary {
-    @apply flex cursor-pointer list-none items-start justify-between gap-6 py-5;
+    @apply flex cursor-pointer list-none items-start justify-between gap-6 py-6;
   }
   .faq summary::-webkit-details-marker {
     display: none;
   }
   .faq summary .signe {
-    @apply mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-etang/40 text-etang transition-transform duration-200;
+    @apply mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ocre/60 text-ocre-texte transition-[transform,background-color,color] duration-300;
   }
   .faq details[open] summary .signe {
-    transform: rotate(45deg);
+    @apply rotate-45 bg-ocre text-white;
+  }
+  .faq details[open] > p {
+    animation: faq-ouvre 0.4s ease both;
+  }
+  @keyframes faq-ouvre {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
   }
 }
 
-/* Une seule animation d'arrivée, sur le hero, uniquement sur grand écran
-   (pas de retard d'affichage sur mobile) et si l'utilisateur n'a pas demandé
-   à réduire les animations. Pas de JS. */
-@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
-  .entree {
-    animation: entree 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+/* ═════════════════ Animations ═════════════════
+   Toutes en CSS (transform/opacity), désactivées si l'utilisateur demande à
+   réduire les animations. Le masquage initial n'a lieu que si JS est actif
+   (classe .js posée dans <head>) : sans JS, tout reste visible. */
+
+.ligne {
+  display: block;
+}
+.ligne > span {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Titre du hero : chaque ligne glisse hors d'un masque */
+  .ligne {
+    overflow: hidden;
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
   }
-  .entree-2 {
-    animation-delay: 0.08s;
+  .ligne > span {
+    animation: ligne 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 110ms + 60ms);
   }
-  .entree-3 {
-    animation-delay: 0.16s;
-  }
-  @keyframes entree {
+  @keyframes ligne {
     from {
-      opacity: 0;
-      transform: translateY(14px);
+      transform: translateY(105%);
     }
   }
-  .photo-entree {
-    animation: photo 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  .apparait {
+    animation: apparait 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 110ms + 250ms);
   }
-  @keyframes photo {
+  @keyframes apparait {
     from {
-      clip-path: inset(0 0 0 18%);
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+  /* Photo : lent travelling avant */
+  .travelling {
+    animation: travelling 20s ease-out both;
+  }
+  @keyframes travelling {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .cadre-entree {
+    animation: cadre 1.4s cubic-bezier(0.22, 1, 0.36, 1) both 0.15s;
+  }
+  @keyframes cadre {
+    from {
+      clip-path: inset(100% 0 0 0 round 1rem);
+    }
+    to {
+      clip-path: inset(0 0 0 0 round 1rem);
+    }
+  }
+
+  /* Apparition au défilement */
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+  .js [data-reveal="gauche"] {
+    transform: translateX(-36px);
+  }
+  .js [data-reveal="droite"] {
+    transform: translateX(36px);
+  }
+  .js [data-reveal="zoom"] {
+    transform: scale(0.96);
+  }
+  .js [data-reveal].vu {
+    opacity: 1;
+    transform: none;
+  }
+  /* Filet qui se dessine */
+  .js [data-trace] {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+  .js [data-trace].vu {
+    transform: scaleX(1);
+  }
+
+  /* Défilé des titres de presse */
+  .defile {
+    animation: defile 45s linear infinite;
+  }
+  .defile-zone:hover .defile {
+    animation-play-state: paused;
+  }
+  @keyframes defile {
+    to {
+      transform: translateX(-50%);
     }
   }
 }

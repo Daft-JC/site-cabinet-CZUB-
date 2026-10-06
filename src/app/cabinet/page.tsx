@@ -5,6 +5,7 @@ import { pageMetadata, breadcrumbJsonLd, graph, PERSON_ID } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import EnTete from "@/components/EnTete";
 import BandeauContact from "@/components/BandeauContact";
+import { Fleche } from "@/components/Icons";
 import portrait from "../../../public/joseph-czub.jpg";
 import photoBureau from "../../../public/cabinet-photo.jpg";
 
@@ -61,7 +62,9 @@ export default function CabinetPage() {
 
       <section aria-labelledby="parcours" className="py-16 md:py-24">
         <div className="wrap grid gap-12 lg:grid-cols-12">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[3px] lg:col-span-5">
+          <div className="relative h-fit lg:sticky lg:top-28 lg:col-span-5" data-reveal="gauche">
+            <div aria-hidden className="absolute inset-0 -translate-x-4 translate-y-4 rounded-2xl bg-ocre/25" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-haute">
             <Image
               src={portrait}
               alt="Maître Joseph Czub à son bureau, devant les classeurs de dossiers du cabinet"
@@ -71,9 +74,11 @@ export default function CabinetPage() {
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover object-[45%_78%]"
             />
+            </div>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <h2 id="parcours" className="t-h2">
+          <div className="lg:col-span-6 lg:col-start-7" data-reveal="droite">
+            <p className="surtitre">Parcours</p>
+            <h2 id="parcours" className="t-h2 mt-5">
               Parcours
             </h2>
             <div className="prose-cabinet mt-6 max-w-texte">
@@ -96,11 +101,11 @@ export default function CabinetPage() {
               </p>
             </div>
 
-            <dl className="mt-12 divide-y divide-trait border-y border-trait">
-              {REPERES.map((r) => (
-                <div key={r.terme} className="grid gap-1 py-4 sm:grid-cols-3 sm:gap-6">
-                  <dt className="font-serif text-[1.15rem]">{r.terme}</dt>
-                  <dd className="text-sourdine sm:col-span-2">{r.def}</dd>
+            <dl className="mt-12 grid gap-4 sm:grid-cols-2">
+              {REPERES.map((r, n) => (
+                <div key={r.terme} className="carte !p-6" data-reveal style={{ ["--i" as string]: n % 2 }}>
+                  <dt className="font-serif text-[1.25rem] text-etang">{r.terme}</dt>
+                  <dd className="mt-2 text-[0.98rem] text-sourdine">{r.def}</dd>
                 </div>
               ))}
             </dl>
@@ -108,16 +113,25 @@ export default function CabinetPage() {
         </div>
       </section>
 
-      <section aria-labelledby="methode" className="bg-enduit py-16 md:py-24">
+      <section aria-labelledby="methode" className="halo grain sur-nuit relative overflow-hidden py-16 text-white md:py-24">
         <div className="wrap">
-          <h2 id="methode" className="t-h2">
-            Façon de travailler
-          </h2>
-          <div className="mt-10 grid gap-10 md:grid-cols-3">
-            {METHODE.map((m) => (
-              <div key={m.titre}>
-                <h3 className="t-h3 onglet">{m.titre}</h3>
-                <p className="mt-3 text-[#3E4954]">{m.texte}</p>
+          <div data-reveal>
+            <p className="surtitre">Méthode</p>
+            <h2 id="methode" className="t-h2 mt-5 text-white">
+              Façon de travailler
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {METHODE.map((m, n) => (
+              <div
+                key={m.titre}
+                className="rounded-2xl border border-white/10 bg-white/[0.05] p-7"
+                data-reveal
+                style={{ ["--i" as string]: n }}
+              >
+                <span aria-hidden data-trace className="block h-px w-16 bg-ocre-clair" />
+                <h3 className="t-h3 mt-6 text-white">{m.titre}</h3>
+                <p className="mt-3 text-brume">{m.texte}</p>
               </div>
             ))}
           </div>
@@ -126,8 +140,8 @@ export default function CabinetPage() {
 
       <section aria-labelledby="bureau" className="py-16 md:py-24">
         <div className="wrap grid items-end gap-10 lg:grid-cols-12">
-          <figure className="lg:col-span-7">
-            <div className="relative aspect-[3/2] overflow-hidden rounded-[3px]">
+          <figure className="lg:col-span-7" data-reveal="zoom">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-2xl shadow-haute">
               <Image
                 src={photoBureau}
                 alt="Le bureau du cabinet, avec vue sur l'étang de Berre"
@@ -138,8 +152,9 @@ export default function CabinetPage() {
               />
             </div>
           </figure>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <h2 id="bureau" className="t-h2">
+          <div className="lg:col-span-4 lg:col-start-9" data-reveal="droite">
+            <p className="surtitre">Le bureau</p>
+            <h2 id="bureau" className="t-h2 mt-5">
               Le cabinet
             </h2>
             <p className="mt-4">
@@ -149,8 +164,8 @@ export default function CabinetPage() {
               <br />
               {SITE_CONFIG.contact.postalCode} Martigues
             </p>
-            <Link href="/contact" className="mt-6 inline-block font-medium">
-              Plan d&apos;accès et contact
+            <Link href="/contact" className="btn-plein mt-8">
+              Plan d&apos;accès et contact <Fleche />
             </Link>
           </div>
         </div>

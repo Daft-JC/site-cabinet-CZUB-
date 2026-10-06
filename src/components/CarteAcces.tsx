@@ -13,7 +13,7 @@ export default function CarteAcces() {
   const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat}%2C${lng}`;
 
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] border border-trait bg-enduit sm:aspect-[16/10]">
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-trait bg-enduit sm:aspect-[16/10]">
       {on ? (
         <iframe
           title="Plan d'accès au cabinet, 1 avenue Salvador Allende à Martigues"

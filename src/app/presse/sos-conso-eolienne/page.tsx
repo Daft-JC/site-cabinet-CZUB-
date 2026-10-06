@@ -49,7 +49,7 @@ export default function ArticleSosConsoPage() {
 
         {/* Photo */}
         <div className="mb-12">
-          <div className="relative w-full overflow-hidden rounded-[3px]" style={{ aspectRatio: "16/9" }}>
+          <div className="relative w-full overflow-hidden rounded-2xl shadow-carte" style={{ aspectRatio: "16/9" }}>
             <Image
               src="/panneau-solaire.jpg"
               alt="Panneaux solaires photovoltaïques"

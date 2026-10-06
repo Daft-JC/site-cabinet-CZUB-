@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BarreMobile from "@/components/BarreMobile";
 import JsonLd from "@/components/JsonLd";
+import Animations from "@/components/Animations";
 
 // Polices auto-hébergées par Next (aucune requête vers Google côté visiteur).
 const serif = Newsreader({
@@ -56,20 +57,25 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FBF9F4",
+  themeColor: "#0E2033",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="fr" className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Active les animations au défilement seulement si JS est disponible */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
         <JsonLd data={cabinetJsonLd()} />
         <Header />
         <main id="contenu">{children}</main>
         <Footer />
         <BarreMobile />
+        <Animations />
       </body>
     </html>
   );

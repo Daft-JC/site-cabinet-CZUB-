@@ -47,7 +47,7 @@ export default function ArticleViandeAvarieePage() {
 
         {/* Photo */}
         <div className="mb-12">
-          <div className="relative w-full overflow-hidden rounded-[3px]" style={{ aspectRatio: "16/9" }}>
+          <div className="relative w-full overflow-hidden rounded-2xl shadow-carte" style={{ aspectRatio: "16/9" }}>
             <Image
               src="/boucherie.jpg"
               alt="L'UFC Martigues, seule association partie civile lors du procès sur la viande avariée"

@@ -49,7 +49,7 @@ export default function ArticleGeantCasinoPage() {
 
         {/* Photo */}
         <div className="mb-12">
-          <div className="relative w-full overflow-hidden rounded-[3px]" style={{ aspectRatio: "16/9" }}>
+          <div className="relative w-full overflow-hidden rounded-2xl shadow-carte" style={{ aspectRatio: "16/9" }}>
             <Image
               src="/geant-casino.jpg"
               alt="Rayons réfrigérés de la grande surface istréenne"

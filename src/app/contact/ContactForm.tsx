@@ -6,7 +6,7 @@ import { EXPERTISES, SITE_CONFIG } from "@/lib/constants";
 type Etat = "saisie" | "envoi" | "envoye" | "erreur";
 
 const champ =
-  "mt-2 w-full rounded-[3px] border border-[#B9B0A1] bg-papier px-4 py-3 text-encre placeholder:text-[#77808A] focus:border-etang focus:bg-white focus:outline-none focus-visible:outline-[3px] focus-visible:outline-ocre";
+  "mt-2 w-full rounded-xl border border-[#B9B0A1] bg-papier px-4 py-3 text-encre placeholder:text-[#77808A] focus:border-etang focus:bg-white focus:outline-none focus-visible:outline-[3px] focus-visible:outline-ocre";
 
 export default function ContactForm() {
   const [etat, setEtat] = useState<Etat>("saisie");
@@ -46,7 +46,7 @@ export default function ContactForm() {
 
   if (etat === "envoye") {
     return (
-      <div ref={confirmation} tabIndex={-1} role="status" className="mt-8 rounded-[3px] bg-etang-clair p-6">
+      <div ref={confirmation} tabIndex={-1} role="status" className="mt-8 rounded-2xl bg-etang-clair p-6">
         <p className="t-h3">Message envoyé</p>
         <p className="mt-2">
           Le cabinet a bien reçu votre demande et vous recontacte pour fixer un rendez-vous. En cas d&apos;urgence,
@@ -131,7 +131,7 @@ export default function ContactForm() {
       </div>
 
       <div aria-live="polite">
-        {etat === "erreur" && <p className="rounded-[3px] bg-[#FBEAEA] p-4 text-[#8A1F1F]">{message}</p>}
+        {etat === "erreur" && <p className="rounded-xl bg-[#FBEAEA] p-4 text-[#8A1F1F]">{message}</p>}
       </div>
 
       <button type="submit" disabled={etat === "envoi"} className="btn-plein w-full sm:w-auto disabled:opacity-60">
