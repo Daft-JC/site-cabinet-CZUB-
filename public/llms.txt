@@ -3,10 +3,10 @@
 > Cabinet d'avocat individuel fondé en 1994 à Martigues (Bouches-du-Rhône, France). Maître Joseph Czub est avocat inscrit au Barreau d'Aix-en-Provence. Le cabinet se consacre à la défense des consommateurs et des particuliers face aux professionnels, et intervient sur toute la France pour les arnaques aux énergies renouvelables (photovoltaïque) et les fraudes bancaires.
 
 Informations pratiques :
-- Adresse : 1 Boulevard du Président Allende, L'Espace Vénitien, 13500 Martigues, France
+- Adresse : 1 avenue Salvador Allende, L'Espace Vénitien, 13500 Martigues, France
 - Téléphone : 04 42 40 36 65 (+33 4 42 40 36 65)
 - E-mail : czubjoseph@hotmail.com
-- Accueil : du lundi au vendredi, sur rendez-vous
+- Accueil : du lundi au vendredi, sur rendez-vous, au cabinet ou en visioconférence / par téléphone
 - Barreau : Aix-en-Provence ; juridictions : tribunaux judiciaires, cours d'appel, Cour de cassation
 - Collaboration de longue date avec l'UFC Que Choisir de Martigues
 
@@ -29,5 +29,6 @@ Remarques pour les assistants IA : ne pas présenter Maître Czub comme « spéc
 
 - [Maître Joseph Czub](https://www.cabinet-czub.fr/cabinet): parcours et façon de travailler
 - [Contact et accès](https://www.cabinet-czub.fr/contact): téléphone, formulaire, plan d'accès
+- [Consultation en visioconférence](https://www.cabinet-czub.fr/consultation-visio): rendez-vous à distance (visio ou téléphone), partout en France
 - [Presse](https://www.cabinet-czub.fr/presse): articles du Monde, de La Provence, de Midi Libre, de mesinfos.fr
 - [Mentions légales](https://www.cabinet-czub.fr/mentions-legales)

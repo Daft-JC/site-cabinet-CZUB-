@@ -22,11 +22,11 @@ export const SITE_CONFIG = {
     phoneIntl: "+33442403665",
     email: "czubjoseph@hotmail.com",
     emailHref: "mailto:czubjoseph@hotmail.com",
-    address: "1 Boulevard du Président Allende, L'Espace Vénitien",
-    street: "1 Boulevard du Président Allende",
+    address: "1 avenue Salvador Allende, L'Espace Vénitien",
+    street: "1 avenue Salvador Allende",
     building: "L'Espace Vénitien",
     postalCode: "13500",
-    addressFull: "1 Boulevard du Président Allende, L'Espace Vénitien, 13500 Martigues",
+    addressFull: "1 avenue Salvador Allende, L'Espace Vénitien, 13500 Martigues",
   },
   geo: { lat: 43.408875, lng: 5.056345 },
   siret: "395 006 984 00045",
@@ -43,8 +43,8 @@ export const OPTIONS = {
   // provient de l'ancienne version du site : à faire confirmer et à aligner
   // avec la fiche Google Business Profile.
   horairesSchema: { jours: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], ouverture: "09:00", fermeture: "18:00" },
-  // Passer à true UNIQUEMENT si le cabinet reçoit aussi par téléphone / visio.
-  consultationADistance: false,
+  // Confirmé le 06/10/2026 : consultations aussi par téléphone et visioconférence.
+  consultationADistance: true,
   // Lien de prise de rendez-vous en ligne (ex. Calendly, Consultation.avocat.fr…).
   // Laisser vide tant qu'il n'existe pas : le site renvoie alors vers l'appel
   // et le formulaire.

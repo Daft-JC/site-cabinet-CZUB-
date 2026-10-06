@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${SITE_URL}/cabinet`, lastModified: UPDATED, changeFrequency: "yearly", priority: 0.8 },
     { url: `${SITE_URL}/contact`, lastModified: UPDATED, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${SITE_URL}/consultation-visio`, lastModified: UPDATED, changeFrequency: "yearly", priority: 0.8 },
     { url: `${SITE_URL}/presse`, lastModified: UPDATED, changeFrequency: "monthly", priority: 0.6 },
     // Articles de presse internes
     { url: `${SITE_URL}/presse/sos-conso-eolienne`, lastModified: new Date("2013-10-11"), changeFrequency: "yearly", priority: 0.5 },

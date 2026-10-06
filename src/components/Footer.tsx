@@ -43,6 +43,7 @@ export default function Footer() {
             <li><Link href="/cabinet">Maître Joseph Czub</Link></li>
             <li><Link href="/presse">Presse</Link></li>
             <li><Link href="/contact">Contact et accès</Link></li>
+            <li><Link href="/consultation-visio">Consultation en visio</Link></li>
             <li><Link href="/mentions-legales">Mentions légales</Link></li>
             <li><Link href="/politique-de-confidentialite">Politique de confidentialité</Link></li>
           </ul>

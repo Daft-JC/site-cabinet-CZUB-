@@ -10,7 +10,7 @@ import ContactForm from "./ContactForm";
 export const metadata = pageMetadata({
   title: "Contact, rendez-vous et accès au cabinet",
   description:
-    "Prendre rendez-vous avec Maître Joseph Czub, avocat à Martigues : 04 42 40 36 65, formulaire de contact, plan d'accès au 1 boulevard du Président Allende, L'Espace Vénitien.",
+    "Prendre rendez-vous avec Maître Joseph Czub, avocat à Martigues : 04 42 40 36 65, formulaire de contact, plan d'accès au 1 avenue Salvador Allende, L'Espace Vénitien.",
   path: "/contact",
 });
 

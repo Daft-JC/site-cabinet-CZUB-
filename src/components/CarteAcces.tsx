@@ -16,7 +16,7 @@ export default function CarteAcces() {
     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] border border-trait bg-enduit sm:aspect-[16/10]">
       {on ? (
         <iframe
-          title="Plan d'accès au cabinet, 1 boulevard du Président Allende à Martigues"
+          title="Plan d'accès au cabinet, 1 avenue Salvador Allende à Martigues"
           src={src}
           className="h-full w-full"
           loading="lazy"
