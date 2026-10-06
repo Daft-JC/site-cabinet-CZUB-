@@ -1,63 +1,38 @@
 import type { Config } from "tailwindcss";
 
+// Palette inspirée du cabinet lui-même : murs blanc chaud, eau de l'étang de
+// Berre vue depuis le bureau, ocre des façades de Martigues (tableau des
+// barques). Contrastes vérifiés AA sur fond "papier".
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        noir: {
-          DEFAULT: "#0a0a0a",
-          profond: "#050505",
+        papier: "#FBF9F4", // fond général
+        enduit: "#F1ECE2", // fond de section teinté
+        trait: "#DDD5C7", // filets, bordures
+        encre: "#1C2530", // texte principal (≈ 14:1 sur papier)
+        sourdine: "#55606B", // texte secondaire (≈ 6:1)
+        etang: {
+          DEFAULT: "#1E4A6E", // accent principal, liens, boutons (≈ 8.8:1)
+          profond: "#163A57",
+          clair: "#DCE6EE",
         },
-        anthracite: "#1a1a1a",
-        "gris-sombre": "#2a2a2a",
-        gris: {
-          DEFAULT: "#6b6b6b",
-          clair: "#9a9a9a",
+        ocre: {
+          DEFAULT: "#C08A3E", // décoratif uniquement (pas de texte)
+          texte: "#8A5A1C", // ocre lisible pour petits textes (≈ 5.5:1)
         },
-        ivoire: {
-          DEFAULT: "#f5f0eb",
-          chaud: "#ede6dd",
-        },
-        or: {
-          DEFAULT: "#b8954f",
-          clair: "#d4b06a",
-          sombre: "#96783e",
-        },
-        blanc: "#faf9f7",
       },
       fontFamily: {
-        serif: ["Cormorant Garamond", "Georgia", "Times New Roman", "serif"],
-        sans: ["Libre Franklin", "Helvetica Neue", "Arial", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
-      animation: {
-        "slide-up": "slideUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-        "fade-up": "fadeUp 1s ease forwards",
-        "scroll-down": "scrollDown 2s ease-in-out infinite",
-        "preloader-pulse": "preloaderPulse 1.2s ease-in-out infinite",
-      },
-      keyframes: {
-        slideUp: {
-          from: { opacity: "0", transform: "translateY(100%)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        fadeUp: {
-          from: { opacity: "0", transform: "translateY(20px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        scrollDown: {
-          "0%": { top: "-100%" },
-          "50%": { top: "100%" },
-          "100%": { top: "100%" },
-        },
-        preloaderPulse: {
-          "0%, 100%": { transform: "scaleX(0.3)", opacity: "0.3" },
-          "50%": { transform: "scaleX(1)", opacity: "1" },
-        },
+      maxWidth: {
+        page: "78rem",
+        texte: "40rem",
       },
     },
   },

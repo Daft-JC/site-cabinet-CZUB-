@@ -9,37 +9,17 @@ export default function AppleIcon() {
     (
       <div
         style={{
-          background: "#1A1A1A",
+          background: "#1E4A6E",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: "28px",
           position: "relative",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            inset: "4px",
-            borderRadius: "24px",
-            border: "2px solid rgba(184,134,11,0.35)",
-            display: "flex",
-          }}
-        />
-        <span
-          style={{
-            color: "#B8860B",
-            fontSize: "90px",
-            fontWeight: "bold",
-            letterSpacing: "-2px",
-            fontFamily: "Georgia, serif",
-            lineHeight: 1,
-          }}
-        >
-          JC
-        </span>
+        <div style={{ position: "absolute", left: 38, top: 40, width: 10, height: 100, background: "#C08A3E", display: "flex" }} />
+        <span style={{ color: "#FBF9F4", fontSize: 104, fontFamily: "Georgia, serif", marginLeft: 36 }}>C</span>
       </div>
     ),
     { ...size }

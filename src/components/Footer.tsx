@@ -1,65 +1,58 @@
 import Link from "next/link";
-import { SITE_CONFIG, EXPERTISES } from "@/lib/constants";
+import { SITE_CONFIG, EXPERTISES, OPTIONS } from "@/lib/constants";
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
+  const c = SITE_CONFIG.contact;
   return (
-    <footer className="px-6 md:px-[60px] py-12 md:py-[60px] border-t border-or/10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-        {/* Coordonnées (nom, adresse, téléphone identiques à la fiche Google) */}
-        <div>
-          <span className="block font-serif text-base tracking-[0.15em] uppercase text-ivoire mb-4">
-            {SITE_CONFIG.fullName}
-          </span>
-          <address className="not-italic text-[0.75rem] font-light text-gris-clair leading-[1.9]">
-            Avocat au {SITE_CONFIG.barreau}
+    <footer className="bg-encre pb-24 text-[#D9DEE3] md:pb-0 [&_a]:text-[#D9DEE3] [&_a:hover]:text-white">
+      <div className="wrap grid gap-12 py-16 md:grid-cols-12">
+        <div className="md:col-span-4">
+          <p className="font-serif text-2xl text-white">{SITE_CONFIG.fullName}</p>
+          <p className="mt-2">Avocat au {SITE_CONFIG.barreau}</p>
+          <address className="mt-6 not-italic leading-relaxed">
+            {c.street}
             <br />
-            {SITE_CONFIG.contact.address}
+            {c.building}
             <br />
-            13500 {SITE_CONFIG.location.city}
-            <br />
-            <a href={SITE_CONFIG.contact.phoneHref} className="text-gris-clair no-underline hover:text-or">
-              {SITE_CONFIG.contact.phone}
+            {c.postalCode} {SITE_CONFIG.location.city}
+          </address>
+          <p className="mt-4">
+            <a href={c.phoneHref} className="text-lg font-medium">
+              {c.phone}
             </a>
             <br />
-            Du lundi au vendredi, sur rendez-vous
-          </address>
+            <a href={c.emailHref}>{c.email}</a>
+          </p>
+          <p className="mt-4 text-[0.95rem]">{OPTIONS.horairesTexte}</p>
         </div>
 
-        {/* Domaines */}
-        <nav aria-label="Domaines d'intervention" className="md:col-span-2">
-          <span className="block text-[0.6rem] tracking-[0.2em] uppercase text-or mb-4">
-            Domaines d&apos;intervention
-          </span>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 list-none">
-            {EXPERTISES.map((exp) => (
-              <li key={exp.slug}>
-                <Link
-                  href={`/expertises/${exp.slug}`}
-                  className="text-[0.75rem] font-light text-gris-clair no-underline hover:text-or transition-colors duration-300"
-                >
-                  {exp.title}
-                </Link>
+        <nav aria-label="Domaines d'intervention" className="md:col-span-5">
+          <p className="font-serif text-lg text-white">Domaines d&apos;intervention</p>
+          <ul className="mt-4 grid gap-x-6 gap-y-2 text-[0.95rem] sm:grid-cols-2">
+            {EXPERTISES.map((e) => (
+              <li key={e.slug}>
+                <Link href={`/expertises/${e.slug}`}>{e.title}</Link>
               </li>
             ))}
           </ul>
         </nav>
-      </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-gris-sombre/40">
-        <span className="text-[0.7rem] text-gris tracking-wide">
-          Avocat à {SITE_CONFIG.location.city} — interventions sur toute la France
-        </span>
-        <div className="text-[0.65rem] text-gris tracking-wide text-center md:text-right">
-          © {year} {SITE_CONFIG.name} — Tous droits réservés —{" "}
-          <Link
-            href="/mentions-legales"
-            className="text-gris-clair no-underline hover:text-or transition-colors duration-300"
-          >
-            Mentions légales
-          </Link>
-        </div>
+        <nav aria-label="Le site" className="md:col-span-3">
+          <p className="font-serif text-lg text-white">Le site</p>
+          <ul className="mt-4 space-y-2 text-[0.95rem]">
+            <li><Link href="/cabinet">Maître Joseph Czub</Link></li>
+            <li><Link href="/presse">Presse</Link></li>
+            <li><Link href="/contact">Contact et accès</Link></li>
+            <li><Link href="/mentions-legales">Mentions légales</Link></li>
+            <li><Link href="/politique-de-confidentialite">Politique de confidentialité</Link></li>
+          </ul>
+        </nav>
+      </div>
+      <div className="border-t border-white/15">
+        <p className="wrap py-6 text-[0.875rem] text-[#B5BDC6]">
+          © {new Date().getFullYear()} {SITE_CONFIG.fullName}. Les informations publiées sur ce site sont
+          générales : elles ne constituent pas une consultation juridique.
+        </p>
       </div>
     </footer>
   );

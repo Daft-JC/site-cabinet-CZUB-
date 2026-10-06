@@ -19,19 +19,45 @@ export const SITE_CONFIG = {
   contact: {
     phone: "04 42 40 36 65",
     phoneHref: "tel:+33442403665",
+    phoneIntl: "+33442403665",
     email: "czubjoseph@hotmail.com",
     emailHref: "mailto:czubjoseph@hotmail.com",
     address: "1 Boulevard du Président Allende, L'Espace Vénitien",
+    street: "1 Boulevard du Président Allende",
+    building: "L'Espace Vénitien",
+    postalCode: "13500",
     addressFull: "1 Boulevard du Président Allende, L'Espace Vénitien, 13500 Martigues",
   },
+  geo: { lat: 43.408875, lng: 5.056345 },
+  siret: "395 006 984 00045",
 } as const;
 
+// ─────────────────────────────────────────────────────────────────────────────
+// RÉGLAGES À CONFIRMER PAR LE CABINET
+// Rien ici n'est affiché tant que ce n'est pas renseigné / activé.
+// ─────────────────────────────────────────────────────────────────────────────
+export const OPTIONS = {
+  // Texte affiché pour les horaires (confirmé : « du lundi au vendredi, sur rendez-vous »).
+  horairesTexte: "Du lundi au vendredi, sur rendez-vous",
+  // Heures déclarées à Google dans les données structurées. ⚠ 09:00–18:00
+  // provient de l'ancienne version du site : à faire confirmer et à aligner
+  // avec la fiche Google Business Profile.
+  horairesSchema: { jours: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], ouverture: "09:00", fermeture: "18:00" },
+  // Passer à true UNIQUEMENT si le cabinet reçoit aussi par téléphone / visio.
+  consultationADistance: false,
+  // Lien de prise de rendez-vous en ligne (ex. Calendly, Consultation.avocat.fr…).
+  // Laisser vide tant qu'il n'existe pas : le site renvoie alors vers l'appel
+  // et le formulaire.
+  rdvEnLigneUrl: "",
+  // Profils officiels (fiche Google, LinkedIn, annuaire du barreau…) pour sameAs.
+  profils: [] as string[],
+};
+
 export const NAV_LINKS = [
-  { label: "Accueil", href: "/" },
-  { label: "Le Cabinet", href: "/cabinet" },
   { label: "Domaines d'intervention", href: "/expertises" },
-  { label: "Presse & Médias", href: "/presse" },
-  { label: "Contact", href: "/contact" },
+  { label: "Maître Czub", href: "/cabinet" },
+  { label: "Presse", href: "/presse" },
+  { label: "Contact et accès", href: "/contact" },
 ] as const;
 
 export const ARTICLES_PRESSE: {
@@ -159,7 +185,7 @@ export const EXPERTISES = [
     title: "Photovoltaïque & Énergies Renouvelables",
     shortDesc: "Défense des victimes d'arnaques EnR",
     description:
-      "Vous êtes victimes d'arnaques au photovoltaïque ou énergies renouvelables (pompes à chaleur, ballons thermodynamiques, système de chauffage, isolation…) le cabinet CZUB dispose d'une expertise approfondie en la matière et intervient sur toute LA FRANCE, aux fins notamment d'annulation ou résolution du contrat principal et du contrat affecté de crédit.\nCes litiges naissent généralement à la suite d'un démarchage à domicile effectué par un commercial bien rôdé, promettant sans étude technique préalable et sérieuse, et sans devis préalable, un rendement important ou des économies substantielles sur les factures d'électricité (autoconsommation ou autoconsommation avec revente du surplus), et donc un temps de retour sur investissement très rapide, et au demeurant avec diverses subventions ou aides.\nLe temps de retour sur investissement est souvent désastreux, le service après-vente inexistant ou presque (sachant que la durée de vie de ces sociétés est rarement longue) et les victimes sont engagés sur des crédits prohibitifs allant jusqu'à 15 ans, connaissant au surplus des dysfonctionnements et des infiltrations en toiture.\nLes experts spécialisés mandatés, si besoin, démontrent très souvent les multiples manquements de ces prétendus professionnels, le non-respect des règles de l'art et des normes, pouvant parfois entrainer un danger pour la sécurité des personnes, un manquement au devoir de conseil sur les questions de rendement et de retour sur investissement et même des manquements aux règles d'urbanisme.\nLe cabinet CZUB obtient désormais depuis près de 20 ans en cette matière des jurisprudences très favorables aux consommateurs et victimes de ces arnaques aux énergies de renouvelables devant les juridictions de première instance, les Cours d'appel et même la Cour de cassation.\nS'agissant d'un domaine très technique, il est parfois opportun de recourir également aux services d'un expert spécialisé et le cabinet CZUB collabore si besoin avec un réseau d'expert compétents.\nDes actions sont parfois engagées par l'UFC QUE CHOISIR, dans l'intérêt collectif des consommateurs.",
+      "Vous êtes victimes d'arnaques au photovoltaïque ou énergies renouvelables (pompes à chaleur, ballons thermodynamiques, système de chauffage, isolation…) le cabinet CZUB, qui traite ces dossiers depuis près de 20 ans, intervient sur toute LA FRANCE, aux fins notamment d'annulation ou résolution du contrat principal et du contrat affecté de crédit.\nCes litiges naissent généralement à la suite d'un démarchage à domicile effectué par un commercial bien rôdé, promettant sans étude technique préalable et sérieuse, et sans devis préalable, un rendement important ou des économies substantielles sur les factures d'électricité (autoconsommation ou autoconsommation avec revente du surplus), et donc un temps de retour sur investissement très rapide, et au demeurant avec diverses subventions ou aides.\nLe temps de retour sur investissement est souvent désastreux, le service après-vente inexistant ou presque (sachant que la durée de vie de ces sociétés est rarement longue) et les victimes sont engagées sur des crédits prohibitifs allant jusqu'à 15 ans, connaissant au surplus des dysfonctionnements et des infiltrations en toiture.\nLes experts spécialisés mandatés, si besoin, démontrent très souvent les multiples manquements de ces prétendus professionnels, le non-respect des règles de l'art et des normes, pouvant parfois entrainer un danger pour la sécurité des personnes, un manquement au devoir de conseil sur les questions de rendement et de retour sur investissement et même des manquements aux règles d'urbanisme.\nDepuis près de 20 ans, le cabinet CZUB a obtenu dans cette matière de nombreuses décisions favorables aux consommateurs et victimes de ces arnaques aux énergies renouvelables devant les juridictions de première instance, les Cours d'appel et même la Cour de cassation.\nS'agissant d'un domaine très technique, il est parfois opportun de recourir également aux services d'un expert spécialisé et le cabinet CZUB collabore si besoin avec un réseau d'experts compétents.\nDes actions sont parfois engagées par l'UFC QUE CHOISIR, dans l'intérêt collectif des consommateurs.",
     details: [
       "Annulation ou résolution du contrat d'installation",
       "Résiliation du crédit affecté (organismes de financement)",
@@ -200,7 +226,7 @@ export const EXPERTISES = [
     title: "Arnaques & Fraudes Bancaires",
     shortDesc: "Remboursement & responsabilité des banques",
     description:
-      "Les fraudeurs ont toujours un coup d'avance sur les dispositifs de sécurité mis en place par les banques, qui ne sont pas infaillibles.\nIls contournent les dispositifs de sécurité, et l'authentification forte.\nCela peut arriver à tout le monde, y compris des personnes prétendument « averties »\nLes techniques de fraude sont de plus en plus élaborées, notamment : SPOOFING (fraude au faux conseiller bancaire), PHISHING (hameçonnage), QUISHING (arnaque aux QR codes), FAUX RIB, SIM SWAPPING, LOGICIELS MALVEILLANTS.\nSi vous êtes victimes d'arnaques à la carte bancaire ou de ces différentes techniques de fraude, de multiples solutions existent et le code monétaire et financier prévoit dans certaines hypothèses une obligation de remboursement de la banque, notamment si la banque ne démontre pas la négligence grave de l'utilisateur.\nLa jurisprudence qui est désormais bien établie, n'hésite pas à sanctionner la banque.\nLe cabinet CZUB a obtenu de très nombreuses jurisprudences favorables aux victimes.",
+      "Les fraudeurs ont toujours un coup d'avance sur les dispositifs de sécurité mis en place par les banques, qui ne sont pas infaillibles.\nIls contournent les dispositifs de sécurité, et l'authentification forte.\nCela peut arriver à tout le monde, y compris des personnes prétendument « averties »\nLes techniques de fraude sont de plus en plus élaborées, notamment : SPOOFING (fraude au faux conseiller bancaire), PHISHING (hameçonnage), QUISHING (arnaque aux QR codes), FAUX RIB, SIM SWAPPING, LOGICIELS MALVEILLANTS.\nSi vous êtes victimes d'arnaques à la carte bancaire ou de ces différentes techniques de fraude, de multiples solutions existent et le code monétaire et financier prévoit dans certaines hypothèses une obligation de remboursement de la banque, notamment si la banque ne démontre pas la négligence grave de l'utilisateur.\nLa jurisprudence qui est désormais bien établie, n'hésite pas à sanctionner la banque.\nLe cabinet CZUB a obtenu de nombreuses décisions favorables aux victimes. Chaque dossier reste un cas particulier.",
     details: [
       "Spoofing — fraude au faux conseiller bancaire",
       "Phishing (hameçonnage par mail ou SMS)",
@@ -313,7 +339,7 @@ export const EXPERTISES = [
     title: "Divorces Amiables",
     shortDesc: "Divorce par consentement mutuel",
     description:
-      "Maître Czub accompagne les couples souhaitant divorcer à l'amiable dans le cadre de la procédure de divorce par consentement mutuel, avec toute la discrétion et l'efficacité que la situation requiert.",
+      "Maître Czub accompagne les couples souhaitant divorcer à l'amiable dans le cadre de la procédure de divorce par consentement mutuel, avec la discrétion que la situation requiert.",
     details: [
       "Divorce par consentement mutuel",
       "Convention de divorce rédigée par l'avocat",

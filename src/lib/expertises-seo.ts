@@ -23,11 +23,11 @@ export const EXPERTISES_SEO: Record<string, ExpertiseSeo> = {
   "photovoltaique-energies-renouvelables": {
     metaTitle: "Avocat arnaque photovoltaïque et panneaux solaires",
     metaDescription:
-      "Victime d'une arnaque aux panneaux solaires, pompe à chaleur ou isolation ? Maître Joseph Czub, avocat à Martigues, obtient l'annulation du contrat et du crédit affecté. Toute la France.",
+      "Victime d'une arnaque aux panneaux solaires, pompe à chaleur ou isolation ? Maître Joseph Czub, avocat à Martigues, agit pour l'annulation du contrat et du crédit affecté, partout en France.",
     h1: "Avocat arnaque photovoltaïque",
     h1Highlight: "et énergies renouvelables",
     intro:
-      "Panneaux solaires vendus après un démarchage à domicile, rendement promis jamais atteint, crédit sur 10 ou 15 ans : depuis près de 20 ans, le cabinet défend les victimes d'arnaques aux énergies renouvelables partout en France et obtient l'annulation des contrats et des crédits affectés.",
+      "Panneaux solaires vendus après un démarchage à domicile, rendement promis jamais atteint, crédit sur 10 ou 15 ans : depuis près de 20 ans, le cabinet défend les victimes d'arnaques aux énergies renouvelables partout en France et agit pour faire annuler les contrats et les crédits affectés.",
     guideTitle: "Arnaque aux panneaux solaires : vos recours",
     guide: [
       {
@@ -72,7 +72,7 @@ export const EXPERTISES_SEO: Record<string, ExpertiseSeo> = {
   "fraudes-bancaires": {
     metaTitle: "Avocat fraude bancaire : spoofing, phishing, faux conseiller",
     metaDescription:
-      "Victime d'un faux conseiller bancaire (spoofing), phishing, SIM swapping ou faux RIB ? Maître Czub, avocat à Martigues, obtient le remboursement par votre banque. Toute la France.",
+      "Victime d'un faux conseiller bancaire (spoofing), phishing, SIM swapping ou faux RIB ? Maître Czub, avocat à Martigues, agit pour obtenir le remboursement par votre banque, partout en France.",
     h1: "Avocat fraude bancaire :",
     h1Highlight: "spoofing, phishing, faux RIB",
     intro:
@@ -99,7 +99,7 @@ export const EXPERTISES_SEO: Record<string, ExpertiseSeo> = {
     faq: [
       {
         q: "Ma banque refuse de me rembourser après un appel d'un faux conseiller : que faire ?",
-        a: "Contestez le refus par écrit, en rappelant que la charge de la preuve de la négligence grave pèse sur la banque. Si elle maintient son refus, une action en justice peut être engagée. Maître Czub a obtenu de très nombreuses décisions favorables aux victimes de spoofing.",
+        a: "Contestez le refus par écrit, en rappelant que la charge de la preuve de la négligence grave pèse sur la banque. Si elle maintient son refus, une action en justice peut être engagée. Maître Czub a obtenu de nombreuses décisions favorables à des victimes de spoofing ; chaque dossier reste toutefois un cas particulier.",
       },
       {
         q: "J'ai validé l'opération sur mon application : suis-je encore protégé ?",
@@ -364,7 +364,7 @@ export const EXPERTISES_SEO: Record<string, ExpertiseSeo> = {
   "divorce-amiable": {
     metaTitle: "Avocat divorce amiable par consentement mutuel à Martigues",
     metaDescription:
-      "Divorce par consentement mutuel à Martigues : Maître Joseph Czub rédige la convention de divorce et vous accompagne avec discrétion et efficacité.",
+      "Divorce par consentement mutuel à Martigues : Maître Joseph Czub rédige la convention de divorce et vous accompagne avec discrétion.",
     h1: "Avocat divorce",
     h1Highlight: "amiable",
     intro:

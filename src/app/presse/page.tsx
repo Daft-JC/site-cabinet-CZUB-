@@ -1,210 +1,89 @@
-import type { Metadata } from "next";
-import { ARTICLES_PRESSE, OG_IMAGE } from "@/lib/constants";
-import PageHero from "@/components/PageHero";
-import SectionDivider from "@/components/SectionDivider";
-import RevealOnScroll from "@/components/RevealOnScroll";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, ArrowRight, CalendarDays, Newspaper } from "lucide-react";
+import { ARTICLES_PRESSE, SITE_CONFIG } from "@/lib/constants";
+import { pageMetadata, breadcrumbJsonLd, graph } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import EnTete from "@/components/EnTete";
+import { IconExternal } from "@/components/Icons";
 
-const SITE_URL = "https://www.cabinet-czub.fr";
-
-export const metadata: Metadata = {
-  title: "Presse & médias — Maître Joseph Czub dans les médias",
+export const metadata = pageMetadata({
+  title: "Presse : Maître Joseph Czub dans les médias",
   description:
-    "Retrouvez les articles de presse, publications et interventions médiatiques de Maître Joseph Czub, avocat à Martigues. Le Monde, La Provence, Midi Libre — arnaques photovoltaïques, fraudes bancaires, droit de la consommation.",
-  keywords: [
-    "avocat martigues presse",
-    "maître czub médias",
-    "avocat photovoltaïque presse",
-    "arnaque panneaux solaires presse",
-    "fraudes bancaires avocat martigues",
-    "UFC Que Choisir martigues",
-    "avocat consommateur martigues médias",
-    "cabinet czub publications",
-  ],
-  alternates: {
-    canonical: `${SITE_URL}/presse`,
-  },
-  openGraph: {
-    title:
-      "Presse & Médias — Cabinet Maître Joseph Czub | Avocat Martigues",
-    description:
-      "Articles de presse et interventions médiatiques de Maître Joseph Czub, avocat à Martigues intervenant en arnaques photovoltaïques, fraudes bancaires et droit de la consommation.",
-    type: "website",
-    locale: "fr_FR",
-    siteName: "Cabinet Maître Joseph Czub",
-    images: [OG_IMAGE],
-    url: `${SITE_URL}/presse`,
-  },
-};
+    "Articles du Monde, de La Provence, de Midi Libre et de mesinfos.fr consacrés à des affaires suivies par Maître Joseph Czub, avocat à Martigues : photovoltaïque, fraudes bancaires, consommation.",
+  path: "/presse",
+});
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("fr-FR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
+const crumbs = [{ name: "Presse", path: "/presse" }];
+
+const date = (d: string) =>
+  new Date(d).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 
 export default function PressePage() {
   return (
     <>
-      <PageHero
-        tag="Presse & Médias"
-        title="Maître Czub dans"
-        highlight="les médias"
-        subtitle="Retrouvez ici les articles, publications et interventions médiatiques de Maître Joseph Czub dans la presse spécialisée et généraliste."
+      <JsonLd data={graph(breadcrumbJsonLd(crumbs))} />
+      <EnTete
+        crumbs={crumbs}
+        titre="Maître Czub dans la presse"
+        chapeau="Des affaires suivies par le cabinet, racontées par les journalistes, de 2008 à aujourd'hui. Chaque affaire est particulière : ces articles ne préjugent pas de l'issue d'un autre dossier."
       />
 
-      <SectionDivider />
-
-      {/* ── INTRO ── */}
-      <section className="py-20 md:py-28 px-6 md:px-[60px]">
-        <div className="max-w-3xl">
-          <RevealOnScroll>
-            <div className="section-label mb-8">Publications</div>
-          </RevealOnScroll>
-          <RevealOnScroll delay={150}>
-            <h2 className="section-heading mb-6">
-              Expertise reconnue,<br />
-              voix <em>écoutée</em>
-            </h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={300}>
-            <p className="font-sans text-[0.9rem] font-light text-gris-clair leading-[1.9]">
-              Régulièrement sollicité par la presse juridique et économique, Maître Joseph Czub
-              partage son analyse sur les évolutions du droit de l'énergie, du droit des affaires
-              et de la protection des consommateurs. Ces interventions témoignent d'un engagement
-              constant pour la diffusion du droit au-delà du prétoire.
-            </p>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ── ARTICLES ── */}
-      <section className="py-20 md:py-28 px-6 md:px-[60px]">
-        {ARTICLES_PRESSE.length === 0 ? (
-          <RevealOnScroll>
-            <div className="text-center py-24 border border-gris-sombre/40">
-              <Newspaper className="w-8 h-8 text-or mx-auto mb-6" strokeWidth={1.2} />
-              <p className="font-serif text-xl text-ivoire mb-2">Articles à venir</p>
-              <p className="text-[0.85rem] font-light text-gris-clair">
-                Cette section sera bientôt alimentée.
-              </p>
-            </div>
-          </RevealOnScroll>
-        ) : (
-          <div className="space-y-0.5">
-            {ARTICLES_PRESSE.map((article, i) => (
-              <RevealOnScroll key={article.id} delay={i * 100}>
-                <article className="group relative border border-transparent hover:border-or/15 bg-transparent hover:bg-anthracite transition-all duration-500 p-8 md:p-10">
-
-                  {/* Ligne décorative gauche */}
-                  <div className="absolute left-0 top-0 bottom-0 w-px bg-or/0 group-hover:bg-or/40 transition-colors duration-500" />
-
-                  <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-
-                    {/* Date + Source */}
-                    <div className="flex-shrink-0 md:w-48">
-                      <div className="flex items-center gap-2 text-[0.65rem] tracking-[0.2em] uppercase text-or mb-2">
-                        <CalendarDays className="w-3 h-3" strokeWidth={1.5} />
-                        {formatDate(article.date)}
-                      </div>
-                      <div className="inline-block text-[0.6rem] tracking-[0.18em] uppercase text-gris border border-gris-sombre px-3 py-1">
-                        {article.source}
-                      </div>
-                    </div>
-
-                    {/* Contenu */}
-                    <div className="flex-1">
-                      <div className="text-[0.6rem] tracking-[0.22em] uppercase text-or/70 mb-3">
-                        {article.category}
-                      </div>
-                      <h3 className="font-serif text-[1.25rem] md:text-[1.45rem] font-light text-ivoire leading-snug mb-4 group-hover:text-or transition-colors duration-300">
-                        {article.title}
-                      </h3>
-                      <p className="text-[0.85rem] font-light text-gris-clair leading-[1.85]">
-                        {article.excerpt}
-                      </p>
-
-                      {article.url && (
-                        article.url.startsWith("/") ? (
-                          <Link
-                            href={article.url}
-                            className="inline-flex items-center gap-2 mt-5 text-[0.65rem] tracking-[0.2em] uppercase text-or no-underline hover:text-or-clair transition-colors duration-300"
-                          >
-                            Lire l&apos;article
-                            <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
-                          </Link>
-                        ) : (
-                          <a
-                            href={article.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 mt-5 text-[0.65rem] tracking-[0.2em] uppercase text-or no-underline hover:text-or-clair transition-colors duration-300"
-                          >
-                            Lire l&apos;article
-                            <ExternalLink className="w-3 h-3" strokeWidth={1.5} />
-                          </a>
-                        )
-                      )}
-                    </div>
-
-                    {/* Photo optionnelle */}
-                    {article.image && (
-                      <div className="flex-shrink-0 w-full md:w-[200px] lg:w-[260px]">
-                        <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                          <Image
-                            src={article.image}
-                            alt={article.title}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 260px"
-                          />
-                        </div>
-                      </div>
-                    )}
-
+      <div className="wrap py-12 md:py-16">
+        <ol className="divide-y divide-trait border-y border-trait">
+          {ARTICLES_PRESSE.map((a) => {
+            const interne = a.url?.startsWith("/");
+            const lien = interne ? (
+              <Link href={a.url!} className="text-encre">
+                {a.title}
+              </Link>
+            ) : (
+              <a href={a.url} target="_blank" rel="noopener noreferrer" className="text-encre">
+                {a.title}
+                <IconExternal className="ml-2 inline h-4 w-4 align-baseline text-sourdine" />
+                <span className="sr-only"> (nouvel onglet, {a.source})</span>
+              </a>
+            );
+            return (
+              <li key={a.id}>
+                <article className="grid gap-4 py-8 md:grid-cols-12 md:gap-10">
+                  <div className="md:col-span-3">
+                    <p className="font-medium">{a.source}</p>
+                    <p className="text-[0.95rem] text-sourdine">
+                      <time dateTime={a.date}>{date(a.date)}</time>
+                    </p>
                   </div>
+                  <div className={a.image ? "md:col-span-6" : "md:col-span-9"}>
+                    <p className="text-[0.95rem] text-ocre-texte">{a.category}</p>
+                    <h2 className="t-h3 mt-1">{lien}</h2>
+                    <p className="mt-3 max-w-texte text-sourdine">{a.excerpt}</p>
+                  </div>
+                  {a.image && (
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[3px] md:col-span-3">
+                      <Image
+                        src={a.image}
+                        alt=""
+                        fill
+                        sizes="(min-width: 768px) 22vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
                 </article>
+              </li>
+            );
+          })}
+        </ol>
 
-                {/* Séparateur entre articles */}
-                {i < ARTICLES_PRESSE.length - 1 && (
-                  <div className="h-px bg-gris-sombre/40 mx-0" />
-                )}
-              </RevealOnScroll>
-            ))}
-          </div>
-        )}
-      </section>
-
-      <SectionDivider />
-
-      {/* ── CTA contact presse ── */}
-      <section className="py-20 md:py-28 px-6 md:px-[60px]">
-        <RevealOnScroll>
-          <div className="border border-or/15 p-10 md:p-16 text-center max-w-2xl mx-auto">
-            <div className="section-label justify-center mb-8">Contact presse</div>
-            <h2 className="font-serif text-[clamp(1.6rem,2.5vw,2.2rem)] font-light text-ivoire mb-6 leading-snug">
-              Une demande d&apos;interview<br />
-              ou de <em>commentaire</em> ?
-            </h2>
-            <p className="text-[0.85rem] font-light text-gris-clair leading-[1.85] mb-8">
-              Maître Joseph Czub est disponible pour toute sollicitation journalistique,
-              contribution à des revues juridiques ou participation à des conférences.
-            </p>
-            <a
-              href={`mailto:czubjoseph@hotmail.com?subject=Demande presse`}
-              className="inline-flex items-center gap-3 text-[0.7rem] font-medium tracking-[0.2em] uppercase text-noir bg-or no-underline px-9 py-4 transition-all duration-400 hover:bg-or-clair"
-            >
-              Nous contacter
-            </a>
-          </div>
-        </RevealOnScroll>
-      </section>
+        <section aria-labelledby="journalistes" className="mt-16 max-w-texte">
+          <h2 id="journalistes" className="t-h3">
+            Vous êtes journaliste ?
+          </h2>
+          <p className="mt-3 text-sourdine">
+            Pour une demande d&apos;interview ou de commentaire, écrivez à{" "}
+            <a href={`${SITE_CONFIG.contact.emailHref}?subject=Demande%20presse`}>{SITE_CONFIG.contact.email}</a>.
+          </p>
+        </section>
+      </div>
     </>
   );
 }

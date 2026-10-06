@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { IconRetour } from "@/components/Icons";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.cabinet-czub.fr/presse/sos-conso-eolienne" },
@@ -12,44 +12,44 @@ export const metadata: Metadata = {
 
 export default function ArticleSosConsoPage() {
   return (
-    <article className="pt-36 pb-24 px-6 md:px-[60px]">
+    <article className="wrap py-10 md:py-16">
       {/* Retour */}
       <Link
         href="/presse"
-        className="inline-flex items-center gap-2 text-[0.65rem] tracking-[0.2em] uppercase text-gris no-underline hover:text-or transition-colors duration-300 mb-12"
+        className="inline-flex items-center gap-2 text-[0.95rem] text-sourdine mb-10"
       >
-        <ArrowLeft className="w-3 h-3" strokeWidth={1.5} />
+        <IconRetour />
         Presse &amp; Médias
       </Link>
 
-      <div className="max-w-3xl">
+      <div className="max-w-[42rem]">
         {/* Méta */}
         <div className="flex flex-wrap items-center gap-4 mb-8">
-          <span className="text-[0.6rem] tracking-[0.18em] uppercase text-gris border border-gris-sombre px-3 py-1">
+          <span className="rounded-full bg-enduit px-3 py-1 text-[0.95rem] font-medium">
             Le Monde — SOS Conso
           </span>
-          <span className="text-[0.65rem] tracking-[0.2em] uppercase text-or">
+          <span className="text-[0.95rem] text-ocre-texte">
             Octobre 2013
           </span>
-          <span className="text-[0.6rem] tracking-[0.2em] uppercase text-or/70">
+          <span className="text-[0.95rem] text-sourdine">
             Arnaques photovoltaïque
           </span>
         </div>
 
         {/* Titre */}
-        <h1 className="font-serif text-[clamp(1.8rem,3.5vw,2.8rem)] font-light text-ivoire leading-snug mb-4">
+        <h1 className="t-h2 mb-4">
           Comme une éolienne sans ailes&nbsp;!
         </h1>
-        <p className="font-sans text-[0.85rem] font-light text-gris-clair italic mb-4">
+        <p className="t-lead italic text-sourdine mb-4">
           Par Raphaële Rivais — Chronique SOS CONSO
         </p>
-        <p className="font-sans text-[0.85rem] font-light text-gris-clair italic mb-12">
+        <p className="t-lead italic text-sourdine mb-12">
           Panneaux photovoltaïques, éoliennes de pignon… les rendements peuvent être surévalués
         </p>
 
         {/* Photo */}
         <div className="mb-12">
-          <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+          <div className="relative w-full overflow-hidden rounded-[3px]" style={{ aspectRatio: "16/9" }}>
             <Image
               src="/panneau-solaire.jpg"
               alt="Panneaux solaires photovoltaïques"
@@ -62,7 +62,7 @@ export default function ArticleSosConsoPage() {
         </div>
 
         {/* Corps de l'article */}
-        <div className="font-sans text-[0.9rem] font-light text-gris-clair leading-[1.9] space-y-6">
+        <div className="text-[1.0625rem] leading-[1.75] space-y-6">
           <p>
             Si vous habitez une maison individuelle, vous avez sûrement été démarché par une
             société proposant des panneaux photovoltaïques ou des éoliennes de pignon&nbsp;: dans
@@ -81,7 +81,7 @@ export default function ArticleSosConsoPage() {
             de cause.
           </p>
 
-          <h2 className="font-serif text-[1.3rem] font-light text-ivoire mt-10">
+          <h2 className="t-h3 mt-10">
             L&apos;affaire Lemichel
           </h2>
 
@@ -126,12 +126,12 @@ export default function ArticleSosConsoPage() {
             ordonne aux époux de rembourser les 28&nbsp;500&nbsp;euros, à la place de la CESP.
           </p>
 
-          <h2 className="font-serif text-[1.3rem] font-light text-ivoire mt-10">
+          <h2 className="t-h3 mt-10">
             Liquidation judiciaire
           </h2>
 
-          <blockquote className="border-l-2 border-or pl-6 py-2">
-            <p className="font-serif text-[1rem] italic text-ivoire leading-relaxed">
+          <blockquote className="border-l-[3px] border-ocre pl-6 py-1">
+            <p className="font-serif text-[1.3rem] italic leading-snug text-encre">
               « Il faut que la plus haute juridiction tranche ce point de droit. En effet,
               certaines cours considèrent que le prêteur ne commet pas de faute en libérant des
               fonds sur ordre du client&nbsp;; d&apos;autres, au contraire, estiment
@@ -139,7 +139,7 @@ export default function ArticleSosConsoPage() {
               signature du bon, l&apos;installation ne peut, matériellement, avoir été raccordée,
               les branchements pouvant prendre des semaines. »
             </p>
-            <cite className="block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-or not-italic">
+            <cite className="block mt-3 text-[0.95rem] text-sourdine not-italic">
               M<sup>e</sup> Hanocq, avocate des Lemichel
             </cite>
           </blockquote>
@@ -159,13 +159,13 @@ export default function ArticleSosConsoPage() {
             qu&apos;elle n&apos;en fournit.
           </p>
 
-          <blockquote className="border-l-2 border-or pl-6 py-2">
-            <p className="font-serif text-[1rem] italic text-ivoire leading-relaxed">
+          <blockquote className="border-l-[3px] border-ocre pl-6 py-1">
+            <p className="font-serif text-[1.3rem] italic leading-snug text-encre">
               « Normal&nbsp;! Les éoliennes de pignon ont un rendement limité, en raison de leur
               faible altitude ainsi que des turbulences générées par l&apos;habitat auquel elles
               sont rattachées. »
             </p>
-            <cite className="block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-or not-italic">
+            <cite className="block mt-3 text-[0.95rem] text-sourdine not-italic">
               Jean-Pierre Brissaud, expert indépendant en énergies renouvelables
             </cite>
           </blockquote>
@@ -183,12 +183,12 @@ export default function ArticleSosConsoPage() {
             associé&nbsp;», estiment-ils.
           </p>
 
-          <blockquote className="border-l-2 border-or pl-6 py-2">
-            <p className="font-serif text-[1rem] italic text-ivoire leading-relaxed">
+          <blockquote className="border-l-[3px] border-ocre pl-6 py-1">
+            <p className="font-serif text-[1.3rem] italic leading-snug text-encre">
               « Puisqu&apos;elle a financé un objet sans existence légale, son prêt doit être
               annulé. »
             </p>
-            <cite className="block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-or not-italic">
+            <cite className="block mt-3 text-[0.95rem] text-sourdine not-italic">
               M. Brissaud, expert en énergies renouvelables
             </cite>
           </blockquote>
@@ -203,14 +203,14 @@ export default function ArticleSosConsoPage() {
         </div>
 
         {/* Signature */}
-        <div className="mt-12 pt-8 border-t border-gris-sombre/40">
-          <span className="text-[0.7rem] tracking-[0.15em] uppercase text-gris">
+        <div className="mt-12 pt-8 border-t border-trait">
+          <span className="text-[0.95rem] text-sourdine">
             Raphaële Rivais — Le Monde / SOS Conso — 11 octobre 2013
           </span>
           <div className="mt-2">
             <a
               href="http://sosconsos.blog.lemonde.fr"
-              className="text-[0.65rem] tracking-[0.15em] text-or/70 hover:text-or transition-colors duration-300"
+              className="text-[0.95rem]"
               target="_blank"
               rel="noopener noreferrer"
             >

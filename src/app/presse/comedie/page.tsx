@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { IconRetour } from "@/components/Icons";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.cabinet-czub.fr/presse/comedie" },
@@ -12,41 +12,41 @@ export const metadata: Metadata = {
 
 export default function ArticleComediePage() {
   return (
-    <article className="pt-36 pb-24 px-6 md:px-[60px]">
+    <article className="wrap py-10 md:py-16">
       {/* Retour */}
       <Link
         href="/presse"
-        className="inline-flex items-center gap-2 text-[0.65rem] tracking-[0.2em] uppercase text-gris no-underline hover:text-or transition-colors duration-300 mb-12"
+        className="inline-flex items-center gap-2 text-[0.95rem] text-sourdine mb-10"
       >
-        <ArrowLeft className="w-3 h-3" strokeWidth={1.5} />
+        <IconRetour />
         Presse &amp; Médias
       </Link>
 
-      <div className="max-w-3xl">
+      <div className="max-w-[42rem]">
         {/* Méta */}
         <div className="flex flex-wrap items-center gap-4 mb-8">
-          <span className="text-[0.6rem] tracking-[0.18em] uppercase text-gris border border-gris-sombre px-3 py-1">
+          <span className="rounded-full bg-enduit px-3 py-1 text-[0.95rem] font-medium">
             La Provence
           </span>
-          <span className="text-[0.65rem] tracking-[0.2em] uppercase text-or">
+          <span className="text-[0.95rem] text-ocre-texte">
             Mars 2011
           </span>
-          <span className="text-[0.6rem] tracking-[0.2em] uppercase text-or/70">
+          <span className="text-[0.95rem] text-sourdine">
             Construction &amp; Immobilier
           </span>
         </div>
 
         {/* Titre */}
-        <h1 className="font-serif text-[clamp(1.8rem,3.5vw,2.8rem)] font-light text-ivoire leading-snug mb-4">
+        <h1 className="t-h2 mb-4">
           La fin du cauchemar pour les propriétaires du Comédia&nbsp;?
         </h1>
-        <p className="font-sans text-[0.85rem] font-light text-gris-clair italic mb-12">
+        <p className="t-lead italic text-sourdine mb-12">
           Après trois ans de procédure, une nouvelle réunion, vendredi, leur a donné de l&apos;espoir
         </p>
 
         {/* Photo */}
         <div className="mb-12">
-          <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+          <div className="relative w-full overflow-hidden rounded-[3px]" style={{ aspectRatio: "16/9" }}>
             <Image
               src="/presse-comedie.png"
               alt="L'immeuble du Comédia à Jonquières"
@@ -56,13 +56,13 @@ export default function ArticleComediePage() {
               priority
             />
           </div>
-          <p className="text-[0.7rem] font-light text-gris mt-3 leading-relaxed">
+          <p className="text-[0.9rem] text-sourdine mt-3">
             L&apos;immeuble aurait dû être livré en 2008. En septembre dernier, les travaux n&apos;étaient pas terminés. En mars 2011, toujours pas. / Photo Serge Guéroult
           </p>
         </div>
 
         {/* Corps de l'article */}
-        <div className="font-sans text-[0.9rem] font-light text-gris-clair leading-[1.9] space-y-6">
+        <div className="text-[1.0625rem] leading-[1.75] space-y-6">
           <p>
             Acquérir un bien immobilier, c&apos;est le rêve de beaucoup de Français. Mais pour les
             acheteurs des 19 logements du Comédia, à Jonquières, la scène a viré au cauchemar. Et
@@ -72,12 +72,12 @@ export default function ArticleComediePage() {
             2010) et aujourd&apos;hui, rien ou presque n&apos;a bougé.
           </p>
 
-          <blockquote className="border-l-2 border-or pl-6 py-2">
-            <p className="font-serif text-[1rem] italic text-ivoire leading-relaxed">
+          <blockquote className="border-l-[3px] border-ocre pl-6 py-1">
+            <p className="font-serif text-[1.3rem] italic leading-snug text-encre">
               « La Société civile immobilière en charge des travaux s&apos;était alors engagée à
               poursuivre le chantier. Mais depuis, rien n&apos;a vraiment avancé. »
             </p>
-            <cite className="block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-or not-italic">
+            <cite className="block mt-3 text-[0.95rem] text-sourdine not-italic">
               M<sup>e</sup> Joseph Czub
             </cite>
           </blockquote>
@@ -99,7 +99,7 @@ export default function ArticleComediePage() {
             ans&nbsp;!&nbsp;»
           </p>
 
-          <h2 className="font-serif text-[1.3rem] font-light text-ivoire mt-10">
+          <h2 className="t-h3 mt-10">
             L&apos;espoir
           </h2>
 
@@ -108,8 +108,8 @@ export default function ArticleComediePage() {
             particuliers engagés dans la procédure ont entrevu une lueur d&apos;espoir.
           </p>
 
-          <blockquote className="border-l-2 border-or pl-6 py-2">
-            <p className="font-serif text-[1rem] italic text-ivoire leading-relaxed">
+          <blockquote className="border-l-[3px] border-ocre pl-6 py-1">
+            <p className="font-serif text-[1.3rem] italic leading-snug text-encre">
               « Le Groupement français de caution, qui assurait le chantier, s&apos;est engagé
               verbalement à reprendre les travaux de façon continue dans un délai d&apos;une semaine
               à quinze jours, et à délivrer une garantie de paiement pour les différents corps de
@@ -117,7 +117,7 @@ export default function ArticleComediePage() {
               existe toujours, l&apos;assureur a considéré qu&apos;elle l&apos;était dans les
               faits. »
             </p>
-            <cite className="block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-or not-italic">
+            <cite className="block mt-3 text-[0.95rem] text-sourdine not-italic">
               M<sup>e</sup> Czub
             </cite>
           </blockquote>
@@ -154,8 +154,8 @@ export default function ArticleComediePage() {
         </div>
 
         {/* Signature */}
-        <div className="mt-12 pt-8 border-t border-gris-sombre/40">
-          <span className="text-[0.7rem] tracking-[0.15em] uppercase text-gris">
+        <div className="mt-12 pt-8 border-t border-trait">
+          <span className="text-[0.95rem] text-sourdine">
             Sylvain Pignol — La Provence
           </span>
         </div>

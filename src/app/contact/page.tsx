@@ -1,193 +1,133 @@
-import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-import { SITE_CONFIG, OG_IMAGE } from "@/lib/constants";
-import PageHero from "@/components/PageHero";
-import SectionDivider from "@/components/SectionDivider";
-import RevealOnScroll from "@/components/RevealOnScroll";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import Link from "next/link";
+import { SITE_CONFIG, OPTIONS } from "@/lib/constants";
+import { pageMetadata, breadcrumbJsonLd, graph } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import EnTete from "@/components/EnTete";
+import CarteAcces from "@/components/CarteAcces";
+import { IconExternal } from "@/components/Icons";
 import ContactForm from "./ContactForm";
 
-const MapCabinet = dynamic(() => import("@/components/MapCabinet"), {
-  ssr: false,
-  loading: () => (
-    <div className="bg-anthracite border border-gris-sombre/50 h-[280px] flex items-center justify-center">
-      <div className="text-[0.7rem] tracking-[0.2em] uppercase text-gris">Chargement de la carte…</div>
-    </div>
-  ),
+export const metadata = pageMetadata({
+  title: "Contact, rendez-vous et accès au cabinet",
+  description:
+    "Prendre rendez-vous avec Maître Joseph Czub, avocat à Martigues : 04 42 40 36 65, formulaire de contact, plan d'accès au 1 boulevard du Président Allende, L'Espace Vénitien.",
+  path: "/contact",
 });
 
-const SITE_URL = "https://www.cabinet-czub.fr";
-
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Accueil",
-      item: SITE_URL,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Contact",
-      item: `${SITE_URL}/contact`,
-    },
-  ],
-};
-
-export const metadata: Metadata = {
-  title: "Contact et rendez-vous — Maître Joseph Czub",
-  description:
-    "Contactez le Cabinet Maître Joseph Czub, avocat à Martigues. Prenez rendez-vous pour une consultation en droit des énergies renouvelables, fraudes bancaires, assurances ou droit de la consommation. Cabinet accessible à Martigues, proche Aix-en-Provence et Marseille.",
-  keywords: [
-    "contact avocat martigues",
-    "rendez-vous avocat martigues",
-    "consultation avocat martigues",
-    "avocat martigues téléphone",
-    "cabinet czub contact",
-    "avocat près de marseille",
-    "avocat près aix-en-provence",
-    "consultation juridique martigues",
-    "cabinet avocat bouches-du-rhône contact",
-    "avocat PACA rendez-vous",
-  ],
-  alternates: {
-    canonical: `${SITE_URL}/contact`,
-  },
-  openGraph: {
-    title:
-      "Contact — Cabinet Maître Joseph Czub | Avocat Martigues | Prendre rendez-vous",
-    description:
-      "Contactez le Cabinet Maître Joseph Czub, avocat à Martigues. Prenez rendez-vous pour une consultation en droit des énergies renouvelables, fraudes bancaires ou droit de la consommation.",
-    type: "website",
-    locale: "fr_FR",
-    siteName: "Cabinet Maître Joseph Czub",
-    images: [OG_IMAGE],
-    url: `${SITE_URL}/contact`,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Contact — Cabinet Maître Joseph Czub | Avocat Martigues",
-    description:
-      "Contactez le Cabinet Maître Joseph Czub, avocat à Martigues. Prenez rendez-vous pour une consultation juridique.",
-  },
-};
+const crumbs = [{ name: "Contact et accès", path: "/contact" }];
 
 export default function ContactPage() {
+  const c = SITE_CONFIG.contact;
+  const q = encodeURIComponent(`Cabinet Maître Joseph Czub, ${c.addressFull}`);
+  const { lat, lng } = SITE_CONFIG.geo;
+  const itineraires = [
+    { label: "Google Maps", href: `https://www.google.com/maps/dir/?api=1&destination=${q}` },
+    { label: "Plans (Apple)", href: `https://maps.apple.com/?daddr=${lat},${lng}&q=${q}` },
+    { label: "Waze", href: `https://waze.com/ul?ll=${lat},${lng}&navigate=yes` },
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      <JsonLd data={graph(breadcrumbJsonLd(crumbs))} />
+      <EnTete
+        crumbs={crumbs}
+        titre="Contact et rendez-vous"
+        chapeau={
+          <>
+            Le cabinet reçoit sur rendez-vous à Martigues
+            {OPTIONS.consultationADistance ? ", et peut aussi vous conseiller par téléphone ou en visioconférence" : ""}.
+            Le plus simple est d&apos;appeler ; vous pouvez aussi écrire, le cabinet vous recontacte.
+          </>
+        }
       />
 
-      <PageHero
-        tag="Contact"
-        title="Contacter votre avocat"
-        highlight="à Martigues"
-        subtitle="Le cabinet est implanté à Martigues et intervient sur toute la France. Contactez-nous pour toute demande de consultation ou d'information."
-      />
+      <div className="wrap grid gap-14 py-14 md:py-20 lg:grid-cols-12">
+        {/* ── Coordonnées et accès ── */}
+        <div className="lg:col-span-5">
+          <section aria-labelledby="appeler">
+            <h2 id="appeler" className="t-h3">
+              Par téléphone
+            </h2>
+            <a href={c.phoneHref} className="mt-2 block font-serif text-[2.4rem] leading-tight no-underline hover:underline">
+              {c.phone}
+            </a>
+            <p className="text-sourdine">{OPTIONS.horairesTexte}</p>
+          </section>
 
-      <SectionDivider />
+          <section aria-labelledby="ecrire" className="mt-10">
+            <h2 id="ecrire" className="t-h3">
+              Par e-mail
+            </h2>
+            <a href={c.emailHref} className="mt-2 inline-block break-all text-lg">
+              {c.email}
+            </a>
+          </section>
 
-      <section className="py-24 md:py-36 px-6 md:px-[60px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* ── COORDONNÉES ── */}
-          <div>
-            <RevealOnScroll>
-              <div className="section-label mb-8">Coordonnées</div>
-            </RevealOnScroll>
-
-            <div className="space-y-8">
-              {[
-                {
-                  icon: MapPin,
-                  label: "Adresse",
-                  value: SITE_CONFIG.contact.address,
-                  sub: "13500 Martigues",
-                },
-                {
-                  icon: Phone,
-                  label: "Téléphone",
-                  value: SITE_CONFIG.contact.phone,
-                  href: SITE_CONFIG.contact.phoneHref,
-                },
-                {
-                  icon: Mail,
-                  label: "Email",
-                  value: SITE_CONFIG.contact.email,
-                  href: SITE_CONFIG.contact.emailHref,
-                },
-                {
-                  icon: Clock,
-                  label: "Horaires",
-                  value: "Du lundi au vendredi",
-                  sub: "Sur rendez-vous uniquement",
-                },
-              ].map((item, i) => (
-                <RevealOnScroll key={item.label} delay={i * 100}>
-                  <div className="flex items-start gap-5">
-                    <div className="w-10 h-10 border border-or/25 flex items-center justify-center flex-shrink-0">
-                      <item.icon
-                        className="w-4 h-4 text-or"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-                    <div>
-                      <span className="block text-[0.6rem] tracking-[0.2em] uppercase text-gris mb-1">
-                        {item.label}
-                      </span>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="text-[0.9rem] font-light text-ivoire no-underline hover:text-or transition-colors duration-300"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <span className="text-[0.9rem] font-light text-ivoire">
-                          {item.value}
-                        </span>
-                      )}
-                      {item.sub && (
-                        <span className="block text-[0.8rem] font-light text-gris-clair mt-0.5">
-                          {item.sub}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </RevealOnScroll>
+          <section aria-labelledby="acces" className="mt-10">
+            <h2 id="acces" className="t-h3">
+              Accès au cabinet
+            </h2>
+            <address className="mt-2 not-italic">
+              {SITE_CONFIG.fullName}
+              <br />
+              {c.street}
+              <br />
+              {c.building}
+              <br />
+              {c.postalCode} Martigues
+            </address>
+            <p className="mt-4 text-[0.95rem] text-sourdine">Itinéraire avec :</p>
+            <ul className="mt-2 flex flex-wrap gap-2">
+              {itineraires.map((i) => (
+                <li key={i.label}>
+                  <a
+                    href={i.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-trait bg-white px-4 py-2 text-[0.95rem] no-underline hover:border-etang"
+                  >
+                    {i.label}
+                    <IconExternal className="h-3.5 w-3.5" />
+                    <span className="sr-only">(nouvel onglet)</span>
+                  </a>
+                </li>
               ))}
+            </ul>
+            <div className="mt-6">
+              <CarteAcces />
             </div>
-
-            {/* Carte OpenStreetMap */}
-            <RevealOnScroll delay={500}>
-              <div className="mt-12 border border-gris-sombre/50 overflow-hidden">
-                <MapCabinet />
-              </div>
-              <a
-                href="https://maps.google.com/?q=1+Boulevard+du+Président+Allende,+L'Espace+Vénitien,+13500+Martigues"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-3 text-[0.65rem] tracking-[0.15em] uppercase text-or no-underline hover:text-or-clair transition-colors duration-300"
-              >
-                <MapPin className="w-3 h-3" strokeWidth={1.5} />
-                Ouvrir dans Google Maps
-              </a>
-            </RevealOnScroll>
-          </div>
-
-          {/* ── FORMULAIRE ── */}
-          <div>
-            <RevealOnScroll>
-              <div className="section-label mb-8">Formulaire de contact</div>
-            </RevealOnScroll>
-            <ContactForm />
-          </div>
+          </section>
         </div>
-      </section>
+
+        {/* ── Formulaire ── */}
+        <section
+          id="rendez-vous"
+          aria-labelledby="formulaire"
+          className="scroll-mt-24 rounded-[3px] border border-trait bg-white p-6 sm:p-10 lg:col-span-7"
+        >
+          <h2 id="formulaire" className="t-h2">
+            Demander un rendez-vous
+          </h2>
+          {OPTIONS.rdvEnLigneUrl ? (
+            <p className="mt-4">
+              <a href={OPTIONS.rdvEnLigneUrl} target="_blank" rel="noopener noreferrer" className="btn-plein">
+                Choisir un créneau en ligne
+              </a>
+              <span className="mt-3 block text-sourdine">ou décrivez votre situation ci-dessous :</span>
+            </p>
+          ) : (
+            <p className="mt-4 max-w-texte text-sourdine">
+              Décrivez votre situation en quelques lignes : le cabinet vous rappelle pour fixer un rendez-vous. Ne
+              joignez pas encore de documents.
+            </p>
+          )}
+          <ContactForm />
+          <p className="mt-6 text-[0.9rem] text-sourdine">
+            Vos données servent uniquement à traiter votre demande.{" "}
+            <Link href="/politique-de-confidentialite">Politique de confidentialité</Link>.
+          </p>
+        </section>
+      </div>
     </>
   );
 }

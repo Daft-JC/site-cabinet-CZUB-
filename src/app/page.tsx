@@ -1,443 +1,319 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { SITE_CONFIG, EXPERTISES } from "@/lib/constants";
-import RevealOnScroll from "@/components/RevealOnScroll";
-import AnimatedCounter from "@/components/AnimatedCounter";
-import SectionDivider from "@/components/SectionDivider";
-import ExpertiseCard from "@/components/ExpertiseCard";
+import { SITE_CONFIG, EXPERTISES, ARTICLES_PRESSE, OPTIONS } from "@/lib/constants";
+import { EXPERTISES_SEO } from "@/lib/expertises-seo";
+import { pageMetadata, faqJsonLd, graph } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import Faq from "@/components/Faq";
+import BandeauContact from "@/components/BandeauContact";
+import { IconExternal } from "@/components/Icons";
+import photoBureau from "../../public/cabinet-photo.jpg";
+import portrait from "../../public/joseph-czub.jpg";
 
-const SITE_URL = "https://www.cabinet-czub.fr";
+export const metadata = pageMetadata({
+  title: "Avocat à Martigues : photovoltaïque, fraude bancaire | Maître Czub",
+  description:
+    "Maître Joseph Czub, avocat à Martigues depuis 1994 (Barreau d'Aix-en-Provence) : arnaques photovoltaïques, fraudes bancaires, consommation, assurances, construction. Tél. 04 42 40 36 65.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 // Source unique : affichée dans la page ET déclarée en données structurées
 const FAQ = [
   {
     q: "Maître Czub intervient-il pour les arnaques au photovoltaïque ?",
-    a: "Oui. Depuis près de 20 ans, Maître Joseph Czub, avocat à Martigues inscrit au Barreau d'Aix-en-Provence, intervient sur toute la France pour défendre les victimes d'arnaques aux panneaux photovoltaïques, pompes à chaleur et énergies renouvelables. Le cabinet obtient l'annulation des contrats et des crédits affectés.",
-    href: "/expertises/photovoltaique-energies-renouvelables",
+    a: "Oui. Depuis près de 20 ans, Maître Joseph Czub, avocat à Martigues inscrit au Barreau d'Aix-en-Provence, intervient sur toute la France pour défendre les victimes d'arnaques aux panneaux photovoltaïques, pompes à chaleur et énergies renouvelables, en demandant l'annulation des contrats et des crédits affectés.",
   },
   {
     q: "Ma banque doit-elle me rembourser après une fraude (spoofing, phishing) ?",
-    a: "Dans de nombreux cas, oui. Le code monétaire et financier oblige votre banque à rembourser les sommes frauduleusement débitées, sauf si elle démontre votre négligence grave. Maître Czub a obtenu de très nombreuses décisions favorables aux victimes de spoofing, phishing, SIM swapping, quishing et faux RIB.",
-    href: "/expertises/fraudes-bancaires",
+    a: "Dans de nombreux cas, oui. Le Code monétaire et financier oblige votre banque à rembourser les sommes frauduleusement débitées, sauf si elle démontre votre négligence grave. Maître Czub a obtenu de nombreuses décisions favorables à des victimes de spoofing, phishing, SIM swapping, quishing et faux RIB.",
   },
   {
     q: "Le cabinet intervient-il uniquement à Martigues ?",
-    a: "Non. Bien que basé à Martigues, le Cabinet Maître Joseph Czub intervient sur toute la France pour les dossiers de droit des consommateurs, arnaques aux énergies renouvelables et fraudes bancaires — devant les tribunaux judiciaires, les Cours d'appel et la Cour de cassation.",
+    a: "Non. Basé à Martigues, le cabinet intervient sur toute la France pour les dossiers de droit de la consommation, d'arnaques aux énergies renouvelables et de fraudes bancaires, devant les tribunaux judiciaires, les cours d'appel et la Cour de cassation.",
   },
   {
     q: "Qu'est-ce qu'un crédit affecté dans le cadre d'une arnaque photovoltaïque ?",
-    a: "Le crédit affecté est un prêt directement lié à l'achat d'une installation (photovoltaïque, pompe à chaleur…). Si le contrat principal est annulé, le crédit affecté est annulé de plein droit ; et lorsque la banque a commis une faute en débloquant les fonds, elle peut être privée de son droit au remboursement du capital. C'est un levier juridique essentiel que le cabinet exploite systématiquement.",
+    a: "Le crédit affecté est un prêt directement lié à l'achat d'une installation (photovoltaïque, pompe à chaleur…). Si le contrat principal est annulé, le crédit affecté est annulé de plein droit ; et lorsque la banque a commis une faute en débloquant les fonds, elle peut être privée de son droit au remboursement du capital.",
   },
   {
     q: "Comment prendre rendez-vous avec Maître Czub ?",
-    a: "Par téléphone au 04 42 40 36 65, par e-mail à czubjoseph@hotmail.com ou via le formulaire de contact du site. Le cabinet est situé au 1 Boulevard du Président Allende, L'Espace Vénitien, 13500 Martigues. Consultations sur rendez-vous.",
-    href: "/contact",
+    a: `Par téléphone au ${SITE_CONFIG.contact.phone}, par e-mail à ${SITE_CONFIG.contact.email} ou via le formulaire de contact du site. Le cabinet est situé ${SITE_CONFIG.contact.addressFull}. Consultations sur rendez-vous, du lundi au vendredi.`,
   },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQ.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const ETAPES = [
+  {
+    titre: "Vous prenez contact",
+    texte:
+      "Par téléphone ou via le formulaire, en décrivant votre situation en quelques lignes. Le cabinet vous rappelle pour fixer un rendez-vous.",
+  },
+  {
+    titre: "Vous rassemblez vos documents",
+    texte:
+      "Contrat ou bon de commande, offre de crédit, factures, courriers et e-mails échangés, relevés bancaires, photos : tout ce qui retrace l'histoire du litige.",
+  },
+  {
+    titre: "Le rendez-vous au cabinet",
+    texte:
+      "Maître Czub analyse votre dossier, vous explique les recours possibles et leurs délais, et vous présente ses conditions d'intervention dans une convention d'honoraires.",
+  },
+  {
+    titre: "Amiable d'abord, procès si nécessaire",
+    texte:
+      "Une solution amiable est recherchée en premier lieu. À défaut, une procédure judiciaire est engagée devant la juridiction compétente.",
+  },
+];
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Avocat Martigues : photovoltaïque, fraude bancaire | Maître Czub",
-  },
-  description:
-    "Avocat à Martigues depuis 1994 — Maître Joseph Czub, Barreau d'Aix-en-Provence. Arnaques photovoltaïques, fraudes bancaires (spoofing, phishing), droit de la consommation, assurances et construction. Interventions sur toute la France. Tél : 04 42 40 36 65.",
-  keywords: [
-    "avocat martigues",
-    "avocat photovoltaïque martigues",
-    "avocat photovoltaïque",
-    "avocat arnaque panneaux solaires",
-    "avocat énergies renouvelables martigues",
-    "avocat fraudes bancaires martigues",
-    "avocat spoofing phishing martigues",
-    "avocat droit consommation martigues",
-    "cabinet avocat martigues",
-    "maître joseph czub martigues",
-    "avocat bouches-du-rhône",
-    "avocat PACA",
-    "avocat barreau aix-en-provence martigues",
-    "avocat consommateur martigues",
-    "avocat crédit affecté",
-  ],
-  alternates: {
-    canonical: SITE_URL,
-  },
-  openGraph: {
-    title:
-      "Avocat Martigues | Cabinet Maître Joseph Czub — Énergies renouvelables, Fraudes bancaires, Droit de la consommation",
-    description:
-      "Cabinet d'avocat à Martigues depuis plus de 30 ans. Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence, vous accompagne en droit des énergies renouvelables, fraudes bancaires, assurances, construction et droit de la consommation.",
-    type: "website",
-    locale: "fr_FR",
-    siteName: "Cabinet Maître Joseph Czub",
-    url: SITE_URL,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Avocat Martigues | Cabinet Maître Joseph Czub — Énergies renouvelables, Fraudes bancaires, Droit de la consommation",
-    description:
-      "Cabinet d'avocat à Martigues depuis plus de 30 ans. Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence, vous accompagne en droit des énergies renouvelables, fraudes bancaires et droit de la consommation.",
-  },
-};
+const NATIONAUX = ["photovoltaique-energies-renouvelables", "fraudes-bancaires"];
 
 export default function HomePage() {
+  const [pv, fraude] = NATIONAUX.map((slug) => ({
+    exp: EXPERTISES.find((e) => e.slug === slug)!,
+    seo: EXPERTISES_SEO[slug],
+  }));
+  const autres = EXPERTISES.filter((e) => !NATIONAUX.includes(e.slug));
+  const presse = ARTICLES_PRESSE.slice(0, 4);
+  const c = SITE_CONFIG.contact;
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <JsonLd data={graph(faqJsonLd(FAQ))} />
 
-      {/* ══════════ HERO ══════════ */}
-      <section className="min-h-screen flex flex-col justify-center relative px-6 md:px-[60px] overflow-hidden">
-        {/* Subtle radial glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 80% 60% at 70% 40%, rgba(184,149,79,0.03) 0%, transparent 70%), radial-gradient(ellipse 50% 80% at 20% 80%, rgba(184,149,79,0.02) 0%, transparent 60%)",
-            }}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
-
-          {/* ── Colonne texte ── */}
-          <div>
-            {/* Tag */}
-            <div className="section-label mb-10 opacity-0 animate-fade-up [animation-delay:0.5s] [animation-fill-mode:forwards]">
-              {SITE_CONFIG.tagline}
-            </div>
-
-            {/* Title */}
-            <h1 className="font-serif font-light leading-[1.1] mb-10">
-              <span className="block overflow-hidden">
-                <span className="inline-block opacity-0 animate-slide-up [animation-delay:0.6s] [animation-fill-mode:forwards] text-[clamp(2.8rem,5vw,5.5rem)] text-ivoire">
-                  Cabinet
-                </span>
-              </span>
-              <span className="block overflow-hidden">
-                <span className="inline-block opacity-0 animate-slide-up [animation-delay:0.75s] [animation-fill-mode:forwards] text-[clamp(2.8rem,5vw,5.5rem)] text-ivoire">
-                  Maître Joseph Czub
-                </span>
-              </span>
-              <span className="block overflow-hidden">
-                <span className="inline-block opacity-0 animate-slide-up [animation-delay:0.9s] [animation-fill-mode:forwards] text-[clamp(2.8rem,5vw,5.5rem)] text-or italic font-normal">
-                  Avocat à Martigues
-                </span>
-              </span>
+      {/* ── Accueil : le bureau, le nom, le numéro ── */}
+      <section className="relative overflow-hidden border-b border-trait">
+        <div className="mx-auto grid max-w-page lg:grid-cols-12">
+          <div className="px-5 pb-14 pt-10 sm:px-8 lg:col-span-6 lg:px-12 lg:pb-20 lg:pt-20">
+            <p className="entree text-sourdine">
+              Maître Joseph Czub, avocat au Barreau d&apos;Aix-en-Provence depuis {SITE_CONFIG.founded}
+            </p>
+            <h1 className="t-display entree entree-2 mt-6 hyphens-manual">
+              Avocat à Martigues, aux côtés des consommateurs depuis trente ans
             </h1>
-
-            {/* Subtitle */}
-            <p className="font-sans text-[0.95rem] font-light text-gris-clair leading-[1.8] max-w-[500px] mb-12 opacity-0 animate-fade-up [animation-delay:1.2s] [animation-fill-mode:forwards]">
-              Intervenant dans la défense des consommateurs depuis plus de 30 ans,
-              le cabinet intervient sur toute la France — photovoltaïque, fraudes
-              bancaires, assurances, construction, automobile et bien davantage.
+            <p className="t-lead entree entree-3 mt-7 max-w-texte text-sourdine">
+              Arnaques au photovoltaïque, fraudes bancaires, assurances, construction, litiges du quotidien : le
+              cabinet défend les particuliers face aux professionnels, à Martigues et partout en France.
             </p>
 
-            {/* Actions */}
-            <div className="flex flex-wrap gap-6 items-center opacity-0 animate-fade-up [animation-delay:1.4s] [animation-fill-mode:forwards]">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-3 text-[0.7rem] font-medium tracking-[0.2em] uppercase text-noir bg-or no-underline px-9 py-4 relative overflow-hidden transition-all duration-400 hover:bg-or-clair"
+            <div className="entree entree-3 mt-10 border-l-[3px] border-ocre pl-5">
+              <p className="text-sourdine">Pour prendre rendez-vous</p>
+              <a
+                href={c.phoneHref}
+                className="mt-1 block font-serif text-[clamp(2.1rem,1.6rem+2vw,3rem)] leading-none text-etang no-underline hover:underline"
               >
-                <span className="relative z-10">Prendre rendez-vous</span>
-                <ArrowRight className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                {c.phone}
+              </a>
+              <p className="mt-2 text-[0.95rem] text-sourdine">{OPTIONS.horairesTexte}</p>
+            </div>
+            <div className="entree entree-3 mt-8 flex flex-wrap gap-3">
+              <Link href="/contact#rendez-vous" className="btn-plein">
+                Écrire au cabinet
               </Link>
-              <Link
-                href="/expertises"
-                className="text-[0.7rem] font-normal tracking-[0.2em] uppercase text-ivoire no-underline py-4 relative after:content-[''] after:absolute after:bottom-3 after:left-0 after:w-full after:h-px after:bg-gris hover:text-or hover:after:bg-or transition-colors duration-300"
-              >
-                Nos domaines
+              <Link href="/expertises" className="btn-trait">
+                Voir les domaines d&apos;intervention
               </Link>
             </div>
           </div>
 
-          {/* ── Colonne photo ── */}
-          <div className="flex justify-center items-center opacity-0 animate-fade-up [animation-delay:1s] [animation-fill-mode:forwards]">
-            <div className="relative w-[300px] sm:w-[360px] lg:w-[420px] xl:w-[480px]">
-              <div className="relative z-10 overflow-hidden" style={{ aspectRatio: "3/4" }}>
-                <Image
-                  src="/joseph-czub.jpg"
-                  alt="Maître Joseph Czub, avocat à Martigues — Barreau d'Aix-en-Provence"
-                  fill
-                  className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-                  sizes="(max-width: 640px) 300px, (max-width: 1024px) 360px, (max-width: 1280px) 420px, 480px"
-                  priority
-                />
-              </div>
-              {/* Badge */}
-              <div className="absolute bottom-0 left-0 bg-noir/90 border-t border-l border-or/20 px-6 py-4 z-20">
-                <span className="block text-[0.6rem] tracking-[0.25em] uppercase text-or mb-1">
-                  Avocat au Barreau
-                </span>
-                <span className="block text-[0.8rem] font-light text-ivoire tracking-wide">
-                  Aix-en-Provence — Depuis 1994
-                </span>
-              </div>
+          <figure className="relative lg:col-span-6">
+            <div className="photo-entree relative aspect-[4/3] lg:absolute lg:inset-0 lg:aspect-auto">
+              <Image
+                src={photoBureau}
+                alt="Maître Joseph Czub à son bureau, une fenêtre ouverte sur l'étang de Berre"
+                fill
+                priority
+                placeholder="blur"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-[50%_72%]"
+              />
             </div>
-          </div>
-
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-6 md:left-[60px] flex items-center gap-4 opacity-0 animate-fade-up [animation-delay:1.8s] [animation-fill-mode:forwards] hidden md:flex">
-          <div className="w-px h-[60px] bg-gris-sombre relative overflow-hidden">
-            <div className="absolute top-[-100%] left-0 w-px h-full bg-or animate-scroll-down" />
-          </div>
-          <span className="text-[0.6rem] tracking-[0.25em] uppercase text-gris [writing-mode:vertical-rl]">
-            Défiler
-          </span>
+          </figure>
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* ══════════ ABOUT ══════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-[60px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative" style={{ background: "linear-gradient(135deg, rgba(26,20,10,0.6) 0%, rgba(18,14,6,0.4) 100%)" }}>
-        {/* Background number */}
-        <div className="absolute right-[60px] top-24 font-serif text-[7rem] font-light text-or opacity-[0.06] leading-none pointer-events-none hidden lg:block">
-          30+
-        </div>
-
-        <div>
-          <RevealOnScroll>
-            <div className="section-label mb-8">Le Cabinet</div>
-          </RevealOnScroll>
-          <RevealOnScroll delay={150}>
-            <h2 className="section-heading mb-4">
-              L&apos;exigence du droit,
-              <br />
-              la force de <em>l&apos;expérience</em>
-            </h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={300}>
-            <div className="font-sans text-[0.9rem] font-light text-gris-clair leading-[1.9] space-y-5">
-              <p>
-                Fondé en 1994 à Martigues, le cabinet de Maître Joseph Czub est
-                intervenant dans la défense des consommateurs. Avocat au barreau
-                d&apos;Aix-en-Provence, Maître Czub intervient sur toute la
-                France pour faire respecter vos droits face aux abus de certains
-                professionnels.
-              </p>
-              <p>
-                En collaboration avec l&apos;UFC Que Choisir et si besoin avec un réseau
-                d&apos;experts techniques, le cabinet obtient depuis près de
-                30 ans des jurisprudences très favorables aux consommateurs
-                victimes d&apos;arnaques aux énergies renouvelables, fraudes
-                bancaires, litiges immobiliers et bien d&apos;autres domaines.
-              </p>
-            </div>
-          </RevealOnScroll>
-        </div>
-
-        <div>
-          <RevealOnScroll>
-            <div className="grid grid-cols-3 gap-10 pt-12 border-t border-or/15">
-              <div>
-                <AnimatedCounter target={30} suffix="+" />
-                <div className="text-[0.65rem] tracking-[0.15em] uppercase text-gris leading-relaxed mt-2">
-                  Années
-                  <br />
-                  d&apos;expérience
-                </div>
-              </div>
-              <div>
-                <span className="font-serif text-[2.8rem] font-light text-or leading-none">
-                  10
-                </span>
-                <div className="text-[0.65rem] tracking-[0.15em] uppercase text-gris leading-relaxed mt-2">
-                  Domaines
-                  <br />
-                  d&apos;intervention
-                </div>
-              </div>
-              <div>
-                <span className="font-serif text-[2.8rem] font-light text-or leading-none">
-                  1
-                </span>
-                <div className="text-[0.65rem] tracking-[0.15em] uppercase text-gris leading-relaxed mt-2">
-                  Interlocuteur
-                  <br />
-                  unique & dédié
-                </div>
-              </div>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ══════════ DOMAINES D'INTERVENTION ══════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-[60px]">
-        <div className="text-center mb-20">
-          <RevealOnScroll>
-            <div className="section-label justify-center mb-6">
-              Domaines d&apos;intervention
-            </div>
-          </RevealOnScroll>
-          <RevealOnScroll delay={150}>
-            <h2 className="section-heading">
-              Votre défense, <em>notre expertise</em>
-            </h2>
-          </RevealOnScroll>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-0.5">
-          {EXPERTISES.map((exp, i) => (
-            <ExpertiseCard
-              key={exp.id}
-              id={exp.slug}
-              title={exp.title}
-              description={exp.shortDesc}
-              icon={exp.icon}
-              delay={i * 80}
-            />
-          ))}
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ══════════ QUOTE ══════════ */}
-      <section className="py-24 md:py-32 px-6 md:px-[60px] text-center" style={{ background: "linear-gradient(180deg, transparent 0%, rgba(184,149,79,0.04) 40%, rgba(184,149,79,0.06) 55%, rgba(184,149,79,0.04) 70%, transparent 100%)" }}>
-        <RevealOnScroll>
-          <div className="font-serif text-[6rem] text-or opacity-20 leading-none mb-[-20px]">
-            &ldquo;
-          </div>
-        </RevealOnScroll>
-        <RevealOnScroll delay={150}>
-          <p className="font-serif text-[clamp(1.4rem,2.5vw,2rem)] font-light italic text-ivoire max-w-[700px] mx-auto mb-8 leading-relaxed">
-            Faire respecter vos droits face aux abus de certains professionnels.
-            Faire appliquer les garanties légales élémentaires.
-          </p>
-        </RevealOnScroll>
-        <RevealOnScroll delay={300}>
-          <span className="text-[0.7rem] tracking-[0.2em] uppercase text-or">
-            {SITE_CONFIG.lawyer}
-          </span>
-        </RevealOnScroll>
-      </section>
-
-      <SectionDivider />
-
-      {/* ══════════ ZONES D'INTERVENTION ══════════ */}
-      <section className="py-16 md:py-24 px-6 md:px-[60px]" style={{ background: "linear-gradient(135deg, rgba(26,20,10,0.5) 0%, rgba(18,14,6,0.3) 100%)" }}>
-        <div className="max-w-4xl mx-auto text-center">
-          <RevealOnScroll>
-            <div className="section-label justify-center mb-6">Zones d&apos;intervention</div>
-          </RevealOnScroll>
-          <RevealOnScroll delay={100}>
-            <h2 className="font-serif text-[clamp(1.4rem,2vw,1.9rem)] font-light text-ivoire mb-4">
-              Avocat à <em>Martigues</em>, interventions sur toute la France
-            </h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={200}>
-            <p className="font-sans text-[0.85rem] font-light text-gris-clair leading-[1.9] mb-8 max-w-2xl mx-auto">
-              Basé à Martigues (Bouches-du-Rhône), le cabinet Czub traite des dossiers devant l&apos;ensemble
-              des juridictions françaises — tribunaux judiciaires, Cours d&apos;appel, Cour de cassation.
-            </p>
-          </RevealOnScroll>
-          <RevealOnScroll delay={300}>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "Martigues", "Aix-en-Provence", "Marseille", "Istres",
-                "Salon-de-Provence", "Vitrolles", "Fos-sur-Mer", "Port-de-Bouc",
-                "Miramas", "Bouches-du-Rhône", "PACA", "Toute la France"
-              ].map((city) => (
-                <span
-                  key={city}
-                  className="text-[0.65rem] tracking-[0.18em] uppercase border border-or/20 text-gris-clair px-4 py-2 hover:border-or/50 hover:text-or transition-colors duration-300"
-                >
-                  {city}
-                </span>
-              ))}
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ══════════ FAQ ══════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-[60px]">
-        <div className="max-w-3xl mx-auto">
-          <RevealOnScroll>
-            <div className="section-label mb-8">Questions fréquentes</div>
-          </RevealOnScroll>
-          <RevealOnScroll delay={100}>
-            <h2 className="section-heading mb-12">
-              Vos questions,<br /><em>nos réponses</em>
-            </h2>
-          </RevealOnScroll>
-
-          <div className="space-y-0">
-            {FAQ.map((item, i) => (
-              <RevealOnScroll key={i} delay={i * 80}>
-                <details className="group border-t border-gris-sombre/40 py-6 cursor-pointer">
-                  <summary className="flex items-start justify-between gap-4 list-none">
-                    <h3 className="font-sans text-[0.95rem] font-light text-ivoire leading-snug group-open:text-or transition-colors duration-300">
-                      {item.q}
-                    </h3>
-                    <span className="flex-shrink-0 w-5 h-5 border border-or/30 flex items-center justify-center text-or text-xs mt-0.5 group-open:bg-or group-open:text-noir transition-all duration-300">
-                      +
-                    </span>
-                  </summary>
-                  <p className="mt-4 font-sans text-[0.85rem] font-light text-gris-clair leading-[1.9]">
-                    {item.a}
-                  </p>
-                  {item.href && (
-                    <Link href={item.href} className="inline-block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-or no-underline hover:text-or-clair">
-                      En savoir plus →
-                    </Link>
-                  )}
-                </details>
-              </RevealOnScroll>
-            ))}
-            <div className="border-t border-gris-sombre/40" />
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ══════════ CTA FINAL ══════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-[60px] text-center">
-        <RevealOnScroll>
-          <h2 className="section-heading mb-6">
-            Besoin d&apos;un <em>accompagnement juridique</em> ?
+      {/* ── Les deux contentieux nationaux ── */}
+      <section aria-labelledby="partout-en-france" className="py-20 md:py-28">
+        <div className="wrap">
+          <h2 id="partout-en-france" className="t-h2 max-w-[22ch]">
+            Deux contentieux que le cabinet suit partout en France
           </h2>
-        </RevealOnScroll>
-        <RevealOnScroll delay={150}>
-          <p className="font-sans text-[0.95rem] font-light text-gris-clair leading-[1.8] max-w-lg mx-auto mb-10">
-            Le cabinet vous accueille sur rendez-vous à Martigues. Prenons le
-            temps d&apos;échanger sur votre situation.
-          </p>
-        </RevealOnScroll>
-        <RevealOnScroll delay={300}>
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-3 text-[0.7rem] font-medium tracking-[0.2em] uppercase text-noir bg-or no-underline px-9 py-4 transition-all duration-400 hover:bg-or-clair"
-          >
-            <span>Nous contacter</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
-        </RevealOnScroll>
+          <div className="mt-12 grid gap-6 lg:grid-cols-12">
+            <article className="rounded-[3px] border border-trait bg-white p-7 sm:p-10 lg:col-span-7">
+              <h3 className="t-h3">
+                <Link href={`/expertises/${pv.exp.slug}`} className="text-encre">
+                  Arnaques au photovoltaïque et aux énergies renouvelables
+                </Link>
+              </h3>
+              <p className="mt-4 text-sourdine">{pv.seo.intro}</p>
+              <ul className="mt-6 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                {pv.exp.details.slice(0, 6).map((d) => (
+                  <li key={d} className="onglet text-[0.95rem]">
+                    {d}
+                  </li>
+                ))}
+              </ul>
+              <Link href={`/expertises/${pv.exp.slug}`} className="mt-8 inline-block font-medium">
+                Vos recours en cas d&apos;arnaque aux panneaux solaires
+              </Link>
+            </article>
+
+            <article className="rounded-[3px] bg-enduit p-7 sm:p-10 lg:col-span-5 lg:mt-16">
+              <h3 className="t-h3">
+                <Link href={`/expertises/${fraude.exp.slug}`} className="text-encre">
+                  Fraudes bancaires
+                </Link>
+              </h3>
+              <p className="mt-4 text-sourdine">{fraude.seo.intro}</p>
+              <p className="mt-6 text-[0.95rem]">
+                Spoofing, phishing, quishing, faux RIB, SIM swapping, logiciels malveillants.
+              </p>
+              <Link href={`/expertises/${fraude.exp.slug}`} className="mt-8 inline-block font-medium">
+                Ce que dit la loi sur le remboursement
+              </Link>
+            </article>
+          </div>
+        </div>
       </section>
+
+      {/* ── Index des autres domaines ── */}
+      <section aria-labelledby="autres-domaines" className="pb-20 md:pb-28">
+        <div className="wrap grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <h2 id="autres-domaines" className="t-h2">
+              Et au quotidien
+            </h2>
+            <p className="mt-4 max-w-sm text-sourdine">
+              À Martigues et dans les Bouches-du-Rhône, le cabinet intervient aussi dans ces domaines.
+            </p>
+          </div>
+          <ul className="border-t border-trait lg:col-span-8 sm:grid sm:grid-cols-2 sm:gap-x-10">
+            {autres.map((e) => (
+              <li key={e.slug} className="border-b border-trait">
+                <Link
+                  href={`/expertises/${e.slug}`}
+                  className="group block py-5 no-underline hover:bg-white/60"
+                >
+                  <span className="block font-serif text-[1.3rem] text-encre group-hover:text-etang group-hover:underline">
+                    {e.title}
+                  </span>
+                  <span className="mt-1 block text-[0.95rem] text-sourdine">{e.shortDesc}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── Maître Czub ── */}
+      <section aria-labelledby="maitre-czub" className="bg-enduit py-20 md:py-28">
+        <div className="wrap grid items-center gap-12 lg:grid-cols-12">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[3px] lg:col-span-5">
+            <Image
+              src={portrait}
+              alt="Portrait de Maître Joseph Czub dans son bureau, devant les classeurs de dossiers"
+              fill
+              placeholder="blur"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover object-[45%_78%]"
+            />
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <h2 id="maitre-czub" className="t-h2">
+              Un seul interlocuteur, du premier appel à l&apos;audience
+            </h2>
+            <p className="mt-6 max-w-texte">
+              Fondé en 1994 à Martigues, le cabinet de Maître Joseph Czub se consacre à la défense des
+              consommateurs. En lien avec l&apos;UFC Que Choisir et, si besoin, avec un réseau d&apos;experts
+              techniques, il plaide devant les tribunaux judiciaires, les cours d&apos;appel et la Cour de
+              cassation.
+            </p>
+            <blockquote className="mt-10 border-l-[3px] border-ocre pl-6">
+              <p className="font-serif text-[1.45rem] italic leading-snug">
+                « Faire respecter vos droits face aux abus de certains professionnels. Faire appliquer les
+                garanties légales élémentaires. »
+              </p>
+              <footer className="mt-3 text-sourdine">Maître Joseph Czub</footer>
+            </blockquote>
+            <Link href="/cabinet" className="mt-10 inline-block font-medium">
+              Le parcours de Maître Czub
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Premier rendez-vous (vraie séquence : numérotée) ── */}
+      <section aria-labelledby="premier-rdv" className="py-20 md:py-28">
+        <div className="wrap">
+          <h2 id="premier-rdv" className="t-h2 max-w-[20ch]">
+            Comment se passe un premier rendez-vous
+          </h2>
+          <ol className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            {ETAPES.map((e, i) => (
+              <li key={e.titre} className="border-t-2 border-etang pt-5">
+                <span className="font-serif text-[2.4rem] leading-none text-ocre-texte">{i + 1}</span>
+                <h3 className="mt-3 font-sans text-[1.1rem] font-semibold">{e.titre}</h3>
+                <p className="mt-2 text-[0.98rem] text-sourdine">{e.texte}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── Presse ── */}
+      <section aria-labelledby="presse" className="border-t border-trait py-20 md:py-28">
+        <div className="wrap grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <h2 id="presse" className="t-h2">
+              Dans la presse
+            </h2>
+            <p className="mt-4 max-w-sm text-sourdine">
+              Le Monde, La Provence, Midi Libre : des affaires suivies par le cabinet, racontées par les journalistes.
+            </p>
+            <Link href="/presse" className="mt-6 inline-block font-medium">
+              Tous les articles
+            </Link>
+          </div>
+          <ul className="divide-y divide-trait border-y border-trait lg:col-span-8">
+            {presse.map((a) => {
+              const interne = a.url?.startsWith("/");
+              return (
+                <li key={a.id} className="py-5">
+                  <p className="text-[0.9rem] text-sourdine">
+                    {a.source}, {new Date(a.date).getFullYear()}
+                  </p>
+                  <a
+                    href={a.url}
+                    {...(interne ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+                    className="mt-1 inline-flex items-start gap-2 font-serif text-[1.25rem] leading-snug text-encre"
+                  >
+                    {a.title}
+                    {!interne && (
+                      <>
+                        <IconExternal className="mt-1.5 h-4 w-4 shrink-0 text-sourdine" />
+                        <span className="sr-only">(nouvel onglet)</span>
+                      </>
+                    )}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section aria-labelledby="questions" className="bg-white py-20 md:py-28">
+        <div className="wrap grid gap-10 lg:grid-cols-12">
+          <h2 id="questions" className="t-h2 lg:col-span-4">
+            Questions fréquentes
+          </h2>
+          <div className="lg:col-span-8">
+            <Faq items={FAQ} />
+          </div>
+        </div>
+      </section>
+
+      <BandeauContact />
     </>
   );
 }

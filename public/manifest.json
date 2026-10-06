@@ -1,11 +1,11 @@
 {
-  "name": "Cabinet Maître Joseph Czub — Avocat à Martigues",
+  "name": "Cabinet Maître Joseph Czub, avocat à Martigues",
   "short_name": "Cabinet Czub",
-  "description": "Cabinet d'avocat à Martigues depuis plus de 30 ans. Maître Joseph Czub, avocat au Barreau d'Aix-en-Provence, défend particuliers et entreprises en droit de la consommation, énergies renouvelables, fraudes bancaires et bien d'autres domaines.",
+  "description": "Cabinet d'avocat à Martigues depuis 1994. Maître Joseph Czub, Barreau d'Aix-en-Provence : défense des consommateurs, photovoltaïque, fraudes bancaires, assurances, construction.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#b8954f",
+  "background_color": "#FBF9F4",
+  "theme_color": "#1E4A6E",
   "lang": "fr",
   "icons": [
     { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" },
